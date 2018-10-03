@@ -1,0 +1,135 @@
+define C {w}|{y}|{w̓}|{y̓}|{m̓}|{m}|{n̓}|{n}|{p}|{p̓}|{t}|{t̓}|{k}|{kʷ}|{k̓}|{k̓ʷ}|{c}|{c̓}|{č}|{č̓}|{q}|{qʷ}|{ʔ}|{ḥ}|{ʕ}|{s}|{š}|{x}|{x̌}|{xʷ}|{x̌ʷ}|{h}|{ɬ}|{ƛ}|{ƛ̓};
+define V i|u|e|o|a;
+define Vns i|u|a;
+define L C|V;
+define CVL  C V L;
+define CVC C V C;
+define VC V C;
+define CC C C;
+define CV C V;
+define CVns C Vns;
+
+# put nouns and verbs through redup separately
+# so as to be able to send them through different 
+# inflectional systems
+
+
+
+define MorphsV1 [[0:"<" "dstr-":CVL  0:">"]|
+                 [0:"<" "dstr-":CC  0:">"]]* VerbStems;
+
+define MorphsN1 [[0:"<" "dstr-":CVL  0:">"]|
+                 [0:"<" "dstr-":CC  0:">"]]* NounStems;
+
+# note special case for CV(h) root ʔa, qa, for now
+# we redup with the 'h' but this may be incorrect
+
+define MarkBaseCVL C V L -> "<" ... ">" || "√" _ [ %( | L | .#. ] ;
+define MarkBaseCC  C C  ->  "<" ... ">" || "√" _ ;
+
+# remove temp H
+# this is ugly!
+
+# block with a +NOREDGLOT+ tag, eg ʔal-ʔalʔal
+define GlottalizeL l -> {l̕} ||  _ ">" ~${+NOREDGLOT+} "√" "<" ?+ l ">" [ L | .#. ] ;
+
+define PreEqV1 MorphsV1 .o. MarkBaseCVL .o. MarkBaseCC;
+define PreEqN1 MorphsN1 .o. MarkBaseCVL .o. MarkBaseCC;
+
+define InsertSchwa [..] -> "ə" || "<" C _ C ">" ?* "<";  
+define RemoveBrackets "<"|">" -> 0;  # leave radical symobl for use in RED2
+
+define PrePostRedV1 _eq(PreEqV1,"<",">") .o. InsertSchwa
+                                      .o. GlottalizeL
+                                      .o. RemoveBrackets;
+
+define PrePostRedN1 _eq(PreEqN1,"<",">") .o. InsertSchwa 
+                                      .o. GlottalizeL
+                                      .o. RemoveBrackets;
+
+# allow RED1 to occur before RED2
+
+# get the subset of verbs which do a special redup pattern
+# (nonschwa but use i instead of V)
+define GetIʔREDUP [?* ?*:{+IʔREDUP+} ?*:?*  ];
+define GetIREDUP [?* ?*:{+IREDUP+} ?*:?*  ];
+define GetʔREDUP [?* ?*:{+ʔREDUP+} ?*:?*  ];
+
+# need to allow the Iʔ guys to also surface without the ʔ
+
+define SpecialIʔPostRedV1 GetIʔREDUP & PrePostRedV1;
+define SpecialIPostRedV1 [GetIREDUP & PrePostRedV1]|SpecialIʔPostRedV1;
+define SpecialʔPostRedV1 GetʔREDUP & PrePostRedV1;
+
+define SpecialIʔPostRedN1 GetIʔREDUP & PrePostRedN1;
+define SpecialIPostRedN1 [GetIREDUP & PrePostRedN1]|SpecialIʔPostRedN1 ;
+define SpecialʔPostRedN1 GetʔREDUP & PrePostRedN1;
+
+define PostRedV1 PrePostRedV1 - SpecialIPostRedV1 - SpecialʔPostRedV1 - SpecialIʔPostRedV1;
+define PostRedN1 PrePostRedN1 - SpecialIPostRedN1 - SpecialʔPostRedN1 - SpecialIʔPostRedN1;
+
+define MorphsV2IʔREDUP [ 0:"<" "attn-":C 0:">" 0:"i" 0:"ʔ" ]* SpecialIʔPostRedV1;
+define MorphsV2IREDUP [ 0:"<" "attn-":C 0:">" 0:"i" ]* SpecialIPostRedV1;
+define MorphsV2ʔREDUP [ 0:"<" "attn-":C 0:V 0:">" 0:"ʔ" ]* SpecialʔPostRedV1;
+
+define MorphsN2IʔREDUP [ 0:"<" "attn-":C 0:">" 0:"i" 0:"ʔ" ]* SpecialIʔPostRedN1;
+define MorphsN2IREDUP [ 0:"<" "attn-":C 0:">" 0:"i" ]* SpecialIPostRedN1;
+define MorphsN2ʔREDUP [ 0:"<" "attn-":C 0:V 0:">" 0:"ʔ" ]* SpecialʔPostRedN1;
+
+define MorphsV2  [ [ 0:"<" "attn-":CVns 0:">" ]    |
+                   [ 0:"<" "attn-":C 0:">" 0:"i" ] ]* PostRedV1;
+define MorphsN2  [ [ 0:"<" "attn-":CVns 0:">" ]    |
+                   [ 0:"<" "attn-":C 0:">" 0:"i" ] ]* PostRedN1;
+
+define MarkBaseCVns C Vns -> "<" ... ">" || "√" _;
+define MarkBaseCS C -> "<" ... ">" || "√" _  [ "ə" | C ]  ;
+define MarkBaseCSpecial C -> "<" ... ">" || "√" _  [ L | .#. ];
+define MarkBaseCVSpecial C V -> "<" ... ">" || "√" _  [ L | .#. ];
+
+define PreEqV2 [ MorphsV2 .o. MarkBaseCVns .o. MarkBaseCS    ]|
+                      [ MorphsV2IʔREDUP .o. MarkBaseCSpecial ]|
+                      [ MorphsV2IREDUP .o. MarkBaseCSpecial  ]|
+                      [ MorphsV2ʔREDUP .o. MarkBaseCVSpecial ];
+
+define PreEqN2 [ MorphsN2 .o. MarkBaseCVns .o. MarkBaseCS    ]|
+                      [ MorphsN2IʔREDUP .o. MarkBaseCSpecial ]|
+                      [ MorphsN2IREDUP .o. MarkBaseCSpecial  ]|
+                      [ MorphsN2ʔREDUP .o. MarkBaseCVSpecial ];
+
+
+# note: this looks like it's overgenerating/overapplying!
+# FIXME ^^^
+define ReplaceS [..] -> "s" || .#. _ ?* "s" "√";
+# define ReplaceW [..] -> "xʷ" || .#. _"<" ?* ">" "xʷ" "√" ;
+define DeleteS "s" -> 0 ||  _ "√";
+
+define RemoveMarks "<"|">"|{+IREDUP+}|{+ʔREDUP+}|{+IʔREDUP+}|{+NOREDGLOT+} -> 0; 
+
+define PostRedV2 _eq(PreEqV2, "<",">") .o. RemoveMarks;
+
+define PostRedN2 _eq(PreEqN2, "<",">") .o. ReplaceS
+                                       .o. DeleteS 
+                                       .o. RemoveMarks;
+
+## RED3 is CVC -> CVC-VC
+
+# mark top with <intns>
+# define MT [ L* C V C "<intns>":0 [ L+ | 0 ] ] | [ [ʔ|q] a "<intns>":0 ];
+# ^^ this fixes CCVC redups, but leads to lexical ambiguity CVC<intns>VC~CVCVC<intns>
+define MT [ ?* C (V) C "<intns>":0 [ L+ | 0 ] ] | [ [ʔ|q] a "<intns>":0 ];
+# insert <VC> patterns on bottom
+define InsVC [ ?* ?:"√" C V C 0:"<" 0: VC 0:">" ?* ];
+
+# Note this treats as obligatory
+define Morphs3V MT .o. PostRedV2 .o. InsVC;
+define Morphs3N MT .o. PostRedN2 .o. InsVC;
+
+define MarkBaseVC V C -> "<" ... ">" || "√" C _ ;
+define RemoveMarks "<"|">" -> 0; 
+define RemoveTempH h -> 0 || [q|ʔ] [a h]*  a _  .#. ;
+
+define EqRedV _eq(Morphs3V .o. MarkBaseVC,  "<", ">");
+define EqRedN _eq(Morphs3N .o. MarkBaseVC,  "<", ">");
+
+define PostRedV [ EqRedV |  PostRedV2 ] .o. RemoveMarks .o. RemoveTempH;
+define PostRedN [ EqRedN |  PostRedN2 ] .o. RemoveMarks ;

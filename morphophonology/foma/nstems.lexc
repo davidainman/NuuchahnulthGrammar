@@ -1,0 +1,60 @@
+Multichar_Symbols @D.NMLZ_V.ON@
+! root symbol "√" is used for redups 
+!
+! marking nstems like this is ugly, but we want to be able
+! to recover nstems in the clitic phase of morphotactics in order
+! to block nmlz= on things which are already nouns.
+
+LEXICON Root
+@D.NMLZ_V.ON@ʔalʔal:@D.NMLZ_V.ON@+NOREDGLOT+√ʔalʔal  #; ! "house"
+@D.NMLZ_V.ON@ʔalš:@D.NMLZ_V.ON@√ʔalš             #; ! "cross.sex.sibling"
+@D.NMLZ_V.ON@ʔiišəd:@D.NMLZ_V.ON@√ʔiišəd         #; ! "relatives"
+@D.NMLZ_V.ON@bədaʔ:@D.NMLZ_V.ON@+IʔREDUP+√bədaʔ   #; ! "offspring"
+@D.NMLZ_V.ON@bibƛ̕aʔɬ:@D.NMLZ_V.ON@√bibƛ̕aʔɬ       #; ! "picnic"
+@D.NMLZ_V.ON@č̓ƛ̕aʔ:@D.NMLZ_V.ON@√č̓ƛ̕aʔ             #; ! "rock"
+@D.NMLZ_V.ON@pastəd:@D.NMLZ_V.ON@√pastəd         #; ! "white.person"
+@D.NMLZ_V.ON@qʷaliɬ:@D.NMLZ_V.ON@√qʷaliɬ         #; ! "pitch"
+@D.NMLZ_V.ON@q̓il̕bid:@D.NMLZ_V.ON@√q̓il̕bid         #; ! "canoe"
+@D.NMLZ_V.ON@sʔəɬəd:@D.NMLZ_V.ON@s√ʔəɬəd         #; ! "food"
+@D.NMLZ_V.ON@sbadil:@D.NMLZ_V.ON@s√badil         #; ! "mountain"
+@D.NMLZ_V.ON@sgʷaʔ:@D.NMLZ_V.ON@s√gʷaʔ           #; ! "one's.own"
+@D.NMLZ_V.ON@sɬadəyʔ:@D.NMLZ_V.ON@s√ɬadəyʔ       #; ! "woman"
+@D.NMLZ_V.ON@sqaǰət:@D.NMLZ_V.ON@s√qaǰət         #; ! "Skagit"
+@D.NMLZ_V.ON@sqəlalitut:@D.NMLZ_V.ON@s√qəlalitut #; ! "spirit.power"
+@D.NMLZ_V.ON@stəb:@D.NMLZ_V.ON@s√təb             #; ! "thing" (var. of tab)
+@D.NMLZ_V.ON@st̕ilib:@D.NMLZ_V.ON@s√t̕ilib         #; ! "song"
+@D.NMLZ_V.ON@stubš:@D.NMLZ_V.ON@s√tubš           #; ! "man"
+@D.NMLZ_V.ON@stawixʷaʔɬ:@D.NMLZ_V.ON@s√tawixʷaʔɬ #; ! "children"
+@D.NMLZ_V.ON@stuləkʷ:@D.NMLZ_V.ON@s√tuləkʷ       #; ! "river"
+@D.NMLZ_V.ON@suq̓ʷaʔ:@D.NMLZ_V.ON@√suq̓ʷaʔ         #; ! "younger.sibling"
+@D.NMLZ_V.ON@swədəbš:@D.NMLZ_V.ON@s√wədəbš       #; ! "Snohomish"
+@D.NMLZ_V.ON@swatixʷtəd:@D.NMLZ_V.ON@s√watixʷtəd #; ! "land"
+@D.NMLZ_V.ON@swətixʷtəd:@D.NMLZ_V.ON@s√wətixʷtəd #; ! "tree"
+@D.NMLZ_V.ON@syəw̓d:@D.NMLZ_V.ON@s√yəw̓d           #; ! "power"
+@D.NMLZ_V.ON@syəyəhub:@D.NMLZ_V.ON@s√yəyəhub     #; ! "legend"
+@D.NMLZ_V.ON@wiw̓su:@D.NMLZ_V.ON@√wiw̓su           #; ! "children"
+@D.NMLZ_V.ON@xʷʔax̌ʷaʔad:@D.NMLZ_V.ON@xʷ√ʔax̌ʷaʔad #; ! "clam.basket"
+! wh nouns
+@D.NMLZ_V.ON@gʷat:@D.NMLZ_V.ON@√gʷat             #; ! "who"
+@D.NMLZ_V.ON@stab:@D.NMLZ_V.ON@s√tab             #; ! "what"
+@D.NMLZ_V.ON@stabaɬ:@D.NMLZ_V.ON@s√tabaɬ         #; ! "what.kind.of"
+@D.NMLZ_V.ON@čədaɬ:@D.NMLZ_V.ON@√čədaɬ           #; ! "which"
+@D.NMLZ_V.ON@pədtab:@D.NMLZ_V.ON@pəd√tab         #; ! "when"
+
+! new from ML basket ogress 
+@D.NMLZ_V.ON@sxʷəyuq̓ʷ:@D.NMLZ_V.ON@s√xʷəyuq̓ʷ     #; ! "basket.ogress" 
+@D.NMLZ_V.ON@sƛ̕alqəb:@D.NMLZ_V.ON@s√ƛ̕alqəb       #; ! "monster"
+@D.NMLZ_V.ON@sgʷistalb:@D.NMLZ_V.ON@s√gʷistalb   #; ! "sand"
+@D.NMLZ_V.ON@st̕əx̌ʷšəd:@D.NMLZ_V.ON@s√t̕əx̌ʷšəd     #; ! "roots"
+@D.NMLZ_V.ON@sk̓ʷuy:@D.NMLZ_V.ON@s√k̓ʷuy           #; ! "mother"
+@D.NMLZ_V.ON@ʔaciɬtalbixʷ:@D.NMLZ_V.ON@√ʔaciɬtalbixʷ #;!"people"
+@D.NMLZ_V.ON@siq̓əwayuʔ:@D.NMLZ_V.ON@√siq̓əwayuʔ   #; !"fork.stick" ( also siq̓wayuʔ, dictionary lists sik̓ʷwayuʔ )
+@D.NMLZ_V.ON@siq̓wayuʔ:@D.NMLZ_V.ON@√siq̓wayuʔ     #; !"fork.stick" ( also siq̓əwayuʔ, dictionary lists sik̓ʷwayuʔ )
+@D.NMLZ_V.ON@scqapsəb:@D.NMLZ_V.ON@s√cqapsəb     #; !"neck"
+@D.NMLZ_V.ON@qaw̓qs:@D.NMLZ_V.ON@√qaw̓qs           #; !"raven"
+@D.NMLZ_V.ON@šəgʷɬ:@D.NMLZ_V.ON@√šəgʷɬ           #; !"path"
+@D.NMLZ_V.ON@xʷhudad:@D.NMLZ_V.ON@xʷ√hudad       #; !"ashes"
+@D.NMLZ_V.ON@qəladiʔ:@D.NMLZ_V.ON@√qəladiʔ  #; !"up.rooted.tree" (see const)
+@D.NMLZ_V.ON@ʔay̓əd:@D.NMLZ_V.ON@√ʔay̓əd      #; !"companion"
+@D.NMLZ_V.ON@ɬx̌ʷubx̌:@D.NMLZ_V.ON@+IʔREDUP+√ɬx̌ʷubx̌  #; !"Lhxwubx" (proper name)
+@D.NMLZ_V.ON@sxʷiʔxʷiʔ:@D.NMLZ_V.ON@s√xʷiʔxʷiʔ        #; !"hunt"

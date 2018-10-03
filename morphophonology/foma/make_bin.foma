@@ -1,0 +1,3 @@
+source lutmorph.foma
+save stack lut.bin
+exit

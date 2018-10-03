@@ -1,0 +1,12 @@
+Multichar_Symbols @P.S_OBJ_MARKS.ON@ @R.IL.ON@ @D.IL.ON@
+
+LEXICON Root
+! need full treatment of ICS allomorphy 
+@P.S_OBJ_MARKS.ON@-t #;
+-ət                  #;
+-š                   #;
+@D.IL.ON@-c          #; ! allative applicative allomorph, 
+                        ! should only attach to non -il/-agʷil  words
+@R.IL.ON@-s          #; ! allative applicative allomorph, 
+                        ! should only attach to -il/-agʷil words
+-b                   #; ! CSMD

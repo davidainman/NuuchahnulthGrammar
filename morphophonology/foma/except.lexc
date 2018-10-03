@@ -1,0 +1,6 @@
+LEXICON Root
+! last minute execptions (on stems after redup, before other combinatorics)
+! eg: xʷ√hudad, need to leave h for redups, but allow *-xʷudad
+xʷhudad:xʷudad #;
+sister:sister #;
+haʔɬ-t:haʔɬd  #;

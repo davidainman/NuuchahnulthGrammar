@@ -1,0 +1,166 @@
+LEXICON Root
+tiʔiɬə #;
+tsiʔiɬə #;
+tiʔiɬ #;
+tsiʔiɬ #;
+tiʔəʔ #;
+tsiʔəʔ #;
+ti  #; ! spec:masc
+tsi #; ! spec:fem
+tə  #; ! nspec:masc
+tsə #; ! nspec:fem
+ʔə  #;
+kʷi #;
+kʷsi #;
+! ʔa form is subsumed by verbal form, since we're not using glosses (yet)
+! ʔa     #; ! interjection
+ʔu     #; ! VOC
+ʔu     #; ! Q 
+ʔi     #; ! "yes"
+həbuʔ  #; ! "haboo"
+
+!interjections
+hiʔ:hiˑʔ  #;!"come.on"
+šəwaʔ     #;!"INTJ"
+
+! demonstratives
+tudiʔ  #; ! dist.dma
+kʷədiʔ #; ! rem.dma
+kʷədiʔ:kʷədi #; ! rem.dma (var)
+
+! type III redups for dets, need to treat as true redup
+tiʔ-iʔəʔ:tiʔiʔəʔ #;
+tiʔ-iʔiɬ:tiʔiʔiɬ #;
+
+
+! sconj
+gʷəl #;
+huy  #;
+gʷa  #;
+
+! əlgʷəʔ is an inflection that is written with 
+! a space
+əlgʷəʔ #;
+
+!foc prtcl
+diɬ    #; !"foc"
+
+!proper names
+kikiʔalus  #;
+xʷiwuʔc    #;
+ʔax̌ʷadus   #;
+hay̓qid     #; 
+La         #;
+Conner     #;
+
+!place names
+ʔəcəladiʔ #; ! Utsallady 
+
+!adverbs
+ʔəbil̕    #; ! "perhaps"
+!moved to v for redup ck̓ʷaqid  #;
+cick̓ʷ    #; ! "very"
+cukʷ     #;
+dəb      #; ! "instead"
+day̓      #;
+diɬ      #; 
+diʔɬ     #; ! "suddenly"
+dᶻahak̓ʷuʔ #; ! "at.long.last"
+haw̓əʔ    #;
+hikʷ     #; ! "large"
+hiqəb    #; ! "excessively"
+hiwil    #; ! "go.ahead"
+həlaʔb:laʔb #; !"really" (var)
+həlaʔb      #; !"really"
+uʔxʷ     #; ! "still"
+uʔxʷ:huʔxʷ #; ! "still" (var)
+ƛ̕al̕      #; ! "also"
+put      #; ! "really"
+tiləb    #; ! "immediately"
+tux̌ʷ     #; ! "just"
+təɬ      #; ! "truly"
+x̌ʷul̕     #;
+x̌əɬ      #; !"seemingly"
+x̌ʷuʔələʔ #; ! "maybe"
+yəx̌i     #; ! "because"
+yaʔɬ     #; ! "unable"
+yaw̓      #; ! "only.if" (note: this meaning isn't in dictionary, has 'go ahead/repeat')
+!wh-adverbs
+čad      #; ! "where"
+čal      #; ! "how/why"
+dxʷ-čad:dxʷčad   #; ! "cntrpt-where"
+k̓ʷid     #; ! "how.much/many"
+ɬiɬ-čad:ɬiɬčad   #; ! "prlv-where"
+tul̕-čad:tul̕čad   #; ! "cntrfg-where"
+
+! preposition?
+gʷəɬ     #; !"assc"
+
+!deontics
+diʔəʔ #;
+
+!adjectives
+ləgʷəb #;
+
+!S2 particles
+ʔu       #;! ‘interrogative’
+dᶻəɬ     #;! ‘seemingly’
+əw̓ə      #;! ‘so!’ (mirative)
+!kʷaʔ    #;! ‘probably’
+k̓ʷəɬ     #;! ‘it is said’ (quotative)
+sixʷ     #;! ‘again, as usual’ (exasperation)
+uʔxʷ     #;! still, yet
+čəd      #;! '1sg'
+čəxʷ     #;! '2sg'
+!! there's a homophonous verb stem, as long as we do nothing we glosses,
+!! we can remove this one with no loss of coverage and lower spurious ambiguity
+! čəɬ      #;! '1pl'
+čəlap    #;! '2pl'
+čələp    #;! '2pl' (var)
+ɬi       #;
+xʷuʔələʔ #; !"maybe"
+
+! borrowings
+town     #;
+LaConner #;
+McGlenn  #;
+Island   #;
+islands  #;
+little   #;
+tree     #;
+around   #;
+the      #;
+fire     #;
+round    #;
+great    #;
+big      #;
+girls    #;
+boys     #;
+anyways  #;
+sister   #;
+sisters   #;
+dirt     #;
+
+! numbers 
+dəč̓uʔ  #; !1
+diič̓uʔ #; !1:human
+
+! coordinators
+čxʷa   #; ! "2sg.coord"
+čɬa    #; ! "1pl.coord"
+čələpa #; ! "2pl.coord"
+
+
+! pronouns
+dəgʷi  #; !"2sg"
+cədiɬ  #; !"3sg"
+caadiɬ #; !"3pl"
+
+! special cases
+čaʔčəlal̕ #; ! "almost.caught"
+sɬə-ɬadəyʔ:sɬəɬadəyʔ   #; ! "pl-woman" (exceptional plural)
+tiʔacəc   #;   !"unq"
+
+! need to block other redup on this one
+attn-qəl̕adiʔ:qiʔqəl̕adiʔ  #; !""little.up.rooted.tree"
+

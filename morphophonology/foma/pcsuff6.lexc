@@ -1,0 +1,19 @@
+Multichar_Symbols @D.S_OBJ_MARKS@ @R.S_OBJ_MARKS@
+
+LEXICON Root
+-b:əb   #; !"passive"
+-sut    #; !"reflexive"
+-but    #; !"reflexive"
+-agʷəl  #; !"rcp"
+
+!s series obj-markers
+@R.S_OBJ_MARKS@-s      #; !1sg obj
+@R.S_OBJ_MARKS@-sid    #; !2sg obj
+@R.S_OBJ_MARKS@-ubuɬ   #; !1pl obj
+@R.S_OBJ_MARKS@-ubuɬəd #; !2pl obj
+
+!b series obj-markers
+@D.S_OBJ_MARKS@-bš     #; !1sg obj
+@D.S_OBJ_MARKS@-bicid  #; !2sg obj
+@D.S_OBJ_MARKS@-buɬ    #; !1pl obj
+@D.S_OBJ_MARKS@-buɬəd  #; !2pl obj

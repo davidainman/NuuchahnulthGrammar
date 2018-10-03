@@ -1,0 +1,15 @@
+!aspect marking only allowed on verbal stems
+LEXICON Root
+! optional partitive can come before the aspect prefixes
+! david says this doesn't only attach to verbs (the partitive)
+! but I'm waiting for the example
+ʔiɬ-       #; ! prtv
+           #;
+Rest;
+
+
+LEXICON Rest
+ʔu-        #;! pfv
+ʔas-       #;! stat
+ləcu-      #;! continuous
+ləs-       #;! prog.stat 

@@ -1,0 +1,269 @@
+;;; -*- Mode: TDL; Coding: utf-8 -*-
+;;; Nouns
+
+łuucsma := persons-noun-lex &
+  [ STEM < "łuucsma" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_woman_n_rel" ].
+
+čapuk := persons-noun-lex &
+  [ STEM < "čapuk" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_man_n_rel" ].
+
+t̓an̓a := persons-noun-lex &
+  [ STEM < "t̓an̓a" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_child_n_rel" ].
+
+ḥaakʷaaƛ := persons-noun-lex &
+  [ STEM < "ḥaakʷaaƛ" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_daughter_n_rel" ].
+
+ḥaaw̓iłaƛ := persons-noun-lex &
+  [ STEM < "ḥaaw̓iłaƛ" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_son_n_rel" ].
+
+ḥaw̓ił := persons-noun-lex &
+  [ STEM < "ḥaw̓ił" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_chief_n_rel" ].
+
+meʔiƛqac := persons-noun-lex &
+  [ STEM < "meʔiƛqac" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_boy_n_rel" ].
+
+haʔum := common-noun-lex &
+  [ STEM < "haʔum" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_food_n_rel" ].
+
+ʕimtii := common-noun-lex &
+  [ STEM < "ʕimtii" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_name_n_rel" ].
+
+ʔink := common-noun-lex &
+  [ STEM < "ʔink" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_fire_n_rel" ].
+
+łim̓aqsti := common-noun-lex &
+  [ STEM < "łim̓aqsti" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_spirit_n_rel" ].
+
+maʔas := common-noun-lex &
+  [ STEM < "maʔas" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_tribe_n_rel" ].
+
+maḥt̓ii := common-noun-lex &
+  [ STEM < "maḥt̓ii" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_house_n_rel" ].
+
+nuuk := common-noun-lex &
+  [ STEM < "nuuk" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_song_n_rel" ].
+
+n̓aas := common-noun-lex &
+  [ STEM < "n̓aas" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_day_n_rel" ].
+
+taanaa := common-noun-lex &
+  [ STEM < "taanaa" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_money_n_rel" ].
+
+m̓uksy̓i := common-noun-lex &
+  [ STEM < "m̓uksy̓i" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_rock_n_rel" ].
+
+nism̓a := common-noun-lex &
+  [ STEM < "nism̓a" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_land_n_rel" ].
+
+c̓a := common-noun-lex &
+  [ STEM < "c̓a" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_flow_n_rel" ].
+
+c̓iiḥati := common-noun-lex &
+  [ STEM < "c̓iiḥati" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_arrow_n_rel" ].
+
+č̓apac := common-noun-lex &
+  [ STEM < "č̓apac" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_canoe_n_rel" ].
+
+maamaati := common-noun-lex &
+  [ STEM < "maamaati" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_bird_n_rel" ].
+
+ʕiniiƛ := common-noun-lex &
+  [ STEM < "ʕiniiƛ" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_dog_n_rel",
+    SYNSEM.LOCAL.CAT.HEAD.SHAPE non-root ].
+
+ʕiłč := common-noun-lex &
+  [ STEM < "ʕiłč" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_dog_n_rel",
+    SYNSEM.LOCAL.CAT.HEAD.SHAPE root ].
+
+;;; Adjectives
+
+ʔiiḥ := common-adj-lex &
+  [ STEM < "ʔiiḥ" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_big_a_rel" ].
+
+ʔaya := common-adj-lex &
+  [ STEM < "ʔaya" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_many_a_rel" ].
+
+ƛaʔuu := common-adj-lex &
+  [ STEM < "ƛaʔuu" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_other_a_rel" ].
+
+ƛuł := common-adj-lex &
+  [ STEM < "ƛuł" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_good_a_rel" ].
+
+c̓awaak := common-adj-lex &
+  [ STEM < "c̓awaak" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_one_a_rel" ].
+
+ʔaƛa := common-adj-lex &
+  [ STEM < "ʔaƛa" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_two_a_rel" ].
+
+qacc̓a := common-adj-lex &
+  [ STEM < "qacc̓a" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_three_a_rel" ].
+
+muu := common-adj-lex &
+  [ STEM < "muu" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_four_a_rel" ].
+
+suč̓a := common-adj-lex &
+  [ STEM < "suč̓a" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_five_a_rel" ].
+
+ʔanaḥ := common-adj-lex &
+  [ STEM < "ʔanaḥ" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_size_a_rel" ].
+
+p̓išaq := common-adj-lex &
+  [ STEM < "p̓išaq" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_bad_a_rel" ].
+
+;;; Verbs
+
+haʔuk := verb-intransitive-verb-sat-lex & 
+  [ STEM < "haʔuk" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_eat_v_rel" ].
+
+huuł := verb-intransitive-verb-lex &
+  [ STEM < "huuł" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_dance_v_rel" ].
+
+ƛiiḥ := verb-intransitive-verb-lex &
+  [ STEM < "ƛiiḥ" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_row_v_rel" ].
+
+yaac := verb-intransitive-verb-lex &
+  [ STEM < "yaac" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_walk_v_rel" ].
+
+ḥaʔuk := verb-intransitive-verb-lex &
+  [ STEM < "ḥaʔuk" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_do_in_return_v_rel" ].
+
+wałaak := verb-transitive-verb-lex &
+  [ STEM < "wałaak" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_go_v_rel" ].
+
+ca := verb-transitive-verb-lex &
+  [ STEM < "-ca" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_go_v_rel" ].
+
+wał := verb-transitive-verb-lex &
+  [ STEM < "wał" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_go_home_v_rel" ].
+
+iis := verb-transitive-verb-lex &
+  [ STEM < "-!iis" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_eat_v_rel" ].
+
+naak := verb-transitive-verb-lex &
+  [ STEM < "-naak" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_have_v_rel" ].
+
+n̓aacsa := verb-transitive-verb-lex &
+  [ STEM < "n̓aacsa" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_see_v_rel" ].
+
+yaaʔuk := verb-transitive-verb-lex &
+  [ STEM < "yaaʔuk" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_love_v_rel" ].
+
+č̓i := verb-transitive-verb-lex &
+  [ STEM < "č̓i" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_pull_v_rel" ].
+
+naʔaataḥ := verb-transitive-verb-lex &
+  [ STEM < "naʔaataḥ" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_hear_v_rel" ].
+
+suu := verb-transitive-verb-lex &
+  [ STEM < "suu" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_hold_v_rel" ].
+
+waa := sentence-complements-verb-lex &
+  [ STEM < "waa" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_say_v_rel" ].
+
+ciiq := sentence-complements-verb-lex &
+  [ STEM < "ciiq" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_speak_v_rel" ].
+
+t̓apat := sentence-complements-verb-lex &
+  [ STEM < "t̓apat" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_think_v_rel" ].
+
+;;; Auxiliaries
+
+wik := neg-aux-lex &
+  [ STEM < "wik" >,
+    SYNSEM.LKEYS.KEYREL.PRED "neg_rel" ].
+
+;;; Copulas
+
+ʔuḥ := copula-cop-lex &
+  [ STEM < "ʔuḥ" > ].
+
+ʔuḥʔiiš1 := conj-lex &
+  [ STEM < "ʔuḥʔiiš" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_and_coord_rel",
+    CFORM "1" ].
+
+ʔuḥʔiiš2 := conj-lex &
+  [ STEM < "ʔuḥʔiiš" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_and_coord_rel",
+    CFORM "2" ].
+
+ʔaḥʔaa4 := conj-lex &
+  [ STEM < "ʔaḥʔaa" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_and_coord_rel",
+    CFORM "4" ].
+
+;;; Empty Roots
+
+ʔu := x-lex &
+  [ STEM < "ʔu" >,
+    SYNSEM.LOCAL.CAT.HEAD.SHAPE root ].
+
+;;; Clitics
+
+first-sg-real-clitic := first-sg-clitic &
+  [ STEM < "maḥ"> ].
+
+second-sg-real-clitic := second-sg-clitic &
+  [ STEM < "meʔic" > ].
+
+first-pl-real-clitic := first-pl-clitic &
+  [ STEM < "min" > ].
+
+second-pl-real-clitic := second-pl-clitic &
+  [ STEM < "meʔicuu" > ].
+
+third-real-clitic := third-person-clitic &
+  [ STEM < "ma" > ].

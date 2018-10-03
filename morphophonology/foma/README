@@ -1,0 +1,50 @@
+according to beck, the affixal template looks like this:
+
+-1
+dxw(s)- ‘CTD’
+
+0
+√R(V)
+
+1
+-il ‘INCH’
+
+2
+-b ‘MD’
+-agwil ‘AUTO’
+-alikw ‘ACT’
+-iluɬ ‘PRPV’
+-əɬ ‘INCRP’
+-áb ‘MTHD’
+
+3
+-txw ‘ECS’
+-dxw ‘DC’
+
+4
+-yi- ‘DAT’
+-bi- ‘MAP’
+-di-/-i- ‘SS’
+
+5
+-t ‘ICS’
+-c/-s ‘ALTV’
+-b ‘CSMD’
+
+Note that we still need to squeeze in lexical suffixes and reduplication!
+
+For now, order things like this:
+
+0, Redup (not above) , -1 (prefix) , 1 ,2 ,3 etc
+
+
+Note: we also need to divide out constant lexes that don't undergo derivation/inflection
+
+Note: the above is for derivation, the aspectual prefixes would be in -2
+
+Note: we have to add proclitics as they come attached.  Also note that these
+can attach to constant lexes as well.  For now, at least:
+ƛ̕u=
+HAB
+tu=
+PAST

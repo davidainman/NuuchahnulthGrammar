@@ -1,0 +1,200 @@
+Multichar_Symbols @P.IL.ON@
+! root symbol "√" is used for redups 
+! @P.IL.ON@ constrains allomorphy of ICS
+! using round brackets to mark optional
+! final vowels in roots, these are often deleted
+! upon affixation (but not always, need more info)
+
+LEXICON Root
+ʔa:√ʔah                    #; ! "be"
+ʔab:√ʔab                  #; ! "give x, extend x"
+! ʔal:√ʔal                #; ! "LOC" 
+ʔatəbəd:√ʔatəbəd          #; ! "die"
+@P.IL.ON@ʔili:@P.IL.ON@√ʔil(i)    #; ! "sing"
+@P.IL.ON@ʔil:@P.IL.ON@√ʔil        #; ! "side"
+ʔišɬ:√ʔišɬ                #; ! "paddle"
+ʔəɬəd:√ʔəɬəd              #; ! "eat"
+ʔəƛ̕:√ʔəƛ̕                  #; 
+ʔəx̌id:√ʔəx̌id              #; ! "what.happened" (NL)
+ʔəy̓:√ʔəy̓                  #;
+ʔukʷukʷ:√ʔukʷukʷ          #; ! "play"
+ʔuləx̌ʷ:√ʔuləx̌ʷ            #;
+ʔušəb:√ʔušəb              #; ! "pity"
+ʔux̌ʷ:√ʔux̌ʷ                #; ! "go"
+bali:√bal(i)              #; ! "forget"
+bək̓ʷ:√bək̓ʷ                #; ! "all" (should really be an adverb!)
+bəlkʷ:√bəlkʷ              #; ! "return"
+biq̓i:√biq̓(i)              #; ! "pressed"
+cut:√cut                  #; ! "speak"
+cut-ab:√cutab             #; ! "think" (want to say)
+čaʔkʷ:√čaʔkʷ              #; ! "seaward"
+čaʔkʷ:√čagʷ               #; ! "seaward (var)"
+čala:√čal(a)              #; ! "chase"
+čal:√čal                  #; ! "how" (NL)
+čəɬ:√čəɬ                  #; ! "make" (not sure whether this is a stem)
+čəbaʔ:√čəbaʔ              #; ! "loaded.with"
+č̓it:√č̓it                  #; ! "near"
+čubə:√čub(ə)              #; ! "go.inland"
+daʔa:√daʔ(a)              #; ! "named"
+dəkʷa:√dəgʷ(a)            #; ! "inside"
+diʔiʔ:√diʔiʔ              #; ! "yonder" (incorporated red5)
+diʔiʔ:√diʔi               #; ! "yonder" (incorporated red5, var)
+dᶻak̓ʷadiʔ:√dᶻak̓ʷadiʔ      #; ! "invite" note: =adiʔ '=ear'
+dᶻaq̓:√dᶻaq̓                #; ! "fall"
+dᶻəgʷaʔ:√dᶻəgʷaʔ          #; ! "expert"
+dᶻəl:√dᶻəl                #; ! "turn"
+dᶻixʷ:√dᶻixʷ              #; ! "first"
+dᶻub:√dᶻub                #; ! "kick"
+dxʷlaq:dxʷ√laq            #; ! "have.children"
+gʷaagʷəd:√gʷaagʷəd        #; ! "converse"
+gʷəč̓:√gʷəč̓                #; ! "search"
+gʷəd:√gʷəd                #; ! "inch down"
+gʷəlal:√gʷəlal            #; ! "harm"
+gʷəx̌a:√gʷəx̌(a)            #; ! "united"
+haʔɬ:√haʔɬ                #; ! "good"
+haʔɬ-t:√haʔɬd             #; ! "good" (accounts for haʔɬd-lsuff)
+hədʔiw̓:√hədʔiw̓            #; ! "indoors"
+həd:√həd                  #; ! "warm"
+həliʔ:√həliʔ              #; ! "alive"
+hud:√hud                  #; ! "heat"
+hiq:√hiq                  #; ! "push"
+huyu:√huy(u)              #;
+hay:√hay                  #; ! "know"
+ǰuʔil:√ǰuʔil              #; ! "joy"
+kəwič:√kəwič              #; ! "hunchback"
+kʷaʔ:√kʷaʔ                #; ! "probably"
+! kʷaxʷa:√kʷaxʷa            #; ! "help"
+k̓ʷəɬ:√k̓ʷəɬ                #; 
+kʷəda:√kʷəd(a)            #; !"take"
+k̓ʷəq:√k̓ʷəq                #; !"fall backwards"
+k̓ʷit̕:√k̓ʷit̕                #; !"shoreward"
+kiis:√kiis                #; !"stand"
+lil:+ʔREDUP+√lil          #; !"far"
+luƛ̕:√luƛ̕                  #; !"old"
+ɬaq̓a:√ɬaq̓                 #; !"fallen"
+ɬaʔ:√ɬaʔ                  #; !"arrive"
+ɬal:√ɬal                  #;
+ɬaɬ:√ɬaɬ                  #;
+@P.IL.ON@ɬaɬlil:@P.IL.ON@√ɬaɬlil   #; !"live"
+ləč̓:√ləč̓                  #;
+ɬəč̓:√ɬəč̓                  #;
+ɬəgʷɬ:√ɬəgʷɬ              #; !"leave"
+ɬəgʷɬ:√ɬəgʷəɬ             #; !"leave (var1)"
+ɬəgʷəɬ:√ɬəgʷəl             #; !"leave (var2)"
+p̓aʔ:+IREDUP+√p̓aʔ          #; !"try"
+t̕uk̓ʷ:√t̕uk̓ʷ                #; !"go.home"
+t̕ugʷəb:√t̕ugʷəb            #; !"indoors"
+qəl:√qəl                  #; !"bad"
+@P.IL.ON@q̓ili:@P.IL.ON@√q̓il        #; !"aboard"
+qʷacdxʷ:√qʷacdxʷ          #; !"doubt"
+qʷɬayʔ:√qʷɬayʔ            #; !"log"
+q̓ʷəl:√q̓ʷəl                #;
+q̓pu:√q̓pu                  #; !"gather"
+xʷit̕:√xʷit̕                #;
+ƛ̕uxʷ:√ƛ̕uxʷ                #;
+ƛ̕iqi:√ƛ̕iq(i)              #; !"emerge"
+ƛ̕iq̓:√ƛ̕iq̓                  #; !"sticky"
+qiq̓:√qiq̓                  #; !"confined"
+q̓axʷ:√q̓axʷ                #;
+lax̌:√lax̌                  #; !"remember"
+ləq:√ləq                  #; !"listen"
+ɬax̌:√ɬax̌                  #; !"dark"
+@P.IL.ON@ɬčil:@P.IL.ON@√ɬčil       #; !"arrive"
+ɬik̓ʷ:√ɬik̓ʷ                #; !"hooked"
+pusu:√pus(u)              #; !"thrown.at"
+qa:√qah                  #; !"many"
+saxʷəb:+ʔREDUP+√saxʷəb    #; !"jump"
+sət̕:√sət̕                  #; !"lifted"
+səgʷq:√səgʷq              #; !"whisper"
+sula:√sul(a)              #; !"centered"
+šulu:√šul(u)              #; !"go.under"
+šuɬ:√šuɬ                  #; !"see"
+šac̓:√šac̓                  #; !"finished"
+šq:√šq                    #; !"high"
+šq:√šəq                   #; !"high" (TODO derive by rule)
+šuɬalbut:√šuɬalbut        #; !"able.to.see"
+@P.IL.ON@təlawil:@P.IL.ON@√təlawil #; !"run"
+t̕aq̓t:√t̕aq̓t                #; !"inland"
+təlč:√təlč                #; !"miss"
+t̕q̓a:√t̕q̓(a)                #; !"patch"
+t̕ugʷəb:√t̕ugʷəb            #; !"nightfall"
+wiliq̓ʷi:√wiliq̓ʷi          #; !"ask"
+xʷiʔ:√xʷiʔ                #; !"negation"
+x̌əd:√x̌əd                  #; !"push"
+x̌əb:√x̌əb                  #; !"heavy"
+x̌iʔ:√x̌iʔ                  #; !"catch.on"
+x̌id:√x̌id                  #; !"what.happened" (SL)
+x̌ʷal̕:√x̌ʷal̕                #; !"fail"
+yayus:√yayus              #; !"work"
+yəc:√yəc                  #; !"report"
+
+! ʔal words are often "prepositions"
+! but they can act as verbs 
+ʔal:√ʔal                  #; ! "location"
+
+
+! new from ML basket ogress 
+saʔ:√saʔ                  #; !"bad"
+lək̓ʷ:√lək̓ʷ                #; !"eaten"
+xʷəc:√xʷəc                #; !"removed"
+ƛ̕ub:√ƛ̕ub                  #; !"well"
+gʷaad:√gʷaad              #; !"down"
+qəl̕adiʔ:√qəl̕adiʔ          #; !"up.rooted.tree"
+q̓əls:√q̓əls                #; !"steam"
+t̕aɬ:√t̕aɬ                  #; !"cross.path"
+xʷəb:√xʷəb                #; !"thrown"
+ʔibəš:√ʔibəš              #; !"travel"
+ʔay̓:√ʔay̓                  #; !"find"
+xʷəlk̓ʷ:√xʷəlk̓ʷ            #; !"intoxicated"
+taba:√tab(a)              #; !"do"
+taba:√tab(ə)              #; !"do"
+paɬ:√paɬ                  #; !"flee"
+ʔistaʔ:√ʔistaʔ            #; !"be.like"
+qadaʔ:√qadaʔ              #; !"steal"
+qada:√qada                #; !"steal" (appears without ʔ)
+tɬ:√tɬ                    #; !"truly"
+q̓ʷibi:√q̓ʷib(i)            #; !"disembark"
+qʷibi:√qʷib(i)          #; !"prepared"
+ƛ̕iw̓:√ƛ̕iw̓                  #; !"escape"
+dᶻəqil:√dᶻəqil            #; !"crawl"
+qʷata:√qʷat(a)            #; !"laid.out"
+caq̓a:√caq̓(a)              #; !"impaled"
+q̓ʷəl:√q̓ʷəl                #; !"cooked"
+ciq̓i:√ciq̓i                #; !"poke"
+ʔaciɬ:√ʔaciɬ              #; !"pause"
+ʔay̓əd:√ʔay̓əd              #; !"companion"
+qʷic:√qʷic                #; !"downstream"
+ʔaɬx̌əd:√ʔaɬx̌əd            #; !"downstream"
+pəd:√pəd                  #; !"buried"
+tagʷəxʷ:√tagʷəxʷ          #; !"hungry"
+kʷukʷ:√kʷukʷ              #; !"cook"
+q̓ax̌:√q̓ax̌                  #; !"uncover"
+lab:√lab                  #; !"see"
+tatabəb:√tatabəb          #; !"confer" (dict has this as gossip, confer as tatabəd)
+cəqɬcut:√cəqɬcut          #; !"sizzle"
+dᶻəqil:√dᶻəqil            #; !"crawl"
+šubu:√šubu                #; !"disappear"
+x̌ilix̌:√x̌ilix̌              #; !"battle"
+x̌ɬ:√x̌ɬ                    #; !"sick"
+x̌ɬ:√x̌əɬ                   #; !"sick" (TODO derive by rule)
+yubil:√yubil              #; !"die"
+p̓aƛ̕acut:√p̓aƛ̕acut          #; !"grope"
+x̌ʷadᶻa:√x̌ʷadᶻa            #; !"annihilate"
+ɬəgʷəɬ:√ɬəgʷəɬ            #; !"leave"
+šubali:√šubali            #; !"many.die"
+q̓ixʷ:√q̓ixʷ                #; !"upstream"
+šqalətxʷ:√šqalətxʷ        #; !"roof" (note: dict has šq=alatxʷ, why not build this from šq?)
+kʷaxʷa:√kʷaxʷ(a)          #; !"help"
+gʷəbiləd:√gʷəbiləd        #; !"overcooked"
+təš:√təš                  #; !"misfortune"
+tay:√tay                  #; !"raid"
+hədʔiw̓:√hədʔiw̓            #; !"indoors"
+
+
+! here are adverbs which may
+! need their own file at some point
+ck̓ʷaqid:c√k̓ʷaqid          #; !"always"
+
+! added because of a form in ML
+stab:s√tab                #; !"do"
+xʷiʔxʷiʔ:√xʷiʔxʷiʔ        #; !"hunt"

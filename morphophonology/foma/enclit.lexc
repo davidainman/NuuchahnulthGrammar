@@ -1,0 +1,12 @@
+Multichar_Symbols @R.NMLZ_V.ON@ @D.SCLIT.ON@ @P.SCLIT.ON@
+
+! these seem to be able to occur in any order
+
+LEXICON Root
+=axʷ            #;
+@D.SCLIT.ON@@P.SCLIT.ON@@R.NMLZ_V.ON@=s #;
+
+! subordinating subj markers
+=aləp    #; ! 2pl.sbrd
+=as      #; ! 3sbrd
+#;

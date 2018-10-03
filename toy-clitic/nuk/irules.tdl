@@ -1,0 +1,64 @@
+;;; -*- Mode: TDL; Coding: utf-8 -*-
+;;; Inflecting Lexical Rule Instances
+
+verb-momentaneous-prefix1 :=
+%prefix (* -čiƛ)
+verb-momentaneous-lex-rule.
+
+verb-momentaneous-prefix2 :=
+%prefix (* -šiƛ)
+verb-momentaneous-lex-rule.
+
+verb-momentaneous-prefix3 :=
+%prefix (* -kʷiƛ)
+verb-momentaneous-lex-rule.
+
+verb-momentaneous-prefix4 :=
+%prefix (* -uƛ)
+verb-momentaneous-lex-rule.
+
+verb-momentaneous-prefix5 :=
+%prefix (* -inƛ)
+verb-momentaneous-lex-rule.
+
+verb-durative-prefix1 :=
+%prefix (* -ʔak)
+verb-durative-lex-rule.
+
+verb-durative-prefix2 :=
+%prefix (* -uk)
+verb-durative-lex-rule.
+
+verb-durative-prefix3 :=
+%prefix (* -L.ḥiˑ)
+verb-durative-lex-rule.
+
+verb-continuative-prefix :=
+%prefix (* -\(y\)aˑ)
+verb-continuative-lex-rule.
+
+verb-repetitive-prefix :=
+%prefix (* -LR2L.a)
+verb-repetitive-lex-rule.
+
+verb-iterative-prefix :=
+%prefix (* -R2.š)
+verb-iterative-lex-rule.
+
+verb-graduative-prefix :=
+%prefix (* -LS)
+verb-graduative-lex-rule.
+
+verb-momentaneous2-prefix :=
+%prefix (* -šiƛ)
+verb-momentaneous2-lex-rule.
+
+;;; SUFFIX VERBS
+;;; DAI 2018-08-07
+
+;suffix-verb-object-rule := suffix-verb-object-lex-rule.
+
+;suffix-verb-object-eat :=
+;%prefix (* -!iis)
+;suffix-verb-object-lex-rule &
+;  [ SYNSEM.LKEYS.KEYREL.PRED "_eat_v_rel" ].

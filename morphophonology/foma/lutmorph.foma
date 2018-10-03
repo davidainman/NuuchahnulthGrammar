@@ -1,0 +1,284 @@
+read lexc vstems.lexc
+define VerbStems;
+read lexc nstems.lexc
+define NounStems;
+
+read lexc lsuff.lexc
+define LSuff;
+
+# currently implements type I & II redup
+# and some type III
+source redup.foma
+
+# exceptions to reduplication
+# currently only used on nouns
+read lexc except.lexc
+define Except;
+
+#nominalizers
+read lexc nmlz.lexc
+define Nmlz;
+
+#proclitics
+read lexc proclit.lexc
+define ProClit;
+
+#enclitics
+read lexc enclit.lexc
+define EnClit;
+
+# prefix1 
+read lexc pcpref1.lexc
+define PCpref1;
+
+define VPostpref1 (PCpref1) PostRedV (LSuff);
+define NPostpref1 (PCpref1) [ Except .P. PostRedN ] (LSuff);
+
+
+# prefix2, aspect
+# Aspect only occurs on verbs
+# so we have to do verbalization of nouns via "prop-" before aspect
+read lexc aspectpref.lexc
+define AspectPref;
+
+read lexc prop.lexc
+define PropPref;
+
+define VPostAspect (AspectPref) [VPostpref1|[PropPref NPostpref1]];
+
+
+# suffix1 (inchoative -il)
+read lexc pcsuff1.lexc
+define PCsuff1;
+
+define NPostsuff1 NPostpref1   (PCsuff1);
+define VPostsuff1 VPostAspect (PCsuff1);
+
+
+# suff2 (middle, ...)
+read lexc pcsuff2.lexc
+define PCsuff2;
+
+define NPostsuff2 NPostsuff1 (PCsuff2);
+define VPostsuff2 VPostsuff1 (PCsuff2);
+
+
+#suff3 (external caus, dim-cntrl caus)
+# only verbs (I think?!)
+read lexc causesuff1.lexc
+define Causesuff1;
+
+define VPostCausesuff1 VPostsuff2 (Causesuff1);
+
+
+#suff4 (dat, map, ss)
+read lexc pcsuff4.lexc
+define PCsuff4;
+
+define VPostsuff4 VPostCausesuff1 (PCsuff4);
+define NPostsuff4 NPostsuff2 (PCsuff4);
+
+
+#suff5 (ics, altv, csmd)
+read lexc pcsuff5.lexc
+define PCsuff5;
+
+define VPostsuff5 VPostsuff4 (PCsuff5);
+define NPostsuff5 NPostsuff4 (PCsuff5);
+
+
+#suff6 (pass and obj markers)
+# only verbs
+read lexc pcsuff6.lexc
+define PCsuff6;
+
+#relsuff, attaches to verbs and adverbs
+read lexc relsuff.lexc
+define RelSuff;
+
+define VPostsuff6 VPostsuff5 (PCsuff6) (RelSuff);
+
+# possesive suffs (only nouns)
+# and prefs (only nouns)
+read lexc posuff.lexc
+define poSuff;
+
+read lexc popref.lexc
+define poPref;
+
+define NPostsuff6 (poPref) NPostsuff5 (poSuff);
+
+# constant items (non-inflecting)
+# even these guys can host lexical suffixes though!
+read lexc const.lexc
+define pConst;
+define Const pConst (LSuff);
+
+
+#phon classes
+#
+#obstruents
+define O {b̓}|{b}|{d}|{dᶻ}|{ǰ}|{g}|{gʷ}|{p}|{t}|{c}|{č}|{k}|{q}|{ʔ}|{kʷ}|{qʷ}|{p̓}|{t̕}|{c̓}|{č̓}|{k̓}|{q̓}|{k̓ʷ}|{q̓ʷ}|s|š|{x}|{x̌}|{h}|{xʷ}|{x̌ʷ}|{m}|{n}|{m̓}|{n̓};
+
+# phon rules here:
+
+## various reductions at morpheme boundaries
+
+
+###########################################
+# can these be generalized?
+
+# do they all occur at word boundaries?
+# this one has to:  dəxʷ=xʷiʔ -> dəxʷiʔ
+define XWSync x ʷ -> 0 || _ [ "-" | "=" ] ( "@D.NMLZ_V.ON@" ) (√) x ʷ;
+define ɬSync ɬ -> 0 || _ [ "-" | "=" ] ( "@D.NMLZ_V.ON@" ) (√) ɬ ;
+
+# this one too: s=šac̓=s -> šac̓s
+define SSync s-> 0 || _ [ "-" | "=" ] (√) [ s | š ];
+
+# also optional in suffixing: təš=s -> təš
+# and after "c" ( qʷic=s=axʷ <-> qʷicəxʷ ) 
+define OptSSync s (->) 0 || [ s | š | c ] ( "@D.SCLIT.ON@" "@P.SCLIT.ON@" "@R.NMLZ_V.ON@") [ "-" | "=" ] _ ;
+
+define TSync t-> 0 || t "@P.S_OBJ_MARKS.ON@" "-" _  ;
+
+# suffixes
+define BSync b -> 0 || _ "-" b ;
+define DSync d -> 0 ||_ "-" d ;
+define CSync c -> 0 || _ "@D.IL.ON@" "-" c ;
+
+define ConSync XWSync .o. ɬSync .o. SSync
+                                .o. OptSSync 
+                                .o. TSync .o. BSync .o. DSync .o. CSync;
+#########################################################
+
+# contraction of specific prefix sequenences
+define ʔəbs ʔ a s "-" b ə s -> ʔ ə b s || _ "-";
+
+
+# this rule (so far) seems to apply to "hay", but not "huy"
+# keep an eye on this one
+define StatH   h -> 0 || a s "-" √  _ a y;
+
+# hay and huy (and others?)
+define SHREDUCE h -> 0 || d ( ə ) x ʷ ( s )  ["-"|"="] √ _ ;
+
+# this one has to apply after vowel reduction
+# generally occurs in ʔas-dxʷ context but
+# uʔREM may have already applied, removing the ʔ
+define SDREDUCE s "-" d -> 0 || [ a | ə ] _ x ʷ ;
+
+# šuɬ loses final ɬ before -d, not sure how widspread this is so
+# constraining to just this form for now
+
+define LDREDUCE ɬ -> 0 ||  š u _ "-" d;
+
+# interesting that u=ʔ gets removed before a (before v reduction, leaving a)
+# but ə=ʔ gets removed after v reduction (leaving ə/u)
+# remove the initial glot stop of a stative marker before a clitic boundary
+define ʔREM ʔ -> 0 || "=" _ [ a s | u ] "-"; 
+define UREM u -> 0 || _ "=" V ;
+define SCHWADEL ə -> 0 || _ ("=") V ;
+
+define sə s %= l ə %= -> s ə %= ;
+
+# final l is deleted when -s attaches
+define LS2S l -> 0 || i _ "@R.IL.ON@" "-" s ;
+
+define VREDUCE1 a -> ə ||  ʔ _ s "-" ;
+
+# VREDUCE2 is optional
+define VREDUCE2 a (->) ə ||  = _  [ x ʷ | s ],
+                            %- _  b ;
+
+
+# insert h between vowels at morpheme boundary
+# ignore parans/length on optional vowel
+define HEPEN [..] -> h || V ( %) | ˑ ) _ ( "@P.IL.ON@" ) [ "-" | "=" ] V;
+
+## allow any vowel in a short word 
+## want to allow any vowl but never more than one vowel
+define VLEN [..] (->) ˑ || V _ .o. $?ˑ;
+
+### problem: ʔa+t -> ʔahəb
+###   both the posited rules:
+###     1) h insertion between vowels
+###     2) schwa insertion between obstruents
+###   need to apply but no ordering works!
+###  making an exception rule
+define ʔAH [..] -> h || ʔ a _ ( "@P.S_OBJ_MARKS.ON@" ) "-" d ;
+
+## this changes tu-, du- to txʷ, dxʷ word finally
+## should also apply in front of lsuffs!
+define FinalHard1 u -> x ʷ || "-" [ d | t ] _  [ .#. | • ];
+define FinalHard2 t -> d || "-" _ [ .#. | • ];
+
+# insert schwa beteen O and middle voice, or O and -d form of ICS
+# note, this cannot apply to -bi! cf. ʔušəbid , *ʔušəbəbid
+#
+# needs to apply after we do txʷ -> tu
+define SchwaIns  [..] -> ə || O ( "@P.S_OBJ_MARKS.ON@" ) "-" _ d .#. ,
+                              O "-" _ b [ "-" | .#. ];
+
+
+#####################################################################
+## -c allomorph of applicative causes v gemination for v final stems
+## and final consonant deletion for a small set of stems which feeds 
+## the gemination
+
+# idiosyncratic C removal preceeding v->vv || _ -c
+define idio  š u ɬ -> š u, 
+             c u t -> c u, 
+             q ʷ i ʔ a d ->  q ʷ i ʔ a || _ "@D.IL.ON@" ;
+# double vowel on V final stems when -c attaches (pcsuff5)
+define agem a -> a a // √ ~$%- _ ( %) ) "@D.IL.ON@" ;
+define əgem ə -> a a // √ ~$%- _ ( %) ) "@D.IL.ON@" ;
+define igem i -> i i // √ ~$%- _ ( %) ) "@D.IL.ON@" ;
+define ugem u -> u u // √ ~$%- _ ( %) ) "@D.IL.ON@" ;
+
+# summarize
+define VVC idio .o. agem .o. əgem .o. igem .o. ugem; 
+#####################################################################
+
+
+
+define FVREM %( V %) (->) 0 ;
+define TSCombine "t" ( "@R.S_OBJ_MARKS@" ) "-" "s" -> c || _  [ u t | .#. ] ; 
+define RemoveMarkers "="|"-"|"("|")"|√ -> 0;
+
+
+define Baseword NPostsuff6| (Nmlz) VPostsuff6;
+define IWord Baseword .o. StatH 
+                      .o. FinalHard1 
+                      .o. FinalHard2 
+                      .o. ʔAH
+                      .o. SchwaIns
+                      .o. FVREM
+                      .o. TSCombine
+                      .o. LS2S 
+                      .o. SHREDUCE
+                      .o. LDREDUCE
+                      .o. VVC 
+                      .o. ʔəbs;
+
+# there's a suffix that doesn't affect word-final phonology,
+# but shouldn't be in the cyclically applying enclitics
+#
+# the desiderative -ab:-əb
+# has a relation to prefix dxʷ(s), but currently nothing implemented 
+# to connected them
+
+define DSD [ {-ab} ];
+define Word [IWord|Const] (DSD);
+
+regex ProClit* Word EnClit*  .o. ʔREM
+                             .o. UREM
+                             .o. SCHWADEL
+                             .o. VREDUCE1
+                             .o. VREDUCE2
+                             .o. SDREDUCE
+                             .o. HEPEN
+                             .o. ConSync
+                             .o. VLEN
+                             .o. sə
+                             .o. RemoveMarkers ;

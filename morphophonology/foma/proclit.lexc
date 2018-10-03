@@ -1,0 +1,24 @@
+Multichar_Symbols @P.NSTEM.ON@ @P.NMLZ_V.ON@
+
+! s=lə order never occurs in beck corpus, but lə=s= does
+! many times.
+! same facts for positioning of dəxʷ= (dəxʷ=lə= attested, 
+! lə=dəxʷ not)
+!
+! to cut down on ambiguity, i don't want to posit s= on nouns 
+! (i don't think)
+
+!
+! since this whole lexicon applies cyclically, no need for internal
+! structure
+
+LEXICON Root
+lə=       #;
+@P.NMLZ_V.ON@dəxʷ= #;
+@P.NMLZ_V.ON@s=    #;
+ƛ̕u=       #;
+tu=       #;
+gʷə=      #;
+d=        #;! possesive 1po
+ɬu=       #;
+bə=       #;! "add="

@@ -1,0 +1,12 @@
+# 17 feb
+ * in Basket Ogres1:
+ analysed 83 sentences
+          157 wordtypes
+          394 wordtokens
+          2 tokens were rejected (0.51%)
+          17 tokens were ambiguous
+ * much spurious ambiguity resulting from final -s (allative applicative) vs
+   =s (3.pos clitic); beck's grammar says the -s only occurs in stems that have
+   -il (either inchoative suff or synchronically unanalyzeable), implementing
+   this restriction to cut down on ambiguity
+   ** implemented, now down to 7 ambig tokens with same coverage
