@@ -1,0 +1,20 @@
+;;; -*- Mode: TDL; Coding: utf-8 -*-
+momentaneous-lex := momentaneous-lex-rule.
+
+inceptive-lex := inceptive-lex-rule.
+
+continuative-lex := continuative-lex-rule.
+
+durative-lex := durative-lex-rule.
+
+repetitive-lex := repetitive-lex-rule.
+
+iterative-lex := iterative-lex-rule.
+
+momentaneous-graduative-lex := momentaneous-graduative-lex-rule.
+
+inceptive-graduative-lex := inceptive-graduative-lex-rule.
+
+neutral-3rd-pred-lex := neutral-3rd-pred-lex-rule.
+
+noun-relativizer-lex := noun-relativizer-lex-rule.

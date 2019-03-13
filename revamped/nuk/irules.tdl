@@ -1,0 +1,138 @@
+;;; -*- Mode: TDL; Coding: utf-8 -*-
+;;; Inflecting Lexical Rule Instances
+
+momentaneous-form-suffix1 :=
+%suffix (* -šiƛ)
+momentaneous-form-lex-rule.
+
+momentaneous-form-suffix2 :=
+%suffix (* -čiƛ)
+momentaneous-form-lex-rule.
+
+momentaneous-form-suffix3 :=
+%suffix (* -kʷiƛ)
+momentaneous-form-lex-rule.
+
+momentaneous-form-suffix4 :=
+%suffix (* -iƛ)
+momentaneous-form-lex-rule.
+
+momentaneous-form-suffix5 :=
+%suffix (* -inƛ)
+momentaneous-form-lex-rule.
+
+momentaneous-form-suffix6 :=
+%suffix (* -uƛ)
+momentaneous-form-lex-rule.
+
+inceptive-form-suffix1 :=
+%suffix (* -°iˑčiƛ)
+inceptive-form-lex-rule.
+
+inceptive-form-suffix2 :=
+%suffix (* -°aˑčiƛ)
+inceptive-form-lex-rule.
+
+continuative-form-suffix :=
+%suffix (* -aˑ)
+continuative-form-lex-rule.
+
+durative-form-suffix1 :=
+%suffix (* -ak)
+durative-form-lex-rule.
+
+durative-form-suffix2 :=
+%suffix (* -uk)
+durative-form-lex-rule.
+
+repetitive-form-suffix :=
+%suffix (* -RL2R.a)
+repetitive-form-lex-rule.
+
+iterative-form-suffix :=
+%suffix (* -R2.š)
+iterative-form-lex-rule.
+
+momentaneous-complex-suffix :=
+%suffix (* -LS)
+momentaneous-complex-lex-rule.
+
+inceptive-complex-suffix :=
+%suffix (* -LS)
+inceptive-complex-lex-rule.
+
+durative-perfective-suffix :=
+%suffix (* -šiƛ)
+durative-perfective-lex-rule.
+
+repetitive-perfective-suffix :=
+%suffix (* -šiƛ)
+repetitive-perfective-lex-rule.
+
+iterative-perfective-suffix :=
+%suffix (* -šiƛ)
+iterative-perfective-lex-rule.
+
+momentaneous-graduative-perfective-suffix :=
+%suffix (* -šiƛ)
+momentaneous-graduative-perfective-lex-rule.
+
+inceptive-graduative-perfective-suffix :=
+%suffix (* -šiƛ)
+inceptive-graduative-perfective-lex-rule.
+
+habitual-suffix1 :=
+%suffix (* =ʔaała) (=0 =ʔaała)
+habitual-lex-rule.
+
+habitual-suffix2 :=
+%suffix (* =ʔaał) (=0 =ʔaał)
+habitual-lex-rule.
+
+clitic-plural-suffix :=
+%suffix (* =ʔał) (=0 =ʔał)
+clitic-plural-lex-rule.
+
+past-prefix :=
+%prefix (* =(m)it) (=0 =(m)it)
+past-lex-rule.
+
+clitic-poss-intrans-prefix1 :=
+%prefix (* =uk) (=0 =uk)
+clitic-poss-intrans-lex-rule.
+
+clitic-poss-intrans-prefix2 :=
+%prefix (* =ʔak) (=0 =ʔak)
+clitic-poss-intrans-lex-rule.
+
+clitic-passive-prefix :=
+%prefix (* =!at) (=0 =!at)
+clitic-passive-lex-rule.
+
+clitic-now-prefix :=
+%prefix (* =!aƛ) (=0 =!aƛ)
+clitic-now-lex-rule.
+
+clitic-causative-intrans-prefix :=
+%prefix (* =!ap) (=0 =!ap)
+clitic-causative-intrans-lex-rule.
+
+clitic-causative-trans-prefix :=
+%prefix (* =!ap) (=0 =!ap)
+clitic-causative-trans-lex-rule.
+
+clitic-future-prefix1 :=
+%prefix (* =ʔaaqƛ) (=0 =ʔaaqƛ)
+clitic-future-lex-rule.
+
+clitic-future-prefix2 :=
+%prefix (* =ʔaqƛ) (=0 =ʔaqƛ)
+clitic-future-lex-rule.
+
+clitic-future-prefix3 :=
+%prefix (* =!aqƛ) (=0 =!aqƛ)
+clitic-future-lex-rule.
+
+clitic-also-prefix :=
+%prefix (* =ƛaˑ) (=0 =ƛaˑ)
+clitic-also-lex-rule.

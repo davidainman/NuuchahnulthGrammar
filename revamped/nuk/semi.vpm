@@ -1,0 +1,110 @@
+;;; -*- Mode: TDL; Coding: utf-8 -*-
+; A basic VPM for Matrix grammars.
+event          <> e
+ref-ind        <> x
+individual     <> i
+handle         <> h
+non_event      <> p
+*              >> u
+semarg         << u
+
+SPECI : SPECI
+  * <> *
+
+SF : SF
+  prop <> prop
+  ques <> ques
+  prop-or-ques >> prop-or-ques
+  prop << prop-or-ques
+  comm <> comm
+  * <> *
+
+COG-ST : COG-ST
+  type-id <> type-id
+  uniq-id <> uniq-id
+  familiar <> familiar
+  activated <> activated
+  in-foc <> in-foc
+  activ+fam <> activ+fam
+  uniq+fam <> uniq+fam
+  activ-or-more <> activ-or-more
+  uniq-or-less <> uniq-or-less
+  uniq+fam+act <> uniq+fam+act
+  fam-or-more <> fam-or-more
+  fam-or-less <> fam-or-less
+  uniq-or-more <> uniq-or-more
+  activ-or-less <> activ-or-less
+  * <> *
+
+
+PNG.PER : PNG.PER
+  3rd <> 3rd
+  2nd <> 2nd
+  1st <> 1st
+  * <> *
+
+PNG.NUM : PNG.NUM
+  plural <> plural
+  singular <> singular
+  * <> *
+
+PNG.GEND : PNG.GEND
+  * <> *
+
+E.TENSE : E.TENSE
+  past <> past
+  future <> future
+  * <> *
+
+E.ASPECT : E.ASPECT
+  MO-GRAD-PF <> MO-GRAD-PF
+  MO <> MO
+  MO-GRAD <> MO-GRAD
+  momentaneous <> momentaneous
+  continuative <> continuative
+  DR <> DR
+  DR-PF <> DR-PF
+  durative <> durative
+  RP <> RP
+  RP-PF <> RP-PF
+  repetitive <> repetitive
+  IT <> IT
+  IT-PF <> IT-PF
+  iterative <> iterative
+  MO-GRAD-PF <> MO-GRAD-PF
+  IN-GRAD-PF <> IN-GRAD-PF
+  DR-PF <> DR-PF
+  start <> start
+  IN-GRAD <> IN-GRAD
+  inceptive <> inceptive
+  meaning <> meaning
+  MO-GRAD-PF <> MO-GRAD-PF
+  MO <> MO
+  IN-GRAD-PF <> IN-GRAD-PF
+  IN <> IN
+  DR-PF <> DR-PF
+  RP-PF <> RP-PF
+  IT-PF <> IT-PF
+  perfective <> perfective
+  CT <> CT
+  DR <> DR
+  RP <> RP
+  IT <> IT
+  MO-GRAD <> MO-GRAD
+  IN-GRAD <> IN-GRAD
+  imperfective <> imperfective
+  xperf <> xperf
+  habitual <> habitual
+  * <> *
+
+E.MOOD : E.MOOD
+  strong-real <> strong-real
+  weak <> weak
+  neutral <> neutral
+  unknown <> unknown
+  possible <> possible
+  hearsay <> hearsay
+  inferential <> inferential
+  purposive <> purposive
+  dubitative <> dubitative
+  * <> *

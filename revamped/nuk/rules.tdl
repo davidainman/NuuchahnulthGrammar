@@ -1,0 +1,78 @@
+;;; -*- Mode: TDL; Coding: utf-8 -*-
+
+;;; TODO: Fix adjectives :)
+;adj-head-int := adj-head-int-phrase.
+
+nf-comp-head := nf-comp-head-phrase.
+
+nf-subj-head := nf-subj-head-phrase.
+
+;;; 2018-03-13 taking this out as it is allowing article-headed phrases through (should not?)
+;;; which then go on to behave as PartP.
+;narrow-focused-phrase := narrow-focused-phrase.
+
+head-subj-2 := head-subj-phrase-2.
+
+head-comp-3 := head-comp-phrase-3.
+
+decl-head-opt-subj := nuk-head-opt-subj-phrase.
+
+basic-head-opt-comp := nuk-head-opt-comp-phrase.
+
+;;; 2019-03-12 Removing this because it's no longer needed for nouns (I think)
+;high-nominalized-clause := high-nominalized-clause-phrase.
+
+;;; 2019-03-13 removing this because I don't know what it's for &
+;;; it's unifying with auxes. If necessary (adj?) should add an aux - in tdl
+;non-event-subj-head := non-event-subj-head-phrase.
+;non-event-head-subj := non-event-head-subj-phrase.
+
+head-comp := head-comp-phrase.
+
+head-subj := head-subj-phrase.
+
+comp-head := comp-head-phrase.
+
+;;; TODO: This shouldn't exist should it?
+;subj-head := subj-head-phrase.
+
+head-comp-2 := head-comp-phrase-2.
+
+comp-head-2 := comp-head-phrase-2.
+
+head-spec := head-spec-phrase.
+
+;;; TODO: Possession is overunifying at the moment. making parse chart clearer.
+;poss-unary-1 := poss-unary-phrase-1.
+
+;poss-unary-2 := poss-unary-phrase-2.
+
+bare-np := bare-np-phrase.
+
+n1-top-coord := n1-top-coord-rule.
+
+n1-mid-coord := n1-mid-coord-rule.
+
+n1-bottom-coord := n1-bottom-coord-rule.
+
+n2-top-coord := n2-top-coord-rule.
+
+n2-bottom-coord := n2-bottom-coord-rule.
+
+;;;TODO: VP coord is overgenerating because there are no restrictions on aux, etc. taking out for now
+
+;vp3-top-coord := vp3-top-coord-rule.
+
+;vp3-mid-coord := vp3-mid-coord-rule.
+
+;vp3-bottom-coord := vp3-bottom-coord-rule.
+
+;vp4-top-coord := vp4-top-coord-rule.
+
+;vp4-bottom-coord := vp4-bottom-coord-rule.
+
+s5-top-coord := s5-top-coord-rule.
+
+s5-mid-coord := s5-mid-coord-rule.
+
+s5-bottom-coord := s5-bottom-coord-rule.
