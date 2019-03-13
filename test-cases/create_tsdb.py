@@ -17,23 +17,24 @@ import os, sys
   i-author :string
   i-date :date'''
 
-'''Assuming input file has Speaker tab plaintext tab IGT (tab translation)'''
+'''Assuming input file has Speaker comma phenomenon comma plaintext comma IGT (comma translation)'''
 def generate_item_file(input_file_path, output_file_path):
     input_file = open(input_file_path).readlines()
     output = []
     key = 1
     for line in input_file:
-        line_split = line.strip().split('\t')
+        line_split = line.strip().split(',')
         if len(line_split) < 3:
             print('Error on following line, improperly formatted:\n' + line)
             continue
         id = str(key)
         origin = line_split[0]
+        phenom = line_split[1]
         register = ''
         format = ''
         difficulty = '1'
         category = ''
-        input = line_split[2].strip('*').strip('?')
+        input = line_split[3].strip('*').strip('?')
         tokens = ''
         gloss = ''
         translation = ''
