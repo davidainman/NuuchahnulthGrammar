@@ -19,9 +19,10 @@ non-mod-lex-item := lex-item &
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;; 2019-03-12 removing PRD - already defined in GM (!)
-
+;;; 2019-03-19 adding AUX-RAISE bool to avoid looping
 head :+ [ PRON bool,
     AUX bool,
+    AUX-RAISE bool,
     NMZ bool,
     POSSESSOR poss,
     INIT bool,
@@ -52,7 +53,9 @@ basic-head-2nd-comp-phrase :+ [ SYNSEM.INFOSTR-FLAG -, NON-HEAD-DTR.SYNSEM.INFOS
 
 basic-head-opt-subj-phrase :+ [ SYNSEM.INFOSTR-FLAG - ].
 
-basic-head-opt-comp-phrase :+ [ SYNSEM.INFOSTR-FLAG - ].
+; 2019-03-22 restricting daughter to be subj empty so this applies last (spurious ambiguity)
+basic-head-opt-comp-phrase :+ [ SYNSEM.INFOSTR-FLAG -,
+                                HEAD-DTR.SYNSEM.LOCAL.CAT.VAL.SUBJ < > ].
 
 basic-head-mod-phrase-simple :+ [ SYNSEM.INFOSTR-FLAG - ].
 
@@ -77,7 +80,8 @@ inflected :+ [ CONTINUATIVE-FORM-FLAG luk,
     MOMENTANEOUS-COMPLEX-FLAG luk,
     DURATIVE-FORM-FLAG luk,
     PRE-CLITIC-PAST-FLAG luk,
-    ASPECT-1-FLAG luk ].
+    ASPECT-1-FLAG luk,
+    SOME-INFLECTION luk ].
 
 infl-satisfied :+ [ CONTINUATIVE-FORM-FLAG na-or-+,
     ITERATIVE-FORM-FLAG na-or-+,
@@ -89,7 +93,8 @@ infl-satisfied :+ [ CONTINUATIVE-FORM-FLAG na-or-+,
     MOMENTANEOUS-COMPLEX-FLAG na-or-+,
     DURATIVE-FORM-FLAG na-or-+,
     PRE-CLITIC-PAST-FLAG na-or-+,
-    ASPECT-1-FLAG na-or-+ ].
+    ASPECT-1-FLAG na-or-+,
+    SOME-INFLECTION na-or-+ ].
 
 png :+ [ PER person,
     NUM number ].
@@ -282,6 +287,7 @@ common-noun-noun-lex := noun-lex &
   [ SYNSEM.LOCAL.CONT.HOOK.XARG.PNG.PER 3rd ].
 
 ;;; 2019-03-12 This should actually be the "normal" noun-lex!
+;;; TODO: make this PRD -
 proper-noun-noun-lex := basic-noun-lex & no-hcons-lex-item & non-mod-lex-item & predicate-lex & 
   [ ARG-ST < >,
     SYNSEM.LOCAL.CAT [ VAL [ SPR < >,
@@ -402,6 +408,7 @@ transitive-verb-lex := main-verb-lex & transitive-lex-item &
 ;;; TODO: Subj doesn't need to be head noun but head.prd -
 ;;; TODO: revisit FORM nonfinite
 ;2p-arg-comp-aux := lex-item &
+; 2019-03-22 changing SUBJ to HEAD.PRD - not HEAD noun
 2p-lex := lex-item & 
   [ SYNSEM [ LOCAL [ CAT [ HEAD [ AUX +,
                             MOD < > ],
@@ -413,8 +420,8 @@ transitive-verb-lex := main-verb-lex & transitive-lex-item &
                             HCONS <! !> ] ],
              NON-LOCAL #nonlocal ],
     ARG-ST < #subj &
-       [ LOCAL [ CAT [ HEAD noun,
-           VAL [ COMPS < > ]],
+       [ LOCAL [ CAT [ HEAD.PRD -,
+           VAL.COMPS < > ],
            CONT.HOOK.INDEX #xarg ]],
        #comps &
        [ OPT -,
@@ -433,7 +440,7 @@ article-lex := 2p-lex &
                  CONT.HOOK.INDEX #index ] ].
 
 ;;; 2019-03-09 This is for the neutral mood applying w/ no further clitic-passive-lex-rule
-neutral-3rd-pred-lex-rule := local-change-only-lex-rule & same-agr-lex-rule & same-ctxt-lex-rule &
+neutral-3rd-pred-lex-rule := local-change-only-lex-rule & same-agr-lex-rule & same-ctxt-lex-rule & 
   [ SYNSEM [ LOCAL [ CAT [ HEAD verb &
                              [ AUX +,
                                PRD +,
@@ -492,23 +499,23 @@ transitive-verb-inflected-lex := main-verb-inflected-lex & transitive-verb-lex.
 ;;;2019-03-08 adding infl satisfied to these!
 
 durative-intransitive-verb-lex := intransitive-verb-inflected-lex &
-  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.E.ASPECT durative ].
+  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.E.ASPECT DR ].
 
 perfective-intransitive-verb-lex := intransitive-verb-inflected-lex &
-  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.E.ASPECT momentaneous ].
+  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.E.ASPECT MO ].
 
 continuative-intransitive-verb-lex := intransitive-verb-inflected-lex &
-  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.E.ASPECT continuative ].
+  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.E.ASPECT CT ].
 
 transitive-no-inflect-verb-lex := transitive-verb-inflected-lex.
 
 durative-transitive-verb-lex := transitive-verb-inflected-lex &
-  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.E.ASPECT durative ].
+  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.E.ASPECT DR ].
 
 perfective-transitive-verb-lex := transitive-verb-inflected-lex & 
-  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.E.ASPECT momentaneous ].
+  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.E.ASPECT MO ].
 
-mood-2p-verb-lex := 2p-lex & post-clitic-also-rule-dtr & post-clitic-plural-rule-dtr & pre-clitic-causative-rule-dtr & pre-clitic-future-rule-dtr & pre-clitic-now-rule-dtr & pre-clitic-passive-rule-dtr & pre-clitic-poss-rule-dtr &
+mood-2p-verb-lex := 2p-lex & raise-sem-lex-item & post-clitic-also-rule-dtr & post-clitic-plural-rule-dtr & pre-clitic-causative-rule-dtr & pre-clitic-future-rule-dtr & pre-clitic-now-rule-dtr & pre-clitic-passive-rule-dtr & pre-clitic-poss-rule-dtr & post-clitic-habitual-lex-rule-dtr &
   [ SYNSEM.LOCAL.CAT.HEAD verb & [ FORM finite,
                                    PRD + ] ].
 
@@ -603,7 +610,8 @@ neutral-mood-2sg-verb-lex := mood-neutral-verb-lex & 2sg-aux-verb-lex.
 
 neutral-mood-2pl-verb-lex := mood-neutral-verb-lex & 2pl-aux-verb-lex.
 
-neutral-mood-3-verb-lex := mood-neutral-verb-lex & 3-aux-verb-lex.
+neutral-mood-3-verb-lex := mood-neutral-verb-lex & 3-aux-verb-lex &
+  [ INFLECTED.SOME-INFLECTION - ].
 
 unknown-mood-1sg-verb-lex := mood-unknown-verb-lex & 1sg-aux-verb-lex.
 
@@ -639,11 +647,11 @@ dubitative-mood-3-verb-lex := mood-dubitative-verb-lex & 3-aux-verb-lex.
 
 transitive-clausal-verbs-verb-lex := main-verb-verb-lex & transitive-verb-lex.
 
-continuative-transitive-verb-lex := main-verb-verb-lex & transitive-verb-lex &
-  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.E.ASPECT continuative ].
+continuative-transitive-verb-lex := transitive-verb-inflected-lex &
+  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.E.ASPECT CT ].
 
-repetitive-transitive-verb-lex := main-verb-verb-lex & transitive-verb-lex &
-  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.E.ASPECT repetitive ].
+repetitive-transitive-verb-lex := transitive-verb-inflected-lex &
+  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.E.ASPECT RP ].
 
 ;neutral-mood-3-verb-lex := mood-neutral-verb-lex & 3-aux-verb-lex.
 
@@ -701,15 +709,14 @@ copula-cop-lex := adj-comp-copula-verb-lex.
 
 ;;; Adjectives
 
-adj-lex := basic-intersective-adjective-lex.
+adj-lex := basic-intersective-adjective-lex & predicate-lex &
+  [ SYNSEM.LOCAL.CAT.HEAD.AUX - ].
 
 adjective-adj-lex := attr-adj-lex & stative-pred-adj-lex &
-  [ SYNSEM.LOCAL.CAT [ POSTHEAD -,
-                       HEAD.PRD - ] ].
+  [ SYNSEM.LOCAL.CAT [ POSTHEAD - ] ].
 
 quantifier-adj-lex := attr-adj-lex & stative-pred-adj-lex &
-  [ SYNSEM.LOCAL.CAT [ POSTHEAD -,
-                       HEAD.PRD - ] ].
+  [ SYNSEM.LOCAL.CAT [ POSTHEAD - ] ].
 
 ; Basic attributive adjective definition
 
@@ -727,6 +734,19 @@ stative-pred-adj-lex := adj-lex &
                    CONT.HOOK.XARG #xarg ] ].
 
 ;;; Complementizers
+
+
+;;; Adverbs
+
+; 2019-03-22 Same trick where I don't want this applying to bare clitics
+head-adj-scop-phrase :+ [ HEAD-DTR.SYNSEM.LOCAL.CAT.VAL.COMPS phlist ].
+
+adv-lex := basic-scopal-adverb-lex &
+  [ SYNSEM.LOCAL.CAT [ VAL [ SPR < >,
+                             COMPS < >,
+                             SUBJ < > ],
+                       HEAD [ MOD < [ LOCAL.CAT.HEAD.PRD + ] >,
+                              PRD - ] ] ].
 
 ;;;;;;;;;;;;;;;;;;;
 ;;; Lexical Rules
@@ -806,8 +826,41 @@ pre-clitic-causative-rule-dtr := word-or-lexrule.
 aspect-2-rule-dtr := word-or-lexrule.
 aspect-3-rule-dtr := word-or-lexrule.
 post-clitic-also-rule-dtr := word-or-lexrule.
+aux-type-raising-dtr := word-or-lexrule.
+post-clitic-habitual-lex-rule-dtr := word-or-lexrule.
 
 ;;; Lexical rule types
+
+;;; 2019-03-22 allowing intransitive verbs to become adjectives
+intransitive-to-int-adj-lex-rule := cat-change-only-lex-rule & 
+  [ SYNSEM.LOCAL.CAT [ HEAD adj &
+                             [ PRD #prd,
+                               NMZ #nmz,
+                               AUX -,
+                               MOD < #subj & [ LOCAL intersective-mod ] >,
+                               KEYS #keys,
+                               POSSESSOR #poss,
+                               INIT #init,
+                               SPEC-INIT #spec,
+                               FORM #form ],
+                           VAL [ SPR < >,
+                                 SPEC < >,
+                                 SUBJ < >,
+                                 COMPS < > ] ],
+    DTR.SYNSEM.LOCAL [ CAT [ HEAD verb & 
+                              [ PRD #prd,
+                                NMZ #nmz,
+                                AUX -,
+                                MOD < >,
+                                KEYS #keys,
+                                POSSESSOR #poss,
+                                INIT #init,
+                                SPEC-INIT #spec,
+                                FORM #form ],
+                             VAL [ SUBJ < #subj >,
+                                   COMPS < >,
+                                   SPR < >,
+                                   SPEC < > ] ] ] ].
 
 ;;; 2019-03-12 allowing nouns to go through this rule to become individuals
 ;;; this is the version of the rule that just changes the index
@@ -823,8 +876,7 @@ noun-relativizer-lex-rule := same-non-local-lex-rule & same-modified-lex-rule & 
                               INIT #init,
                               SPEC-INIT #spec,
                               FORM #form ],
-                         VAL [ SPR < >,
-                               SPEC < >,
+                         VAL [ SPEC < >,
                                SUBJ < >,
                                COMPS < > ] ],
                    CONT.HOOK [ INDEX #xarg ] ] ],
@@ -843,6 +895,7 @@ noun-relativizer-lex-rule := same-non-local-lex-rule & same-modified-lex-rule & 
                                  FORM #form ] ],
                        CONT.HOOK [ XARG #xarg ] ] ].
 
+;;; 2019-03-19 This rule won't do because because I need to relativize full NPs: n̓aacsiičiƛs ʔiiḥ ʕiniiƛ.
 ;;; this is the version of the rule that adds the nominalized_rel
 rel-noun-relativizer-lex-rule := same-non-local-lex-rule & same-modified-lex-rule & same-light-lex-rule &
   [ SYNSEM.LOCAL [ CAT [ HEAD noun & 
@@ -1100,26 +1153,8 @@ momentaneous-graduative-lex-rule := aspect-3-lex-rule-super & const-lex-rule &
 inceptive-graduative-perfective-lex-rule := aspect-3-lex-rule-super & infl-lex-rule &
   [ SYNSEM.LOCAL.CONT.HOOK.INDEX.E.ASPECT IN-GRAD-PF ].
 
-post-clitic-habitual-lex-rule-super := add-only-no-ccont-rule & infl-lex-rule & post-clitic-also-rule-dtr & post-clitic-plural-rule-dtr &
-  [ INFLECTED #infl,
-    DTR mood-2p-verb-lex &
-        [ INFLECTED #infl ] ].
-
-;; 2019-03-06 Changed commented line to get it to compile, investigate later
-habitual-lex-rule := post-clitic-habitual-lex-rule-super &
-  [ ;; SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL.CONT.HOOK.INDEX.E.ASPECT habitual 
-    SYNSEM.LOCAL.CONT.HOOK.INDEX.E.ASPECT habitual ].
-
-post-clitic-plural-lex-rule-super := add-only-no-ccont-rule & infl-lex-rule & post-clitic-also-rule-dtr &
-  [ INFLECTED #infl,
-    DTR post-clitic-plural-rule-dtr &
-        [ INFLECTED #infl ] ].
-
-clitic-plural-lex-rule := post-clitic-plural-lex-rule-super &
-  [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.NUM plural ].
-
-pre-clitic-past-lex-rule-super := add-only-no-ccont-rule & infl-lex-rule & pre-clitic-causative-rule-dtr & pre-clitic-future-rule-dtr & pre-clitic-now-rule-dtr & pre-clitic-passive-rule-dtr & pre-clitic-poss-rule-dtr &
-  [ INFLECTED [ PRE-CLITIC-PAST-FLAG +,
+clitic-inflection-lex-rule-super := lex-rule &
+  [ INFLECTED [ PRE-CLITIC-PAST-FLAG #pre-clitic-past,
                 CONTINUATIVE-FORM-FLAG #continuative-form,
                 ASPECT-2-FLAG #aspect-2,
                 ITERATIVE-FORM-FLAG #iterative-form,
@@ -1129,26 +1164,42 @@ pre-clitic-past-lex-rule-super := add-only-no-ccont-rule & infl-lex-rule & pre-c
                 INCEPTIVE-COMPLEX-FLAG #inceptive-complex,
                 ASPECT-1-FLAG #aspect-1,
                 DURATIVE-FORM-FLAG #durative-form,
-                MOMENTANEOUS-COMPLEX-FLAG #momentaneous-complex ],
-    DTR mood-2p-verb-lex &
-        [ INFLECTED [ CONTINUATIVE-FORM-FLAG #continuative-form,
-                      ASPECT-2-FLAG #aspect-2,
-                      ITERATIVE-FORM-FLAG #iterative-form,
-                      MOMENTANEOUS-FORM-FLAG #momentaneous-form,
-                      REPETITIVE-FORM-FLAG #repetitive-form,
-                      INCEPTIVE-FORM-FLAG #inceptive-form,
-                      INCEPTIVE-COMPLEX-FLAG #inceptive-complex,
-                      ASPECT-1-FLAG #aspect-1,
-                      DURATIVE-FORM-FLAG #durative-form,
-                      MOMENTANEOUS-COMPLEX-FLAG #momentaneous-complex ] ] ].
+                MOMENTANEOUS-COMPLEX-FLAG #momentaneous-complex,
+                SOME-INFLECTION + ],
+    DTR.INFLECTED [ PRE-CLITIC-PAST-FLAG #pre-clitic-past,
+                CONTINUATIVE-FORM-FLAG #continuative-form,
+                ASPECT-2-FLAG #aspect-2,
+                ITERATIVE-FORM-FLAG #iterative-form,
+                MOMENTANEOUS-FORM-FLAG #momentaneous-form,
+                REPETITIVE-FORM-FLAG #repetitive-form,
+                INCEPTIVE-FORM-FLAG #inceptive-form,
+                INCEPTIVE-COMPLEX-FLAG #inceptive-complex,
+                ASPECT-1-FLAG #aspect-1,
+                DURATIVE-FORM-FLAG #durative-form,
+                MOMENTANEOUS-COMPLEX-FLAG #momentaneous-complex ] ].
 
-past-lex-rule := pre-clitic-past-lex-rule-super &
+post-clitic-habitual-lex-rule-super := clitic-inflection-lex-rule-super & add-only-no-ccont-rule & infl-lex-rule & post-clitic-also-rule-dtr & post-clitic-plural-rule-dtr & aux-type-raising-dtr &
+  [ DTR post-clitic-habitual-lex-rule-dtr ].
+
+;; 2019-03-06 Changed commented line to get it to compile, investigate later
+habitual-lex-rule := post-clitic-habitual-lex-rule-super &
+  [ SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL.CONT.HOOK.INDEX.E.ASPECT habitual ].
+;    SYNSEM.LOCAL.CONT.HOOK.INDEX.E.ASPECT habitual ].
+
+post-clitic-plural-lex-rule-super := clitic-inflection-lex-rule-super & add-only-no-ccont-rule & infl-lex-rule & post-clitic-also-rule-dtr & aux-type-raising-dtr &
+  [ DTR post-clitic-plural-rule-dtr ].
+
+clitic-plural-lex-rule := post-clitic-plural-lex-rule-super &
+  [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.NUM plural ].
+
+pre-clitic-past-lex-rule-super := clitic-inflection-lex-rule-super & add-only-no-ccont-rule & infl-lex-rule & pre-clitic-causative-rule-dtr & pre-clitic-future-rule-dtr & pre-clitic-now-rule-dtr & pre-clitic-passive-rule-dtr & pre-clitic-poss-rule-dtr & aux-type-raising-dtr & post-clitic-habitual-lex-rule-dtr & post-clitic-plural-rule-dtr & post-clitic-also-rule-dtr &
+  [ DTR mood-2p-verb-lex ].
+
+past-lex-rule := pre-clitic-past-lex-rule-super & 
   [ SYNSEM.LOCAL.CONT.HOOK.INDEX.E.TENSE past ].
 
-pre-clitic-poss-lex-rule-super := pre-clitic-causative-rule-dtr & pre-clitic-future-rule-dtr & pre-clitic-now-rule-dtr & pre-clitic-passive-rule-dtr & val-change-with-ccont-lex-rule &
-  [ INFLECTED #infl,
-    DTR pre-clitic-poss-rule-dtr &
-        [ INFLECTED #infl ] ].
+pre-clitic-poss-lex-rule-super := clitic-inflection-lex-rule-super & pre-clitic-causative-rule-dtr & pre-clitic-future-rule-dtr & pre-clitic-now-rule-dtr & pre-clitic-passive-rule-dtr & val-change-with-ccont-lex-rule & aux-type-raising-dtr & post-clitic-habitual-lex-rule-dtr & post-clitic-plural-rule-dtr & post-clitic-plural-rule-dtr & post-clitic-also-rule-dtr &
+  [ DTR pre-clitic-poss-rule-dtr ].
 
 clitic-poss-intrans-lex-rule := causative-to-arg2-itr-op-lex-rule & infl-lex-rule & pre-clitic-poss-lex-rule-super & same-non-local-lex-rule &
   [ C-CONT.RELS <! [ PRED "POSS" ] !> ].
@@ -1156,24 +1207,18 @@ clitic-poss-intrans-lex-rule := causative-to-arg2-itr-op-lex-rule & infl-lex-rul
 clitic-poss-trans-lex-rule := causative-to-arg2-tr-op-lex-rule & pre-clitic-poss-lex-rule-super & same-non-local-lex-rule &
   [ C-CONT.RELS <! [ PRED "POSS" ] !> ].
 
-pre-clitic-passive-lex-rule-super := infl-lex-rule & pre-clitic-causative-rule-dtr & pre-clitic-future-rule-dtr & pre-clitic-now-rule-dtr & val-change-with-ccont-lex-rule &
-  [ INFLECTED #infl,
-    DTR pre-clitic-passive-rule-dtr &
-        [ INFLECTED #infl ] ].
+pre-clitic-passive-lex-rule-super := clitic-inflection-lex-rule-super & infl-lex-rule & pre-clitic-causative-rule-dtr & pre-clitic-future-rule-dtr & pre-clitic-now-rule-dtr & val-change-with-ccont-lex-rule & aux-type-raising-dtr & post-clitic-habitual-lex-rule-dtr & post-clitic-plural-rule-dtr & post-clitic-also-rule-dtr &
+  [ DTR pre-clitic-passive-rule-dtr ].
 
 clitic-passive-lex-rule := subj-dem-to-arg3of3-op-lex-rule & local-change-only-lex-rule & pre-clitic-passive-lex-rule-super & same-cont-lex-rule.
 
-pre-clitic-now-lex-rule-super := add-only-no-ccont-rule & infl-lex-rule & pre-clitic-causative-rule-dtr & pre-clitic-future-rule-dtr &
-  [ INFLECTED #infl,
-    DTR pre-clitic-now-rule-dtr &
-        [ INFLECTED #infl ] ].
+pre-clitic-now-lex-rule-super := clitic-inflection-lex-rule-super & add-only-no-ccont-rule & infl-lex-rule & pre-clitic-causative-rule-dtr & pre-clitic-future-rule-dtr & aux-type-raising-dtr & post-clitic-habitual-lex-rule-dtr & post-clitic-plural-rule-dtr & post-clitic-also-rule-dtr &
+  [ DTR pre-clitic-now-rule-dtr ].
 
 clitic-now-lex-rule := pre-clitic-now-lex-rule-super.
 
-pre-clitic-causative-lex-rule-super := infl-lex-rule & pre-clitic-future-rule-dtr & val-change-with-ccont-lex-rule &
-  [ INFLECTED #infl,
-    DTR pre-clitic-causative-rule-dtr &
-        [ INFLECTED #infl ] ].
+pre-clitic-causative-lex-rule-super := clitic-inflection-lex-rule-super & infl-lex-rule & pre-clitic-future-rule-dtr & val-change-with-ccont-lex-rule & aux-type-raising-dtr & post-clitic-habitual-lex-rule-dtr & post-clitic-plural-rule-dtr & post-clitic-also-rule-dtr &
+  [ DTR pre-clitic-causative-rule-dtr ].
 
 clitic-causative-intrans-lex-rule := causative-to-arg2-itr-op-lex-rule & pre-clitic-causative-lex-rule-super & same-non-local-lex-rule &
   [ C-CONT.RELS <! [ PRED "CAUS" ] !> ].
@@ -1181,19 +1226,15 @@ clitic-causative-intrans-lex-rule := causative-to-arg2-itr-op-lex-rule & pre-cli
 clitic-causative-trans-lex-rule := causative-to-arg2-tr-op-lex-rule & pre-clitic-causative-lex-rule-super & same-non-local-lex-rule &
   [ C-CONT.RELS <! [ PRED "CAUS" ] !> ].
 
-pre-clitic-future-lex-rule-super := add-only-no-ccont-rule & infl-lex-rule &
-  [ INFLECTED #infl,
-    DTR pre-clitic-future-rule-dtr &
-        [ INFLECTED #infl ] ].
+pre-clitic-future-lex-rule-super := clitic-inflection-lex-rule-super & add-only-no-ccont-rule & infl-lex-rule & aux-type-raising-dtr & post-clitic-plural-rule-dtr & post-clitic-also-rule-dtr & post-clitic-also-rule-dtr &
+  [ DTR pre-clitic-future-rule-dtr ].
 
 clitic-future-lex-rule := pre-clitic-future-lex-rule-super &
   [ DTR.INFLECTED.PRE-CLITIC-PAST-FLAG na,
-    SYNSEM.LOCAL.CONT.HOOK.INDEX.E.TENSE future ].
+    SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL.CONT.HOOK.INDEX.E.TENSE future ].
 
-post-clitic-also-lex-rule-super := add-only-no-ccont-rule & infl-lex-rule &
-  [ INFLECTED #infl,
-    DTR post-clitic-also-rule-dtr &
-        [ INFLECTED #infl ] ].
+post-clitic-also-lex-rule-super := clitic-inflection-lex-rule-super & add-only-no-ccont-rule & infl-lex-rule & aux-type-raising-dtr &
+  [ DTR post-clitic-also-rule-dtr ].
 
 clitic-also-lex-rule := post-clitic-also-lex-rule-super.
 
@@ -1255,6 +1296,61 @@ scopal-rel-lex-rule := lex-rule &
 ;;;;;;;;;;;;;;;;;;;
 ;;; Phrasal Types
 ;;;;;;;;;;;;;;;;;;;
+
+; 2019-03-19 
+auxiliary-unary-type-raise := basic-unary-phrase &
+  [ SYNSEM.LOCAL [ CONT.HOOK #hook,
+                   CAT [ HEAD verb & [ AUX-RAISE +, 
+                                AUX +, 
+                                PRON #pron,
+                                NMZ #nmz,
+                                FORM #form,
+                                MOD < > ],
+                         VAL [ SUBJ < #subj >,
+                               COMPS [ FIRST [ LOCAL.CAT [ HEAD [ MOD < #fcomp >,
+                                                                  AUX - ],
+                                                     POSTHEAD - ],
+                                               OPT - ],
+                                       REST [ FIRST #fcomp & [ LOCAL [ CAT [ HEAD #head,
+                                                                   VAL #val,
+                                                                   MC #mc,
+                                                                   MKG #mkg,
+                                                                   HC-LIGHT #hc-light,
+                                                                   POSTHEAD + ],
+                                                             CONT #cont,
+                                                             AGR #agr,
+                                                             COORD #coord ],
+                                                     OPT #opt,
+                                                     NON-LOCAL #nonlocal ],
+                                              REST #rcomp ] ],
+                               SPEC < >,
+                               SPR < > ] ] ],
+    C-CONT [ RELS  <! !>,
+             HCONS <! !>,
+             ICONS <! !> ],
+    ARGS < aux-type-raising-dtr & [ SYNSEM.LOCAL [ CAT [ VAL [ SUBJ < #subj >,
+                                        COMPS [FIRST [ LOCAL [ CAT [ HEAD #head,
+                                                                     VAL #val,
+                                                                     MC #mc,
+                                                                     MKG #mkg,
+                                                                     HC-LIGHT #hc-light,
+                                                                     POSTHEAD - ],
+                                                               CONT #cont,
+                                                               AGR #agr,
+                                                               COORD #coord ],
+                                                       OPT #opt,
+                                                       NON-LOCAL #nonlocal ],
+                                               REST #rcomp ],
+                                        SPEC < >,
+                                        SPR < > ],
+                                  HEAD verb & [ AUX-RAISE -,
+                                         AUX +,
+                                         PRON #pron,
+                                         NMZ #nmz,
+                                         FORM #form ] ],
+                            CONT.HOOK #hook ],
+             INFLECTED infl-satisfied ] > ].
+
 
 ;;; 2019-03-13 Defining daughter's comps.first as posthead or null,
 ;;; to prevent this from firing on POSTHEAD - (i.e., 2P's first COMP)
@@ -1389,8 +1485,10 @@ head-final-head-nexus := head-final &
 
 ;;; 2019-03-13 Defining daughter's comps as posthead or null,
 ;;; to prevent this from firing if there is a POSTHEAD - element (i.e., 2P's first COMP)
+;;; 2019-03-19 I *think* HEAD should always be an AUX.
 head-subj-phrase := decl-head-subj-phrase & head-initial-head-nexus &
-  [ NON-HEAD-DTR.SYNSEM.LOCAL.CAT.HEAD.PRD -,
+  [ HEAD-DTR.SYNSEM.LOCAL.CAT.HEAD.AUX +,
+    NON-HEAD-DTR.SYNSEM.LOCAL.CAT.HEAD.PRD -,
     SYNSEM.LOCAL.CAT.VAL.COMPS phlist ].
 
 ;;; 2019-03-12 constraining subj to be PRD -
@@ -1412,6 +1510,7 @@ head-spec-phrase := head-initial & basic-head-spec-phrase &
   [ NON-HEAD-DTR.SYNSEM.LOCAL.CAT.VAL.SPEC < [ LOCAL.CAT.POSSESSUM #poss ] >,
     HEAD-DTR.SYNSEM.LOCAL.CAT.POSSESSUM #poss ].
 
+;;; TODO: Fix this, POSS should introduce a REL, be an aux
 poss-unary-phrase := basic-unary-phrase &
   [ SYNSEM.LOCAL [ CONT.HOOK #hook,
                    CAT [ HEAD det &

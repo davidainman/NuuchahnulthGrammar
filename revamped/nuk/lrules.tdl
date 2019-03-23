@@ -18,3 +18,5 @@ inceptive-graduative-lex := inceptive-graduative-lex-rule.
 neutral-3rd-pred-lex := neutral-3rd-pred-lex-rule.
 
 noun-relativizer-lex := noun-relativizer-lex-rule.
+
+intransitive-to-int-adj-lex := intransitive-to-int-adj-lex-rule.

@@ -181,6 +181,10 @@ piišpiš := common-noun-noun-lex &
   [ STEM < "piišpiš" >,
     SYNSEM.LKEYS.KEYREL.PRED "_cat_n_rel" ].
 
+ʕiniiƛ := common-noun-noun-lex &
+  [ STEM < "ʕiniiƛ" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_dog_n_rel" ].
+
 kaatu := common-noun-noun-lex &
   [ STEM < "kaatu" >,
     SYNSEM.LKEYS.KEYREL.PRED "_cat_n_rel" ].
@@ -308,6 +312,10 @@ c̓ixʷatin := common-noun-noun-lex &
 ʕinm̓i := common-noun-noun-lex &
   [ STEM < "ʕinm̓i" >,
     SYNSEM.LKEYS.KEYREL.PRED "_snail_n_rel" ].
+
+ʕinm̓i := common-noun-noun-lex &
+  [ STEM < "pisatuwił" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_gym_n_rel" ].
 
 yuułuʔiłʔatḥ := proper-noun-noun-lex &
   [ STEM < "yuułuʔiłʔatḥ" >,
@@ -865,10 +873,6 @@ wiktim := perfective-intransitive-verb-lex &
   [ STEM < "wiktim" >,
     SYNSEM.LKEYS.KEYREL.PRED "_not.go_v_rel" ].
 
-n̓aacsa := continuative-intransitive-verb-lex &
-  [ STEM < "n̓aacsa" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_see_v_rel" ].
-
 wawaałwiqa := continuative-intransitive-verb-lex &
   [ STEM < "wawaałwiqa" >,
     SYNSEM.LKEYS.KEYREL.PRED "_bark_v_rel" ].
@@ -981,9 +985,9 @@ hałiił := perfective-transitive-verb-lex &
   [ STEM < "ʔuutaq" >,
     SYNSEM.LKEYS.KEYREL.PRED "_fix_v_rel" ].
 
-nuuk := perfective-transitive-verb-lex &
-  [ STEM < "nuuk" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_sing_v_rel" ].
+;nuuk := perfective-transitive-verb-lex &
+;  [ STEM < "nuuk" >,
+;    SYNSEM.LKEYS.KEYREL.PRED "_sing_v_rel" ].
 
 hitaat := perfective-transitive-verb-lex &
   [ STEM < "hitaat" >,
@@ -1161,7 +1165,7 @@ n̓aacsiičiƛ := perfective-transitive-verb-lex &
   [ STEM < "=waˑʔič̓as" >,
     SYNSEM.LKEYS.KEYREL.PRED "_hearsaymood_v_rel" ].
 
-%3Dweˑʔin_1 := hearsay-mood-1pl-verb-lex &
+%3Dweˑʔinni := hearsay-mood-1pl-verb-lex &
   [ STEM < "=weˑʔin" >,
     SYNSEM.LKEYS.KEYREL.PRED "_hearsaymood_v_rel" ].
 
@@ -1185,7 +1189,7 @@ n̓aacsiičiƛ := perfective-transitive-verb-lex &
   [ STEM < "=waˑʔicuuš" >,
     SYNSEM.LKEYS.KEYREL.PRED "_hearsaymood_v_rel" ].
 
-%3Dweˑʔin_2 := hearsay-mood-3-verb-lex &
+%3Dweˑʔin := hearsay-mood-3-verb-lex &
   [ STEM < "=weˑʔin" >,
     SYNSEM.LKEYS.KEYREL.PRED "_hearsaymood_v_rel" ].
 
@@ -1209,6 +1213,10 @@ t̓apat := transitive-clausal-verbs-verb-lex &
 m̓aw̓aa := continuative-transitive-verb-lex &
   [ STEM < "m̓aw̓aa" >,
     SYNSEM.LKEYS.KEYREL.PRED "_bring_v_rel" ].
+
+n̓aacsa := continuative-transitive-verb-lex &
+  [ STEM < "n̓aacsa" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_see_v_rel" ].
 
 ʔiicʔiiqḥa := repetitive-transitive-verb-lex &
   [ STEM < "ʔiicʔiiqḥa" >,
@@ -1255,3 +1263,17 @@ possessum-noun-2 := possessum-noun-lex-2 &
   [ STEM < "ʔaḥʔaaʔaƛ" >,
     SYNSEM.LKEYS.KEYREL.PRED "_and_coord_rel",
     CFORM "5" ].
+
+;;; Adverbs
+
+ʔaani := adv-lex &
+  [ STEM < "ʔaani" >,
+    SYNSEM.LKEYS.KEYREL.PRED "really_adv_rel" ].
+
+y̓uuqʷaa := adv-lex &
+  [ STEM < "y̓uuqʷaa" >,
+    SYNSEM.LKEYS.KEYREL.PRED "also_adv_rel" ].
+
+ʔaanaḥi := adv-lex &
+  [ STEM < "ʔaanaḥi" >,
+    SYNSEM.LKEYS.KEYREL.PRED "only_adv_rel" ].

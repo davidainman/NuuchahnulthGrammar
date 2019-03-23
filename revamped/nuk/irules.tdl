@@ -94,7 +94,11 @@ clitic-plural-suffix :=
 clitic-plural-lex-rule.
 
 past-prefix :=
-%prefix (* =(m)it) (=0 =(m)it)
+%prefix (* =\(m\)it) (=0 =\(m\)it)
+past-lex-rule.
+
+past-prefix :=
+%prefix (* =int) (=0 =int)
 past-lex-rule.
 
 clitic-poss-intrans-prefix1 :=
@@ -106,19 +110,19 @@ clitic-poss-intrans-prefix2 :=
 clitic-poss-intrans-lex-rule.
 
 clitic-passive-prefix :=
-%prefix (* =!at) (=0 =!at)
+%prefix (* =\!at) (=0 =\!at)
 clitic-passive-lex-rule.
 
 clitic-now-prefix :=
-%prefix (* =!aƛ) (=0 =!aƛ)
+%prefix (* =\!aƛ) (=0 =\!aƛ)
 clitic-now-lex-rule.
 
 clitic-causative-intrans-prefix :=
-%prefix (* =!ap) (=0 =!ap)
+%prefix (* =\!ap) (=0 =\!ap)
 clitic-causative-intrans-lex-rule.
 
 clitic-causative-trans-prefix :=
-%prefix (* =!ap) (=0 =!ap)
+%prefix (* =\!ap) (=0 =\!ap)
 clitic-causative-trans-lex-rule.
 
 clitic-future-prefix1 :=
@@ -130,9 +134,9 @@ clitic-future-prefix2 :=
 clitic-future-lex-rule.
 
 clitic-future-prefix3 :=
-%prefix (* =!aqƛ) (=0 =!aqƛ)
+%prefix (* =\!aqƛ) (=0 =\!aqƛ)
 clitic-future-lex-rule.
 
-clitic-also-prefix :=
-%prefix (* =ƛaˑ) (=0 =ƛaˑ)
+clitic-also-suffix :=
+%suffix (* =ƛaˑ) (=0 =ƛaˑ)
 clitic-also-lex-rule.

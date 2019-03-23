@@ -1,2 +1,59 @@
 ;;; -*- Mode: TDL; Coding: utf-8 -*-
 ;;; Semantically Empty Lexical Entries
+
+1sg_neutral := generator_rule & 
+ [ CONTEXT.RELS <! [ ARG1.PNG [ PER 1st,
+                                NUM singular  ],
+                     ARG0.E.MOOD neutral ] !>,
+   FLAGS.TRIGGER "%3Dsiˑ" ].
+
+1sg_neutral_2 := generator_rule & 
+ [ CONTEXT.RELS <! [ ARG1.PNG [ PER 1st,
+                                NUM singular  ],
+                     ARG0.E.MOOD neutral ] !>,
+   FLAGS.TRIGGER "%3Dsaˑ" ].
+
+1pl_neutral := generator_rule & 
+ [ CONTEXT.RELS <! [ ARG1.PNG [ PER 1st,
+                                NUM plural  ],
+                     ARG0.E.MOOD neutral ] !>,
+   FLAGS.TRIGGER "%3Dniˑ" ].
+
+1pl_neutral_2 := generator_rule & 
+ [ CONTEXT.RELS <! [ ARG1.PNG [ PER 1st,
+                                NUM plural  ],
+                     ARG0.E.MOOD neutral ] !>,
+   FLAGS.TRIGGER "%3Dnaˑ" ].
+
+2sg_neutral := generator_rule & 
+ [ CONTEXT.RELS <! [ ARG1.PNG [ PER 2nd,
+                                NUM singular  ],
+                     ARG0.E.MOOD neutral ] !>,
+   FLAGS.TRIGGER "%3Dsuˑk" ].
+
+2sg_neutral_2 := generator_rule & 
+ [ CONTEXT.RELS <! [ ARG1.PNG [ PER 2nd,
+                                NUM plural  ],
+                     ARG0.E.MOOD neutral ] !>,
+   FLAGS.TRIGGER "%3Dsuu" ].
+
+2pl_neutral := generator_rule & 
+ [ CONTEXT.RELS <! [ ARG1.PNG [ PER 2nd,
+                                NUM singular  ],
+                     ARG0.E.MOOD neutral ] !>,
+   FLAGS.TRIGGER "%3Dsuˑk" ].
+
+3_neutral := generator_rule & 
+ [ CONTEXT.RELS <! [ ARG1.PNG.PER 3rd,
+                     ARG0.E.MOOD neutral ] !>,
+   FLAGS.TRIGGER "%3D0" ].
+
+3_real := generator_rule & 
+ [ CONTEXT.RELS <! [ ARG1.PNG.PER 3rd,
+                     ARG0.E.MOOD strong-real ] !>,
+   FLAGS.TRIGGER "%3Dmaˑ" ].
+
+3_strong := generator_rule & 
+ [ CONTEXT.RELS <! [ ARG1.PNG.PER 3rd,
+                     ARG0.E.MOOD strong-real ] !>,
+   FLAGS.TRIGGER "%3Dʔiˑš" ].
