@@ -11,7 +11,9 @@ head-adj-scop := head-adj-scop-phrase.
 
 nf-subj-head := nf-subj-head-phrase.
 
-aux-type-raise := auxiliary-unary-type-raise.
+aux-type-raise := auxiliary-unary-type-raise-clause.
+
+art-type-raise := auxiliary-unary-type-raise-article.
 
 ;noun-phrase-relativizer := noun-phrase-relativizer-rule.
 
@@ -24,6 +26,8 @@ head-subj-2 := head-subj-phrase-2.
 head-comp-3 := head-comp-phrase-3.
 
 decl-head-opt-subj := nuk-head-opt-subj-phrase.
+
+imp-head-opt-subj := nuk-head-opt-subj-imp-phrase.
 
 basic-head-opt-comp := nuk-head-opt-comp-phrase.
 

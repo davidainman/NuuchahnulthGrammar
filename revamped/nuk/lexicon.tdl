@@ -459,7 +459,7 @@ maƛsum := adjective-adj-lex &
   [ STEM < "ƛaʔuu" >,
     SYNSEM.LKEYS.KEYREL.PRED "_other_a_rel" ].
 
-ƛaƛuu := adjective-adj-lex &
+ƛaƛuu := adjective-adj-pl-lex &
   [ STEM < "ƛaƛuu" >,
     SYNSEM.LKEYS.KEYREL.PRED "_other.pl_a_rel" ].
 
@@ -925,6 +925,10 @@ naʔaataḥ := durative-transitive-verb-lex &
   [ STEM < "naʔaataḥ" >,
     SYNSEM.LKEYS.KEYREL.PRED "_listen_v_rel" ].
 
+ƛ̓iixc̓us := durative-transitive-verb-lex &
+  [ STEM < "ƛ̓iixc̓us" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_laugh_at_v_rel" ].
+
 x̣ax̣aał := durative-transitive-verb-lex &
   [ STEM < "x̣ax̣aał" >,
     SYNSEM.LKEYS.KEYREL.PRED "_feel.sorry.for_v_rel" ].
@@ -1200,6 +1204,59 @@ n̓aacsiičiƛ := perfective-transitive-verb-lex &
 %3Dqaˑč̓a := dubitative-mood-3-verb-lex &
   [ STEM < "=qaˑč̓a" >,
     SYNSEM.LKEYS.KEYREL.PRED "_dubitativemood_v_rel" ].
+
+%3Dqaˑč̓a := dubitative-mood-3-verb-lex &
+  [ STEM < "=qaˑč̓a" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_dubitativemood_v_rel" ].
+
+%3D%21iˑ := command-mood-2sg-verb-lex &
+  [ STEM < "=!iˑ" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_commandmood_v_rel" ].
+
+%3D%21iˑč := command-mood-2pl-verb-lex &
+  [ STEM < "=!iˑč" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_commandmood_v_rel" ].
+
+%3D%21iˑn := command-mood-1pl-verb-lex &
+  [ STEM < "=!in" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_commandmood_v_rel" ].
+
+%3Dḥaˑs := question-mood-1sg-verb-lex &
+  [ STEM < "=ḥaˑs" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_question_v_rel" ].
+
+%3Dḥs := question-mood-1sg-verb-lex &
+  [ STEM < "=ḥs" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_question_v_rel" ].
+
+%3Dḥiˑn := question-mood-1pl-verb-lex &
+  [ STEM < "=ḥiˑn" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_question_v_rel" ].
+
+%3Dḥaˑk := question-mood-2sg-verb-lex &
+  [ STEM < "=ḥaˑk" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_question_v_rel" ].
+
+%3Dk := quesetion-mood-2sg-verb-lex &
+  [ STEM < "=k" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_question_v_rel" ].
+
+%3Dḥaˑsuu := question-mood-2pl-verb-lex &
+  [ STEM < "=ḥaˑsuu" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_question_v_rel" ].
+
+%3Dḥsuu := question-mood-2pl-verb-lex &
+  [ STEM < "=ḥsuu" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_question_v_rel" ].
+
+%3Dḥaˑ := question-mood-3-verb-lex &
+  [ STEM < "=ḥaˑ" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_question_v_rel" ].
+
+%3Dḥ := question-mood-3-verb-lex &
+  [ STEM < "=ḥ" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_question_v_rel" ].
+
 
 ;;; TODO: This rel is not needed
 %3Dʔiˑ := article-lex &

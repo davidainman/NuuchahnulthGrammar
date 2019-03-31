@@ -37,7 +37,8 @@ phcons := phlist & cons &
   [ FIRST synsem-min & [ LOCAL.CAT.POSTHEAD + ],
     REST  phlist ].
 
-phnull := phlist & null.
+; 2019-03-30 NB: Needs to inherit from olist because null is also optional :)
+phnull := phlist & null & olist.
 
 ;;; 2019-03-06 adding perfective values to aspect
 
@@ -45,7 +46,9 @@ aspect :+ [ PERF bool ].
 
 lex-or-phrase-synsem :+ [ INFOSTR-FLAG luk ].
 
-decl-head-subj-phrase :+ [ SYNSEM.INFOSTR-FLAG -, NON-HEAD-DTR.SYNSEM.INFOSTR-FLAG - ].
+; 2019-03-22 making sure that the subj is not an adv with MOD < >
+decl-head-subj-phrase :+ [ SYNSEM.INFOSTR-FLAG -, NON-HEAD-DTR.SYNSEM [ INFOSTR-FLAG -,
+                                                                        LOCAL.CAT.HEAD.MOD < > ] ].
 
 basic-head-1st-comp-phrase :+ [ SYNSEM.INFOSTR-FLAG -, NON-HEAD-DTR.SYNSEM.INFOSTR-FLAG - ].
 
@@ -138,9 +141,14 @@ bottom-coord-phrase :+ [ SYNSEM.LOCAL.CAT [ HEAD.POSSESSOR #possessor,
                                    POSSESSUM #possessum ] ].
 
 ;;; 2019-03-09 opt subj & comp should only apply to finite verbs (i.e., with the clitic attached)
-
+;;; 2019-03-09 should only be compatible with things headed by AUX
 nuk-head-opt-subj-phrase := decl-head-opt-subj-phrase &
-[ HEAD-DTR.SYNSEM.LOCAL.CAT.HEAD.FORM finite ].
+[ HEAD-DTR.SYNSEM.LOCAL.CAT.HEAD [ FORM finite,
+                                   AUX + ] ].
+
+nuk-head-opt-subj-imp-phrase := imp-head-opt-subj-phrase &
+[ HEAD-DTR.SYNSEM.LOCAL.CAT.HEAD [ FORM finite,
+                                   AUX + ] ].
 
 nuk-head-opt-comp-phrase := basic-head-opt-comp-phrase &
 [ HEAD-DTR.SYNSEM.LOCAL.CAT.HEAD.FORM finite ].
@@ -258,12 +266,11 @@ predicate-lex := lex-item &
 
 ;;; 2019-03-12 making the ARG1 the XARG
 nuk-basic-noun-lex := norm-sem-lex-item & basic-icons-lex-item &
-  [ SYNSEM [ LOCAL [ CAT.HEAD noun,
+  [ SYNSEM [ LOCAL [ CAT.HEAD noun & [ AUX - ],
                      CONT.HOOK.XARG #xarg ],
              LKEYS.KEYREL arg1-ev-relation & [ ARG1 #xarg ] ] ].
 
 ;;; 2019-03-12 nouns are events with subjects.
-
 noun-lex := nuk-basic-noun-lex & no-hcons-lex-item & non-mod-lex-item & predicate-lex & 
   [ ARG-ST < #subj & 
              [ LOCAL [ CAT cat-sat & [ VAL [ SPR < >,
@@ -434,7 +441,7 @@ transitive-verb-lex := main-verb-lex & transitive-lex-item &
          NON-LOCAL #nonlocal ]> ].
 
 ;;; 2019-03-13
-article-lex := 2p-lex &
+article-lex := 2p-lex & 
 [ SYNSEM.LOCAL [ CAT [ HEAD.PRD -,
                        VAL.COMPS.FIRST.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX #index & [ PNG.PER 3rd ] ],
                  CONT.HOOK.INDEX #index ] ].
@@ -452,7 +459,8 @@ neutral-3rd-pred-lex-rule := local-change-only-lex-rule & same-agr-lex-rule & sa
                                  SPEC #spec ]],
                      CONT [ HOOK [ GTOP #gtop,
                                    LTOP #ltop,
-                                   INDEX #index & [ E.MOOD neutral ],
+                                   INDEX #index & [ E.MOOD neutral,
+                                                    SF prop ],
                                    XARG #xarg,
                                    ICONS-KEY #ikey,
                                    CLAUSE-KEY #ckey ],
@@ -522,8 +530,9 @@ mood-2p-verb-lex := 2p-lex & raise-sem-lex-item & post-clitic-also-rule-dtr & po
 ;mood-strong-real-verb-lex := mood-2p-verb-lex &
 ;  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.E.MOOD strong-real ].
 
-mood-strong-real-verb-lex := mood-2p-verb-lex &
-  [ SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL.CONT.HOOK.INDEX.E.MOOD strong-real ].
+mood-strong-real-verb-lex := mood-2p-verb-lex & aux-type-raising-dtr &
+  [ SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL.CONT.HOOK.INDEX [ E.MOOD strong-real,
+                                                             SF prop ] ].
 
 ;;; 2019-03-08 for the verbs that already have aspect & don't need more
 main-verb-inflected-lex := verb-lex &
@@ -535,29 +544,43 @@ main-verb-verb-lex := verb-lex & aspect-2-rule-dtr & aspect-3-rule-dtr &
     INFLECTED [ ASPECT-2-FLAG -,
                 ASPECT-1-FLAG - ] ].
 
-mood-weak-verb-lex := mood-2p-verb-lex &
-  [ SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL.CONT.HOOK.INDEX.E.MOOD weak ].
+mood-weak-verb-lex := mood-2p-verb-lex &  aux-type-raising-dtr &
+  [ SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL.CONT.HOOK.INDEX [ E.MOOD weak,
+                                                             SF prop ] ].
 
-mood-neutral-verb-lex := mood-2p-verb-lex &
-  [ SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL.CONT.HOOK.INDEX.E.MOOD neutral ].
+mood-neutral-verb-lex := mood-2p-verb-lex & aux-type-raising-dtr &
+  [ SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL.CONT.HOOK.INDEX [ E.MOOD neutral,
+                                                             SF prop ] ].
 
-mood-unknown-verb-lex := mood-2p-verb-lex &
-  [ SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL.CONT.HOOK.INDEX.E.MOOD unknown ].
+mood-unknown-verb-lex := mood-2p-verb-lex & aux-type-raising-dtr &
+  [ SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL.CONT.HOOK.INDEX [ E.MOOD unknown,
+                                                             SF prop ] ].
 
-mood-possible-verb-lex := mood-2p-verb-lex &
-  [ SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL.CONT.HOOK.INDEX.E.MOOD possible ].
+mood-possible-verb-lex := mood-2p-verb-lex & aux-type-raising-dtr &
+  [ SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL.CONT.HOOK.INDEX [ E.MOOD possible,
+                                                             SF prop ] ].
 
-mood-hearsay-verb-lex := mood-2p-verb-lex &
-  [ SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL.CONT.HOOK.INDEX.E.MOOD hearsay ].
+mood-hearsay-verb-lex := mood-2p-verb-lex & aux-type-raising-dtr &
+  [ SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL.CONT.HOOK.INDEX [ E.MOOD hearsay,
+                                                             SF prop ] ].
 
-mood-inferential-verb-lex := mood-2p-verb-lex &
-  [ SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL.CONT.HOOK.INDEX.E.MOOD inferential ].
+mood-inferential-verb-lex := mood-2p-verb-lex & aux-type-raising-dtr &
+  [ SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL.CONT.HOOK.INDEX [ E.MOOD inferential,
+                                                             SF prop ] ].
 
-mood-purposive-verb-lex := mood-2p-verb-lex &
-  [ SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL.CONT.HOOK.INDEX.E.MOOD purposive ].
+mood-purposive-verb-lex := mood-2p-verb-lex & aux-type-raising-dtr &
+  [ SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL.CONT.HOOK.INDEX [ E.MOOD purposive,
+                                                             SF prop ] ].
 
-mood-dubitative-verb-lex := mood-2p-verb-lex &
-  [ SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL.CONT.HOOK.INDEX.E.MOOD dubitative ].
+mood-dubitative-verb-lex := mood-2p-verb-lex & aux-type-raising-dtr &
+  [ SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL.CONT.HOOK.INDEX [ E.MOOD dubitative,
+                                                             SF prop ] ].
+
+mood-command-verb-lex := mood-2p-verb-lex & aux-type-raising-dtr &
+  [ SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL.CONT.HOOK.INDEX.SF comm ].
+
+mood-question-verb-lex := mood-2p-verb-lex & aux-type-raising-dtr & 
+  [ SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL.CONT.HOOK.INDEX.SF ques ].
 
 ;; original:
 ;; SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [ PER 1st,
@@ -645,6 +668,22 @@ hearsay-mood-3-verb-lex := mood-hearsay-verb-lex & 3-aux-verb-lex.
 
 dubitative-mood-3-verb-lex := mood-dubitative-verb-lex & 3-aux-verb-lex.
 
+command-mood-2sg-verb-lex := mood-command-verb-lex & 2sg-aux-verb-lex.
+
+command-mood-2pl-verb-lex := mood-command-verb-lex & 2pl-aux-verb-lex.
+
+command-mood-1pl-verb-lex := mood-command-verb-lex & 1pl-aux-verb-lex.
+
+question-mood-1sg-verb-lex := mood-question-verb-lex & 1sg-aux-verb-lex.
+
+question-mood-1pl-verb-lex := mood-question-verb-lex & 1pl-aux-verb-lex.
+
+question-mood-2sg-verb-lex := mood-question-verb-lex & 2sg-aux-verb-lex.
+
+question-mood-2pl-verb-lex := mood-question-verb-lex & 2pl-aux-verb-lex.
+
+question-mood-3-verb-lex := mood-question-verb-lex & 3-aux-verb-lex.
+
 transitive-clausal-verbs-verb-lex := main-verb-verb-lex & transitive-verb-lex.
 
 continuative-transitive-verb-lex := transitive-verb-inflected-lex &
@@ -657,14 +696,15 @@ repetitive-transitive-verb-lex := transitive-verb-inflected-lex &
 
 ;;; Auxiliaries
 
+; 2019-03-29 subj is raised
 s-comp-aux := aux-lex & basic-one-arg &
   [ SYNSEM.LOCAL.CAT.VAL [ SPR < >,
                            SPEC < >,
-                           SUBJ < >,
+                           SUBJ < #subj >,
                            COMPS < #comps > ],
     ARG-ST < #comps &
-             [ LOCAL.CAT [ VAL [ SUBJ < >,
-                                 COMPS < >,
+             [ LOCAL.CAT [ VAL [ SUBJ < #subj >,
+                                 COMPS < > ,
                                  SPR < >,
                                  SPEC < > ],
                            HEAD verb ] ] > ].
@@ -681,20 +721,26 @@ s-comp-aux-with-pred := s-comp-aux & hcons-lex-item &
     ARG-ST < [ LOCAL.CONT.HOOK.LTOP #larg ] > ].
 
 neg-aux-lex := s-comp-aux-with-pred &
-  [ SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL.CAT.HEAD.FORM nonfinite ].
+  [ SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL.CAT.HEAD [ AUX -,
+                                                      FORM nonfinite ] ].
 
 ;;; Copulas
 
+; 2019-03-23 there is no reason that the complement's subject needs to be null.
+; In fact I think it should be cons & equal to the copula's subj. Adding this.
+; Also had to remove cat-sat from COMPS < [ LOCAL.CAT ] > 
 cop-lex := basic-verb-lex-super & trans-first-arg-raising-lex-item-2 & non-mod-lex-item &
-  [ SYNSEM.LOCAL [ CAT.VAL [ SUBJ < [ LOCAL [ CONT.HOOK.INDEX #xarg,
+  [ SYNSEM.LOCAL [ CAT.VAL [ SUBJ < #subj & [ LOCAL [ CONT.HOOK.INDEX #xarg,
                                               CAT cat-sat &
                                                   [ VAL [ SPR < >,
                                                           COMPS < > ],
                                                     HEAD noun ] ] ] >,
-                             COMPS < [ LOCAL.CAT cat-sat &
-                                                 [ HEAD.PRD +,
-                                                   VAL [ SUBJ < >,
-                                                         COMPS < > ] ] ] >,
+                             COMPS < [ LOCAL.CAT [ HEAD [ PRD +,
+                                                          MOD < > ],
+                                                   VAL [ SUBJ < #subj >,
+                                                         COMPS < >,
+                                                         SPEC < >,
+                                                         SPR < > ] ] ] >,
                              SPR < >,
                              SPEC < > ],
                    CONT.HOOK.XARG #xarg ] ].
@@ -702,12 +748,14 @@ cop-lex := basic-verb-lex-super & trans-first-arg-raising-lex-item-2 & non-mod-l
 ; Copula type taking adjectival complements.
 ; Need to define more for additional complement types.
 
-adj-comp-copula-verb-lex := cop-lex &
-  [ SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL.CAT.HEAD adj ].
+; 2019-03-23 expanding to include verbs
+adj-verb-comp-copula-verb-lex := cop-lex &
+  [ SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL.CAT.HEAD +vj ].
 
-copula-cop-lex := adj-comp-copula-verb-lex.
+copula-cop-lex := adj-verb-comp-copula-verb-lex.
 
 ;;; Adjectives
+
 
 adj-lex := basic-intersective-adjective-lex & predicate-lex &
   [ SYNSEM.LOCAL.CAT.HEAD.AUX - ].
@@ -715,14 +763,18 @@ adj-lex := basic-intersective-adjective-lex & predicate-lex &
 adjective-adj-lex := attr-adj-lex & stative-pred-adj-lex &
   [ SYNSEM.LOCAL.CAT [ POSTHEAD - ] ].
 
+adjective-adj-pl-lex := adjective-adj-lex & 
+  [ SYNSEM.LOCAL.CAT.HEAD.MOD < [ LOCAL.CONT.HOOK.INDEX.PNG.NUM plural ] > ].
+
 quantifier-adj-lex := attr-adj-lex & stative-pred-adj-lex &
   [ SYNSEM.LOCAL.CAT [ POSTHEAD - ] ].
 
 ; Basic attributive adjective definition
-
+; 2019-03-30 TODO: review removed head noun (doesn't have to be) & val.spr cons (should be able to be empty??).
+;            instead head.prd + and that's it.
+; 2019-03-30 removing PRD + as it doesn't work (as foreseen) with adjective raising. Changing to AUX -.
 attr-adj-lex := adj-lex & intersective-mod-lex &
-  [ SYNSEM.LOCAL.CAT.HEAD.MOD < [ LOCAL.CAT [ HEAD noun,
-                                              VAL.SPR cons ] ] > ].
+  [ SYNSEM.LOCAL.CAT.HEAD.MOD < [ LOCAL.CAT [ HEAD.AUX - ] ] > ].
 
 ; Stative predicate adjective definition
 
@@ -834,7 +886,7 @@ post-clitic-habitual-lex-rule-dtr := word-or-lexrule.
 ;;; 2019-03-22 allowing intransitive verbs to become adjectives
 intransitive-to-int-adj-lex-rule := cat-change-only-lex-rule & 
   [ SYNSEM.LOCAL.CAT [ HEAD adj &
-                             [ PRD #prd,
+                             [ PRD -,
                                NMZ #nmz,
                                AUX -,
                                MOD < #subj & [ LOCAL intersective-mod ] >,
@@ -847,8 +899,8 @@ intransitive-to-int-adj-lex-rule := cat-change-only-lex-rule &
                                  SPEC < >,
                                  SUBJ < >,
                                  COMPS < > ] ],
-    DTR.SYNSEM.LOCAL [ CAT [ HEAD verb & 
-                              [ PRD #prd,
+    DTR [ SYNSEM.LOCAL [ CAT [ HEAD verb & 
+                              [ PRD +,
                                 NMZ #nmz,
                                 AUX -,
                                 MOD < >,
@@ -860,7 +912,8 @@ intransitive-to-int-adj-lex-rule := cat-change-only-lex-rule &
                              VAL [ SUBJ < #subj >,
                                    COMPS < >,
                                    SPR < >,
-                                   SPEC < > ] ] ] ].
+                                   SPEC < > ] ] ],
+          INFLECTED infl-satisfied ] ].
 
 ;;; 2019-03-12 allowing nouns to go through this rule to become individuals
 ;;; this is the version of the rule that just changes the index
@@ -1297,22 +1350,25 @@ scopal-rel-lex-rule := lex-rule &
 ;;; Phrasal Types
 ;;;;;;;;;;;;;;;;;;;
 
-; 2019-03-19 
-auxiliary-unary-type-raise := basic-unary-phrase &
-  [ SYNSEM.LOCAL [ CONT.HOOK #hook,
-                   CAT [ HEAD verb & [ AUX-RAISE +, 
+; 2019-03-23 Need to make sure adjectives don't apply to the left of the 2P article
+adj-head-int-phrase :+ [ HEAD-DTR.SYNSEM.LOCAL.CAT.HEAD.AUX - ].
+
+;2019-03-23 Doing the same to adj-head-scop-phrase
+adj-head-scop-phrase :+ [ HEAD-DTR.SYNSEM.LOCAL.CAT.HEAD.AUX - ].
+
+;2019-03-30
+auxiliary-unary-type-raise-super := basic-unary-phrase &
+  [ SYNSEM.LOCAL [ CAT [ HEAD [ AUX-RAISE +, 
                                 AUX +, 
                                 PRON #pron,
                                 NMZ #nmz,
                                 FORM #form,
                                 MOD < > ],
-                         VAL [ SUBJ < #subj >,
-                               COMPS [ FIRST [ LOCAL.CAT [ HEAD [ MOD < #fcomp >,
+                         VAL [ COMPS [ FIRST [ LOCAL.CAT [ HEAD [ MOD cons,
                                                                   AUX - ],
                                                      POSTHEAD - ],
                                                OPT - ],
-                                       REST [ FIRST #fcomp & [ LOCAL [ CAT [ HEAD #head,
-                                                                   VAL #val,
+                                       REST [ FIRST [ LOCAL [ CAT [ HEAD #head,
                                                                    MC #mc,
                                                                    MKG #mkg,
                                                                    HC-LIGHT #hc-light,
@@ -1328,9 +1384,8 @@ auxiliary-unary-type-raise := basic-unary-phrase &
     C-CONT [ RELS  <! !>,
              HCONS <! !>,
              ICONS <! !> ],
-    ARGS < aux-type-raising-dtr & [ SYNSEM.LOCAL [ CAT [ VAL [ SUBJ < #subj >,
+    ARGS < [ SYNSEM.LOCAL [ CAT [ VAL [ 
                                         COMPS [FIRST [ LOCAL [ CAT [ HEAD #head,
-                                                                     VAL #val,
                                                                      MC #mc,
                                                                      MKG #mkg,
                                                                      HC-LIGHT #hc-light,
@@ -1347,12 +1402,33 @@ auxiliary-unary-type-raise := basic-unary-phrase &
                                          AUX +,
                                          PRON #pron,
                                          NMZ #nmz,
-                                         FORM #form ] ],
-                            CONT.HOOK #hook ],
+                                         FORM #form ] ] ],
              INFLECTED infl-satisfied ] > ].
 
+; 2019-03-19 
+auxiliary-unary-type-raise-clause := auxiliary-unary-type-raise-super &
+  [ SYNSEM.LOCAL [ CAT [ HEAD verb,
+                         VAL [ SUBJ < #subj >,
+                               COMPS [ FIRST.LOCAL.CAT.HEAD.MOD < #fcomp >,
+                                       REST.FIRST #fcomp ] ] ],
+                 CONT.HOOK #hook ],
+    ARGS < aux-type-raising-dtr & [ SYNSEM.LOCAL [ CAT.VAL.SUBJ < #subj >,
+                                                   CONT.HOOK #hook ] ] > ].
 
-;;; 2019-03-13 Defining daughter's comps.first as posthead or null,
+; 2019-03-30 comps comps should always be null under this type, don't know how it becomes contentful.
+auxiliary-unary-type-raise-article := auxiliary-unary-type-raise-super &
+  [ SYNSEM.LOCAL [ CAT [ HEAD noun,
+                         VAL [ SUBJ < >,
+                               COMPS [ FIRST.LOCAL.CAT.HEAD.MOD < #mod & [ LOCAL.CONT.HOOK #hook ] >,
+                                       REST.FIRST.LOCAL.CAT.VAL [ SUBJ < #mod >,
+                                                                  COMPS #vcomps,
+                                                                  SPR < >,
+                                                                  SPEC < > ] ] ] ],
+                 CONT.HOOK #hook ],
+    ARGS < article-lex & [ SYNSEM.LOCAL.CAT.VAL [ SUBJ < #mod >,
+                                                  COMPS.FIRST.LOCAL.CAT.VAL.COMPS #vcomps ] ] > ].
+
+;;; 2019-03-13 Defining daughter's co mps.first as posthead or null,
 ;;; to prevent this from firing on POSTHEAD - (i.e., 2P's first COMP)
 head-comp-phrase := basic-head-1st-comp-phrase & head-initial-head-nexus &
   [ SYNSEM.LIGHT -,
@@ -1411,9 +1487,10 @@ head-subj-phrase-2 := basic-head-subj-phrase & declarative-clause & head-initial
 
 ;;; 2019-03-13 Defining comps as posthead or null,
 ;;; to prevent this from firing if there is a POSTHEAD - element (i.e., 2P's first COMP)
+;;; 2019-03-30 changing from phlist to olist (??)
 head-comp-phrase-2 := basic-head-2nd-comp-phrase & head-initial-head-nexus &
   [ SYNSEM [ LIGHT -,
-             LOCAL.CAT.VAL.COMPS phlist ] ].
+             LOCAL.CAT.VAL.COMPS olist ] ].
 
 ;;; 2019-03-13 Defining daughter's comps as posthead or null,
 ;;; to prevent this from firing if there is a POSTHEAD - element (i.e., 2P's first COMP)
