@@ -17,6 +17,26 @@ inceptive-graduative-lex := inceptive-graduative-lex-rule.
 
 neutral-3rd-pred-lex := neutral-3rd-pred-lex-rule.
 
+neutral-3rd-adv-pred-lex := neutral-3rd-pred-adv-lex-rule.
+
 noun-relativizer-lex := noun-relativizer-lex-rule.
 
 intransitive-to-int-adj-lex := intransitive-to-int-adj-lex-rule.
+
+type-raise-clausal-clitic-lex := type-raise-clausal-clitic-lex-rule.
+
+type-raise-clausal-article-lex := type-raise-article-lex-rule.
+
+auxiliary-type-raise-neutral-3rd := auxiliary-type-raise-neutral-3rd-lex-rule.
+
+; gap rules
+
+no-gap-lex := no-gap-lex-rule.
+
+;gapped-subject-lex := gapped-subject-lex-rule.
+
+;gapped-transitive-comp-lex := gapped-transitive-comp-lex-rule.
+
+;gapped-ditransitive-first-comp-lex-rule := gapped-ditransitive-first-comp-lex.
+
+;gapped-ditransitive-second-comp-lex := gapped-ditransitive-second-comp-lex-rule.

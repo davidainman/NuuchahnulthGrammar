@@ -423,6 +423,10 @@ suw̓aaq := pronoun-pred-2sg-noun-lex &
   [ STEM < "ƛuł" >,
     SYNSEM.LKEYS.KEYREL.PRED "_good_a_rel" ].
 
+y̓aaq := adjective-adj-lex &
+  [ STEM < "y̓aaq" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_long_a_rel" ].
+
 ḥaaʔak := adjective-adj-lex &
   [ STEM < "ḥaaʔak" >,
     SYNSEM.LKEYS.KEYREL.PRED "_strong_a_rel" ].
@@ -598,7 +602,7 @@ ḥuq := intransitive-verb-verb-lex &
     SYNSEM.LKEYS.KEYREL.PRED "_tip.over_v_rel" ].
 
 m̓uy := intransitive-verb-verb-lex &
-  [ STEM < "m̓uy" >,
+  [ STEM < "m̓u" >,
     SYNSEM.LKEYS.KEYREL.PRED "_burn_v_rel" ].
 
 kitḥ := intransitive-verb-verb-lex &
@@ -1170,7 +1174,7 @@ n̓aacsiičiƛ := perfective-transitive-verb-lex &
     SYNSEM.LKEYS.KEYREL.PRED "_hearsaymood_v_rel" ].
 
 %3Dweˑʔinni := hearsay-mood-1pl-verb-lex &
-  [ STEM < "=weˑʔin" >,
+  [ STEM < "=weˑʔinni" >,
     SYNSEM.LKEYS.KEYREL.PRED "_hearsaymood_v_rel" ].
 
 %3Dwaˑʔičin := hearsay-mood-1pl-verb-lex &
@@ -1325,12 +1329,16 @@ possessum-noun-2 := possessum-noun-lex-2 &
 
 ʔaani := adv-lex &
   [ STEM < "ʔaani" >,
-    SYNSEM.LKEYS.KEYREL.PRED "really_adv_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_really_adv_rel" ].
+
+qii := adv-lex &
+  [ STEM < "qii" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_long.time_adv_rel" ].
 
 y̓uuqʷaa := adv-lex &
   [ STEM < "y̓uuqʷaa" >,
-    SYNSEM.LKEYS.KEYREL.PRED "also_adv_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_also_adv_rel" ].
 
 ʔaanaḥi := adv-lex &
   [ STEM < "ʔaanaḥi" >,
-    SYNSEM.LKEYS.KEYREL.PRED "only_adv_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_only_adv_rel" ].

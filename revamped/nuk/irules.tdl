@@ -26,7 +26,7 @@ momentaneous-form-suffix6 :=
 momentaneous-form-lex-rule.
 
 inceptive-form-suffix1 :=
-%suffix (* -°iˑčiƛ)
+%suffix (* -iˑčiƛ)
 inceptive-form-lex-rule.
 
 inceptive-form-suffix2 :=
