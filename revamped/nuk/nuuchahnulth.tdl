@@ -295,8 +295,9 @@ noun-lex := nuk-basic-noun-lex & no-hcons-lex-item & non-mod-lex-item & predicat
 ;no-spr-noun-lex := noun-lex &
 ;  [ SYNSEM.LOCAL.CAT.VAL.SPR < [ OPT + ] > ].
 
-common-noun-noun-lex := noun-lex &
-  [ SYNSEM.LOCAL.CONT.HOOK.XARG.PNG.PER 3rd ].
+; 2019-04-03 this is blocking things like "I was a child"!!!!
+common-noun-noun-lex := noun-lex.
+;  [ SYNSEM.LOCAL.CONT.HOOK.XARG.PNG.PER 3rd ].
 
 ;;; 2019-03-12 This should actually be the "normal" noun-lex!
 ;;; TODO: make this PRD -
@@ -438,8 +439,9 @@ transitive-verb-lex := main-verb-lex & transitive-lex-item &
        [ LOCAL [ CAT [ HEAD.PRD -,
            VAL.COMPS < > ],
            CONT.HOOK.INDEX #xarg ]],
-       #comps & lex-synsem &
-       [ L-PERIPH +,
+       #comps &
+       [ LIGHT +,
+         L-PERIPH +,
          OPT -,
          LOCAL [ CAT [ VAL [ SUBJ < #subj >,
                              COMPS #vcomps ],
@@ -505,9 +507,11 @@ neutral-3rd-pred-adv-lex-rule := local-change-only-lex-rule & same-agr-lex-rule 
                                MOD < >,
                                FORM finite ],
                            VAL [ SUBJ < #subj & [ LOCAL.CONT.HOOK.INDEX.PNG.PER 3rd ] >,
-                                 COMPS  < #mod & [ LOCAL [ CAT [ VAL [ SUBJ < #subj >,
+                                 COMPS  < #mod & [ LIGHT +,
+                                                   LOCAL [ CAT [ VAL [ SUBJ < #subj >,
                                                                        COMPS #vcomps & phlist ],
-                                                                 HEAD verb & [ AUX-RAISE - ],
+                                                                 HEAD verb & [ AUX -,
+                                                                               AUX-RAISE - ],
                                                                  POSTHEAD + ],
                                                            CONT.HOOK.INDEX #index & [ E.MOOD neutral,
                                                                                       SF prop ] ],
@@ -634,27 +638,94 @@ mood-question-verb-lex := mood-2p-verb-lex & aux-type-raising-dtr &
   [ SYNSEM.LOCAL.CAT [ VAL.COMPS.FIRST.LOCAL.CONT.HOOK.INDEX.SF ques,
                        MC + ] ].
 
+; 2019-04-03 this is a copy of 2p-lex & 2p-verb-lex, plus MC - 
+; TODO: should unify and straighten type hierarchy later. What I did:
+; I removed the #xarg matching stuff, CONT <! !> was pushed lower, and HEAD verb --> noun, HEAD PRD --> -
+; Moved MOD < > lower
+; Instead of inheriting from raise-sem-lex-item I inherited from no-hcons-lex-item
+; I need: (1) a super type of 2p-lex-super (looks like below) that lacks CONT information, #xarg matching, & no raise-sem-lex-item
+; (2) a subtype that adds empty CONT 2p-lex-no-cont 
+; (3) a subtype that adds xarg matching and raise-sem-lex
+; definite-when-verb inherits from (1), other definite types inherit from (2), all other from (3)
+mood-definite-verb-lex-super := no-hcons-lex-item & post-clitic-also-rule-dtr & post-clitic-plural-rule-dtr & pre-clitic-causative-rule-dtr & pre-clitic-future-rule-dtr & pre-clitic-now-rule-dtr & pre-clitic-passive-rule-dtr & pre-clitic-poss-rule-dtr & post-clitic-habitual-lex-rule-dtr &
+  [ SYNSEM [ LOCAL [ CAT [ HEAD noun & [ FORM finite,
+                                         AUX +,
+                                         PRD - ],
+           VAL [ SUBJ < #subj >,
+                 COMPS < #comps . #vcomps >,
+                 SPR < >,
+                 SPEC < > ],
+             MC - ] ],
+             NON-LOCAL #nonlocal ],
+    ARG-ST < #subj &
+       [ LOCAL [ CAT [ HEAD.PRD -,
+           VAL.COMPS < > ] ]],
+       #comps &
+       [ LIGHT +,
+         L-PERIPH +,
+         OPT -,
+         LOCAL [ CAT [ VAL [ SUBJ < #subj >,
+                             COMPS #vcomps ],
+                       HEAD [ PRD +,
+                              FORM nonfinite ],
+                       POSTHEAD - ] ],
+         NON-LOCAL #nonlocal ]> ].
+
+mood-definite-verb-lex-super-2 := mood-definite-verb-lex-super & 
+  [ SYNSEM.LOCAL.CAT.HEAD.MOD < > ].
+
+; 2019-04-03 constraining this to intransitives
+mood-definite-subj-raising-verb-lex := mood-definite-verb-lex-super-2 & 
+  [ SYNSEM.LOCAL [ CAT.VAL.COMPS < [ LOCAL.CAT [ HEAD verb,
+                                                 VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX #index ] ] >,
+                   CONT [ HOOK.INDEX #index,
+                            RELS <! !>,
+                            HCONS <! !>,
+                            ICONS <! !> ] ] ].
+
+mood-definite-obj-raising-verb-lex := mood-definite-verb-lex-super-2 & 
+  [ SYNSEM.LOCAL [ CAT.VAL.COMPS.FIRST.LOCAL.CAT [ HEAD verb,
+                                                   VAL.COMPS.FIRST.LOCAL.CONT.HOOK.INDEX #index ],
+                   CONT [ HOOK.INDEX #index,
+                            RELS <! !>,
+                            HCONS <! !>,
+                            ICONS <! !> ] ] ].
+
+mood-definite-when-verb-lex := mood-definite-verb-lex-super &
+  [ SYNSEM.LOCAL [ CAT [ VAL [ COMPS.FIRST.LOCAL.CONT.HOOK.INDEX #arg0 ],
+                         MC -,
+                         HEAD.MOD < [ LOCAL.CONT.HOOK.INDEX #arg1 ] > ],
+                   CONT [ HOOK [ INDEX #arg0,
+                                 XARG #arg1,
+                                 LTOP #ltop ],
+                          RELS <! [ PRED "when_rel",
+                                    LBL #ltop,
+                                    ARG0 event & #arg0,
+                                    ARG1 event & #arg1 ] !>,
+                          HCONS <! !>,
+                          ICONS <! !> ] ] ].
+
 ;; original:
 ;; SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [ PER 1st,
 ;;                                                                NUM singular ]
-
-1sg-aux-verb-lex := mood-2p-verb-lex &
+;; TODO: Used to inherit from mood-2p-verb-lex, removed to get definite mood working
+1sg-aux-verb-lex := lex-item &
   [ SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [ PER 1st,
                                                                                           NUM singular ] ].
 
-1pl-aux-verb-lex := mood-2p-verb-lex &
+1pl-aux-verb-lex := lex-item &
   [ SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [ PER 1st,
                                                                 NUM plural ] ].
 
-2sg-aux-verb-lex := mood-2p-verb-lex &
+2sg-aux-verb-lex := lex-item &
   [ SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [ PER 2nd,
                                                                 NUM singular ] ].
 
-2pl-aux-verb-lex := mood-2p-verb-lex &
+2pl-aux-verb-lex := lex-item &
   [ SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [ PER 2nd,
                                                                 NUM plural ] ].
 
-3-aux-verb-lex := mood-2p-verb-lex &
+3-aux-verb-lex := lex-item &
   [ SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PER 3rd ].
 
 mood-strong-real-1sg-verb-lex := mood-strong-real-verb-lex & 1sg-aux-verb-lex.
@@ -720,6 +791,8 @@ hearsay-mood-3-verb-lex := mood-hearsay-verb-lex & 3-aux-verb-lex.
 
 dubitative-mood-3-verb-lex := mood-dubitative-verb-lex & 3-aux-verb-lex.
 
+inferential-mood-3-verb-lex := mood-inferential-verb-lex & 3-aux-verb-lex.
+
 command-mood-2sg-verb-lex := mood-command-verb-lex & 2sg-aux-verb-lex.
 
 command-mood-2pl-verb-lex := mood-command-verb-lex & 2pl-aux-verb-lex.
@@ -735,6 +808,36 @@ question-mood-2sg-verb-lex := mood-question-verb-lex & 2sg-aux-verb-lex.
 question-mood-2pl-verb-lex := mood-question-verb-lex & 2pl-aux-verb-lex.
 
 question-mood-3-verb-lex := mood-question-verb-lex & 3-aux-verb-lex.
+
+definite-mood-subj-1sg-verb-lex := mood-definite-subj-raising-verb-lex & 1sg-aux-verb-lex.
+
+definite-mood-subj-1pl-verb-lex := mood-definite-subj-raising-verb-lex & 1pl-aux-verb-lex.
+
+definite-mood-subj-2sg-verb-lex := mood-definite-subj-raising-verb-lex & 2sg-aux-verb-lex.
+
+definite-mood-subj-2pl-verb-lex := mood-definite-subj-raising-verb-lex & 2pl-aux-verb-lex.
+
+definite-mood-subj-3-verb-lex := mood-definite-subj-raising-verb-lex & 3-aux-verb-lex.
+
+definite-mood-obj-1sg-verb-lex := mood-definite-obj-raising-verb-lex & 1sg-aux-verb-lex.
+
+definite-mood-obj-1pl-verb-lex := mood-definite-obj-raising-verb-lex & 1pl-aux-verb-lex.
+
+definite-mood-obj-2sg-verb-lex := mood-definite-obj-raising-verb-lex & 2sg-aux-verb-lex.
+
+definite-mood-obj-2pl-verb-lex := mood-definite-obj-raising-verb-lex & 2pl-aux-verb-lex.
+
+definite-mood-obj-3-verb-lex := mood-definite-obj-raising-verb-lex & 3-aux-verb-lex.
+
+definite-mood-when-1sg-verb-lex := mood-definite-when-verb-lex & 1sg-aux-verb-lex.
+
+definite-mood-when-1pl-verb-lex := mood-definite-when-verb-lex & 1pl-aux-verb-lex.
+
+definite-mood-when-2sg-verb-lex := mood-definite-when-verb-lex & 2sg-aux-verb-lex.
+
+definite-mood-when-2pl-verb-lex := mood-definite-when-verb-lex & 2pl-aux-verb-lex.
+
+definite-mood-when-3-verb-lex := mood-definite-when-verb-lex & 3-aux-verb-lex.
 
 transitive-clausal-verbs-verb-lex := main-verb-verb-lex & transitive-verb-lex.
 
@@ -973,6 +1076,7 @@ intransitive-to-int-adj-lex-rule := cat-change-only-lex-rule &
 ;;; 2019-03-12 allowing nouns to go through this rule to become individuals
 ;;; this is the version of the rule that just changes the index
 ;;; TODO: This started working when I added the C-CONT. WHY!? Investigate...
+;;; 2019-04-03 pushing 3rd person info into here!
 noun-relativizer-lex-rule := same-non-local-lex-rule & same-modified-lex-rule & same-light-lex-rule & 
   [ SYNSEM [ LOCAL [ CAT [ HEAD noun & 
                             [ PRD -,
@@ -988,7 +1092,7 @@ noun-relativizer-lex-rule := same-non-local-lex-rule & same-modified-lex-rule & 
                                SUBJ < >,
                                SPR < >,
                                COMPS < > ] ],
-                   CONT.HOOK [ INDEX #xarg ] ] ],
+                   CONT.HOOK [ INDEX #xarg & [ PNG.PER 3rd ] ] ] ],
     C-CONT [ RELS <! !>,
        HCONS <! !>,
        HOOK.INDEX #xarg & ref-ind ],

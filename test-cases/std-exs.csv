@@ -48,7 +48,8 @@ DI,main clause clitics,naaw̓aḥiʔi,naaw̓aḥi =!iˑ
 DI,main clause clitics,naaw̓aḥiʔis,naaw̓aḥi =!is
 DI,main clause clitics,naaw̓aḥiʔič,naaw̓aḥi =!ič
 DI,main clause clitics,naaw̓aḥiʔin,naaw̓aḥi =!in
-DI,main clause clitics,naaw̓aḥiʔiʔał,naaw̓aḥi =!iˑ=ʔał
+DI,main clause clitics,naaw̓aḥiʔičʔał,naaw̓aḥi =!iˑč=ʔał
+DI,main clause clitics,naaw̓aḥiʔiʔaała,naaw̓aḥi =!iˑ=ʔaała
 DI,main clause clitics,naaw̓aḥiči,naaw̓aḥi =čiˑ
 DI,main clause clitics,naaw̓aḥiʔik,naaw̓aḥi =!iˑk
 DI,main clause clitics,naaw̓aḥiʔim,naaw̓aḥi =!im
@@ -115,6 +116,7 @@ DI,transitive verbs,*nunuukma t̓an̓a nuuk,*nunuuk =maˑ t̓an̓a nuuk
 DI,transitive verbs,*nunuukma nuuk t̓an̓a,*nunuuk =maˑ nuuk t̓an̓a
 DI,fronting,t̓an̓a nunuukma,t̓an̓a nunuuk =maˑ
 DI,fronting,*t̓an̓ama nunuuk,*t̓an̓a =maˑ nunuuk
+DI,fronting,*naʔaataḥ łuucsmama t̓an̓eʔi,*naʔaataḥ łuucsma =maˑ t̓an̓a =ʔiˑ
 DI,ditransitive verbs,hiłʔap̓aƛs naḥiimaʔi haw̓acsac̓um,hił =!ap=!aƛ=s naḥiima =ʔiˑ haw̓acsac̓um
 DI,ditransitive verbs,hiłʔap̓aƛwaʔiš łuucsma naḥiimaʔi haw̓acsac̓um,hił =!ap=!aƛ=waˑʔiš łuucsma naḥiima=ʔiˑ haw̓acsac̓um
 DI,ditransitive verbs,*łuucsma naḥiimaʔi haw̓acsac̓um hiłʔap̓aƛwaʔiš,*łuucsma naḥiima=ʔiˑ haw̓acsac̓um hił =!ap=!aƛ=waˑʔiš
@@ -192,3 +194,4 @@ DI,suffix verbs,ʔaanaḥimaḥ ʔunaak ʕiniiƛ,ʔaanaḥi =(m)aˑḥ ʔu-naˑk
 DI,suffix verbs,*ʔaanaḥimaḥ ʔaƛa ʔunaak,*ʔaanaḥi =(m)aˑḥ ʔaƛa ʔu-naˑk
 DI,suffix verbs,ʔaanaḥimaḥ ʔaƛanak ʕiniiƛ,ʔaanaḥi =(m)aˑḥ ʔaƛa-naˑk ʕiniiƛ
 DI,suffix verbs,ʔananaks ʕiniiƛ,ʔana-naˑk =s ʕiniiƛ
+DI,second position,*ƛuł ʕiniiƛma,*ƛuł ʕiniiƛ =maˑ

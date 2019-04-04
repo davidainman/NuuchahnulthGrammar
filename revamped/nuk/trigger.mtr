@@ -33,20 +33,80 @@
 
 2sg_neutral_2 := generator_rule & 
  [ CONTEXT.RELS <! [ ARG1.PNG [ PER 2nd,
-                                NUM plural  ],
+                                NUM singular  ],
                      ARG0.E.MOOD neutral ] !>,
-   FLAGS.TRIGGER "%3Dsuu" ].
+   FLAGS.TRIGGER "%3Dsuuk" ].
 
 2pl_neutral := generator_rule & 
  [ CONTEXT.RELS <! [ ARG1.PNG [ PER 2nd,
-                                NUM singular  ],
+                                NUM plural  ],
                      ARG0.E.MOOD neutral ] !>,
-   FLAGS.TRIGGER "%3Dsuˑk" ].
+   FLAGS.TRIGGER "%3Dsuu" ].
 
 3_neutral := generator_rule & 
  [ CONTEXT.RELS <! [ ARG1.PNG.PER 3rd,
                      ARG0.E.MOOD neutral ] !>,
    FLAGS.TRIGGER "%3D0" ].
+
+1sg_strong := generator_rule & 
+ [ CONTEXT.RELS <! [ ARG1.PNG [ PER 1st,
+                                NUM singular  ],
+                     ARG0.E.MOOD strong-real ] !>,
+   FLAGS.TRIGGER "%3Ds" ].
+
+1sg_strong_2 := generator_rule & 
+ [ CONTEXT.RELS <! [ ARG1.PNG [ PER 1st,
+                                NUM singular  ],
+                     ARG0.E.MOOD strong-real ] !>,
+   FLAGS.TRIGGER "%3Dsiˑš" ].
+
+1sg_real := generator_rule & 
+ [ CONTEXT.RELS <! [ ARG1.PNG [ PER 1st,
+                                NUM singular  ],
+                     ARG0.E.MOOD strong-real ] !>,
+   FLAGS.TRIGGER "%3D%28m%29aˑḥ" ].
+
+1pl_strong := generator_rule & 
+ [ CONTEXT.RELS <! [ ARG1.PNG [ PER 1st,
+                                NUM plural  ],
+                     ARG0.E.MOOD strong-real ] !>,
+   FLAGS.TRIGGER "%3Dniˑš" ].
+
+1pl_real := generator_rule & 
+ [ CONTEXT.RELS <! [ ARG1.PNG [ PER 1st,
+                                NUM plural  ],
+                     ARG0.E.MOOD strong-real ] !>,
+   FLAGS.TRIGGER "%3D%28m%29in" ].
+
+2sg_strong := generator_rule & 
+ [ CONTEXT.RELS <! [ ARG1.PNG [ PER 2nd,
+                                NUM singular  ],
+                     ARG0.E.MOOD strong-real ] !>,
+   FLAGS.TRIGGER "%3Dʔiˑck" ].
+
+2sg_strong_2 := generator_rule & 
+ [ CONTEXT.RELS <! [ ARG1.PNG [ PER 2nd,
+                                NUM singular  ],
+                     ARG0.E.MOOD strong-real ] !>,
+   FLAGS.TRIGGER "%3Dʔiˑc" ].
+
+2sg_real := generator_rule & 
+ [ CONTEXT.RELS <! [ ARG1.PNG [ PER 2nd,
+                                NUM singular  ],
+                     ARG0.E.MOOD strong-real ] !>,
+   FLAGS.TRIGGER "%3D%28m%29eˑʔic" ].
+
+2pl_strong := generator_rule & 
+ [ CONTEXT.RELS <! [ ARG1.PNG [ PER 2nd,
+                                NUM plural  ],
+                     ARG0.E.MOOD strong-real ] !>,
+   FLAGS.TRIGGER "%3Dʔiˑcuuš" ].
+
+2pl_real := generator_rule & 
+ [ CONTEXT.RELS <! [ ARG1.PNG [ PER 2nd,
+                                NUM plural  ],
+                     ARG0.E.MOOD strong-real ] !>,
+   FLAGS.TRIGGER "%3D%28m%29eˑʔicuu" ].
 
 3_real := generator_rule & 
  [ CONTEXT.RELS <! [ ARG1.PNG.PER 3rd,
@@ -57,3 +117,251 @@
  [ CONTEXT.RELS <! [ ARG1.PNG.PER 3rd,
                      ARG0.E.MOOD strong-real ] !>,
    FLAGS.TRIGGER "%3Dʔiˑš" ].
+
+1sg_weak := generator_rule & 
+ [ CONTEXT.RELS <! [ ARG1.PNG [ PER 1st,
+                                NUM singular  ],
+                     ARG0.E.MOOD weak ] !>,
+   FLAGS.TRIGGER "%3D%28y%29iis" ].
+
+1pl_weak := generator_rule & 
+ [ CONTEXT.RELS <! [ ARG1.PNG [ PER 1st,
+                                NUM plural  ],
+                     ARG0.E.MOOD weak ] !>,
+   FLAGS.TRIGGER "%3D%28y%29in" ].
+
+2sg_weak := generator_rule & 
+ [ CONTEXT.RELS <! [ ARG1.PNG [ PER 2nd,
+                                NUM singular  ],
+                     ARG0.E.MOOD weak ] !>,
+   FLAGS.TRIGGER "%3D%28y%29iik" ].
+
+2pl_weak := generator_rule & 
+ [ CONTEXT.RELS <! [ ARG1.PNG [ PER 2nd,
+                                NUM plural  ],
+                     ARG0.E.MOOD weak ] !>,
+   FLAGS.TRIGGER "%3D%28y%29iisuu" ].
+
+3_weak := generator_rule & 
+ [ CONTEXT.RELS <! [ ARG1.PNG.PER 3rd,
+                     ARG0.E.MOOD weak ] !>,
+   FLAGS.TRIGGER "%3D%28y%29ii" ].
+
+1sg_unknown := generator_rule & 
+ [ CONTEXT.RELS <! [ ARG1.PNG [ PER 1st,
+                                NUM singular  ],
+                     ARG0.E.MOOD unknown ] !>,
+   FLAGS.TRIGGER "%3D%28w%29uusis" ].
+
+1pl_unknown := generator_rule & 
+ [ CONTEXT.RELS <! [ ARG1.PNG [ PER 1st,
+                                NUM plural  ],
+                     ARG0.E.MOOD unknown ] !>,
+   FLAGS.TRIGGER "%3D%28w%29uusin" ].
+
+2sg_unknown := generator_rule & 
+ [ CONTEXT.RELS <! [ ARG1.PNG [ PER 2nd,
+                                NUM singular  ],
+                     ARG0.E.MOOD unknown ] !>,
+   FLAGS.TRIGGER "%3D%28w%29uusik" ].
+
+2pl_unknown := generator_rule & 
+ [ CONTEXT.RELS <! [ ARG1.PNG [ PER 2nd,
+                                NUM plural  ],
+                     ARG0.E.MOOD unknown ] !>,
+   FLAGS.TRIGGER "%3D%28w%29uusisuu" ].
+
+3_unknown := generator_rule & 
+ [ CONTEXT.RELS <! [ ARG1.PNG.PER 3rd,
+                     ARG0.E.MOOD unknown ] !>,
+   FLAGS.TRIGGER "%3D%28w%29uusi" ].
+
+1sg_possible := generator_rule & 
+ [ CONTEXT.RELS <! [ ARG1.PNG [ PER 1st,
+                                NUM singular  ],
+                     ARG0.E.MOOD possible ] !>,
+   FLAGS.TRIGGER "%3Dquus" ].
+
+1sg_possible_2 := generator_rule & 
+ [ CONTEXT.RELS <! [ ARG1.PNG [ PER 1st,
+                                NUM singular  ],
+                     ARG0.E.MOOD possible ] !>,
+   FLAGS.TRIGGER "%3Dquˑs" ].
+
+1pl_possible := generator_rule & 
+ [ CONTEXT.RELS <! [ ARG1.PNG [ PER 1st,
+                                NUM plural  ],
+                     ARG0.E.MOOD possible ] !>,
+   FLAGS.TRIGGER "%3Dqun" ].
+
+2sg_possible := generator_rule & 
+ [ CONTEXT.RELS <! [ ARG1.PNG [ PER 2nd,
+                                NUM singular  ],
+                     ARG0.E.MOOD possible ] !>,
+   FLAGS.TRIGGER "%3Dquuk" ].
+
+2sg_possible_2 := generator_rule & 
+ [ CONTEXT.RELS <! [ ARG1.PNG [ PER 2nd,
+                                NUM singular  ],
+                     ARG0.E.MOOD possible ] !>,
+   FLAGS.TRIGGER "%3Dquˑk" ].
+
+2pl_possible := generator_rule & 
+ [ CONTEXT.RELS <! [ ARG1.PNG [ PER 2nd,
+                                NUM plural  ],
+                     ARG0.E.MOOD possible ] !>,
+   FLAGS.TRIGGER "%3Dquusuu" ].
+
+2pl_possible_2 := generator_rule & 
+ [ CONTEXT.RELS <! [ ARG1.PNG [ PER 2nd,
+                                NUM plural  ],
+                     ARG0.E.MOOD possible ] !>,
+   FLAGS.TRIGGER "%3Dquˑsuu" ].
+
+3_possible := generator_rule & 
+ [ CONTEXT.RELS <! [ ARG1.PNG.PER 3rd,
+                     ARG0.E.MOOD possible ] !>,
+   FLAGS.TRIGGER "%3Dquu" ].
+
+3_possible_2 := generator_rule & 
+ [ CONTEXT.RELS <! [ ARG1.PNG.PER 3rd,
+                     ARG0.E.MOOD possible ] !>,
+   FLAGS.TRIGGER "%3Dquˑ" ].
+
+1sg_hearsay := generator_rule & 
+ [ CONTEXT.RELS <! [ ARG1.PNG [ PER 1st,
+                                NUM singular  ],
+                     ARG0.E.MOOD hearsay ] !>,
+   FLAGS.TRIGGER "%3Dweˑʔisi" ].
+
+1sg_hearsay_2 := generator_rule & 
+ [ CONTEXT.RELS <! [ ARG1.PNG [ PER 1st,
+                                NUM singular  ],
+                     ARG0.E.MOOD hearsay ] !>,
+   FLAGS.TRIGGER "%3Dwaˑʔič̓as" ].
+
+1pl_hearsay := generator_rule & 
+ [ CONTEXT.RELS <! [ ARG1.PNG [ PER 1st,
+                                NUM plural  ],
+                     ARG0.E.MOOD hearsay ] !>,
+   FLAGS.TRIGGER "%3Dweˑʔinni" ].
+
+1pl_hearsay_2 := generator_rule & 
+ [ CONTEXT.RELS <! [ ARG1.PNG [ PER 1st,
+                                NUM plural  ],
+                     ARG0.E.MOOD hearsay ] !>,
+   FLAGS.TRIGGER "%3Dwaˑʔičin" ].
+
+2sg_hearsay := generator_rule & 
+ [ CONTEXT.RELS <! [ ARG1.PNG [ PER 2nd,
+                                NUM singular  ],
+                     ARG0.E.MOOD hearsay ] !>,
+   FLAGS.TRIGGER "%3Dweˑʔincuk" ].
+
+2sg_hearsay_2 := generator_rule & 
+ [ CONTEXT.RELS <! [ ARG1.PNG [ PER 2nd,
+                                NUM singular  ],
+                     ARG0.E.MOOD hearsay ] !>,
+   FLAGS.TRIGGER "%3Dwaˑʔick" ].
+
+2pl_hearsay := generator_rule & 
+ [ CONTEXT.RELS <! [ ARG1.PNG [ PER 2nd,
+                                NUM plural  ],
+                     ARG0.E.MOOD hearsay ] !>,
+   FLAGS.TRIGGER "%3Dweˑʔincuu" ].
+
+2pl_hearsay_2 := generator_rule & 
+ [ CONTEXT.RELS <! [ ARG1.PNG [ PER 2nd,
+                                NUM plural  ],
+                     ARG0.E.MOOD hearsay ] !>,
+   FLAGS.TRIGGER "%3Dwaˑʔicuuš" ].
+
+3_hearsay := generator_rule & 
+ [ CONTEXT.RELS <! [ ARG1.PNG.PER 3rd,
+                     ARG0.E.MOOD hearsay ] !>,
+   FLAGS.TRIGGER "%3Dweˑʔin" ].
+
+3_hearsay_2 := generator_rule & 
+ [ CONTEXT.RELS <! [ ARG1.PNG.PER 3rd,
+                     ARG0.E.MOOD hearsay ] !>,
+   FLAGS.TRIGGER "%3Dwaˑʔiš" ].
+
+3_dubitative := generator_rule & 
+ [ CONTEXT.RELS <! [ ARG1.PNG.PER 3rd,
+                     ARG0.E.MOOD dubitative ] !>,
+   FLAGS.TRIGGER "%3Dqaˑč̓a" ].
+
+3_inferential := generator_rule & 
+ [ CONTEXT.RELS <! [ ARG1.PNG.PER 3rd,
+                     ARG0.E.MOOD inferential ] !>,
+   FLAGS.TRIGGER "%3Dč̓aˑʕaš" ].
+
+2sg_command := generator_rule & 
+ [ CONTEXT.RELS <! [ ARG1.PNG [ PER 2nd,
+                                NUM singular  ],
+                     ARG0.SF comm ] !>,
+   FLAGS.TRIGGER "%3D%21iˑ" ].
+
+2pl_command := generator_rule & 
+ [ CONTEXT.RELS <! [ ARG1.PNG [ PER 2nd,
+                                NUM plural  ],
+                     ARG0.SF comm ] !>,
+   FLAGS.TRIGGER "%3D%21iˑč" ].
+
+1pl_command := generator_rule & 
+ [ CONTEXT.RELS <! [ ARG1.PNG [ PER 1st,
+                                NUM plural  ],
+                     ARG0.SF comm ] !>,
+   FLAGS.TRIGGER "%3D%21iˑn" ].
+
+1sg_question := generator_rule & 
+ [ CONTEXT.RELS <! [ ARG1.PNG [ PER 1st,
+                                NUM singular  ],
+                     ARG0.SF ques ] !>,
+   FLAGS.TRIGGER "%3Dḥaˑs" ].
+
+1sg_question_2 := generator_rule & 
+ [ CONTEXT.RELS <! [ ARG1.PNG [ PER 1st,
+                                NUM singular  ],
+                     ARG0.SF ques ] !>,
+   FLAGS.TRIGGER "%3Dḥs" ].
+
+1pl_question := generator_rule & 
+ [ CONTEXT.RELS <! [ ARG1.PNG [ PER 1st,
+                                NUM plural  ],
+                     ARG0.SF ques ] !>,
+   FLAGS.TRIGGER "%3Dḥiˑn" ].
+
+2sg_question := generator_rule & 
+ [ CONTEXT.RELS <! [ ARG1.PNG [ PER 2nd,
+                                NUM singular  ],
+                     ARG0.SF ques ] !>,
+   FLAGS.TRIGGER "%3Dḥaˑk" ].
+
+2sg_question_2 := generator_rule & 
+ [ CONTEXT.RELS <! [ ARG1.PNG [ PER 2nd,
+                                NUM singular  ],
+                     ARG0.SF ques ] !>,
+   FLAGS.TRIGGER "%3Dk" ].
+
+2pl_question := generator_rule & 
+ [ CONTEXT.RELS <! [ ARG1.PNG [ PER 2nd,
+                                NUM plural  ],
+                     ARG0.SF ques ] !>,
+   FLAGS.TRIGGER "%3Dḥaˑsuu" ].
+
+2pl_question_2 := generator_rule & 
+ [ CONTEXT.RELS <! [ ARG1.PNG [ PER 2nd,
+                                NUM plural  ],
+                     ARG0.SF ques ] !>,
+   FLAGS.TRIGGER "%3Dḥsuu" ].
+
+3_question := generator_rule & 
+ [ CONTEXT.RELS <! [ ARG1.PNG.PER 3rd,
+                     ARG0.SF ques ] !>,
+   FLAGS.TRIGGER "%3Dḥaˑ" ].
+
+3_question_2 := generator_rule & 
+ [ CONTEXT.RELS <! [ ARG1.PNG.PER 3rd,
+                     ARG0.SF ques ] !>,
+   FLAGS.TRIGGER "%3Dḥ" ].

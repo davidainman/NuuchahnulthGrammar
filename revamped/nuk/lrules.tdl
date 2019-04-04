@@ -27,11 +27,11 @@ type-raise-clausal-clitic-lex := type-raise-clausal-clitic-lex-rule.
 
 type-raise-clausal-article-lex := type-raise-article-lex-rule.
 
-auxiliary-type-raise-neutral-3rd := auxiliary-type-raise-neutral-3rd-lex-rule.
+;auxiliary-type-raise-neutral-3rd := auxiliary-type-raise-neutral-3rd-lex-rule.
 
 ; gap rules
 
-no-gap-lex := no-gap-lex-rule.
+;no-gap-lex := no-gap-lex-rule.
 
 ;gapped-subject-lex := gapped-subject-lex-rule.
 
