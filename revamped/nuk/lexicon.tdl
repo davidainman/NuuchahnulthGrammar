@@ -1,407 +1,403 @@
 ;;; -*- Mode: TDL; Coding: utf-8 -*-
 ;;; Nouns
 
-čims := common-noun-noun-lex &
+nuuk := common-noun-word-and-root-lex &
+  [ STEM < "nuuk" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_song_n_rel" ].
+
+čims := common-noun-word-and-root-lex &
   [ STEM < "čims" >,
     SYNSEM.LKEYS.KEYREL.PRED "_bear_n_rel" ].
 
-naḥiima_1 := common-noun-noun-lex &
+naḥiima := common-noun-word-and-non-root-lex &
   [ STEM < "naḥiima" >,
     SYNSEM.LKEYS.KEYREL.PRED "_gift_n_rel" ].
 
-qʷayac̓iik := common-noun-noun-lex &
+qʷayac̓iik := common-noun-word-and-root-lex &
   [ STEM < "qʷayac̓iik" >,
     SYNSEM.LKEYS.KEYREL.PRED "_wolf_n_rel" ].
 
-maḥt̓iˑ := common-noun-noun-lex &
+maḥt̓iˑ := common-noun-word-and-non-root-lex &
   [ STEM < "maḥt̓iˑ" >,
     SYNSEM.LKEYS.KEYREL.PRED "_house_n_rel" ].
 
-nučii_1 := common-noun-noun-lex &
+nučii := common-noun-word-and-non-root-lex &
   [ STEM < "nučii" >,
     SYNSEM.LKEYS.KEYREL.PRED "_mountain_n_rel" ].
 
-cikcik := common-noun-noun-lex &
+cikcik := common-noun-word-and-root-lex &
   [ STEM < "cikcik" >,
     SYNSEM.LKEYS.KEYREL.PRED "_car_n_rel" ].
 
-č̓apac := common-noun-noun-lex &
+č̓apac := common-noun-word-and-non-root-lex &
   [ STEM < "č̓apac" >,
     SYNSEM.LKEYS.KEYREL.PRED "_canoe_n_rel" ].
 
-quuʔas := common-noun-noun-lex &
+quuʔas := common-noun-word-and-non-root-lex &
   [ STEM < "quuʔas" >,
     SYNSEM.LKEYS.KEYREL.PRED "_person_n_rel" ].
 
-naḥiima_2 := common-noun-noun-lex &
-  [ STEM < "naḥiima" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_gift_n_rel" ].
-
-ʔumʔiiqsu := common-noun-noun-lex &
+ʔumʔiiqsu := common-noun-word-and-non-root-lex &
   [ STEM < "ʔumʔiiqsu" >,
     SYNSEM.LKEYS.KEYREL.PRED "_mother_n_rel" ].
 
-n̓uw̓iiqsu := common-noun-noun-lex &
+n̓uw̓iiqsu := common-noun-word-and-non-root-lex &
   [ STEM < "n̓uw̓iiqsu" >,
     SYNSEM.LKEYS.KEYREL.PRED "_father_n_rel" ].
 
-t̓iick̓in := common-noun-noun-lex &
+t̓iick̓in := common-noun-word-and-root-lex &
   [ STEM < "t̓iick̓in" >,
     SYNSEM.LKEYS.KEYREL.PRED "_thunderbird_n_rel" ].
 
-kuʔał := common-noun-noun-lex &
+kuʔał := common-noun-word-and-root-lex &
   [ STEM < "kuʔał" >,
     SYNSEM.LKEYS.KEYREL.PRED "_morning_n_rel" ].
 
-maʔas := common-noun-noun-lex &
+maʔas := common-noun-word-and-non-root-lex &
   [ STEM < "maʔas" >,
     SYNSEM.LKEYS.KEYREL.PRED "_house_n_rel" ].
 
-ƛiisuwił := common-noun-noun-lex &
+ƛiisuwił := common-noun-word-and-root-lex &
   [ STEM < "ƛiisuwił" >,
     SYNSEM.LKEYS.KEYREL.PRED "_school_n_rel" ].
 
-qʷiƛ̓aqmapt := common-noun-noun-lex &
+qʷiƛ̓aqmapt := common-noun-word-and-root-lex &
   [ STEM < "qʷiƛ̓aqmapt" >,
     SYNSEM.LKEYS.KEYREL.PRED "_hemlock_n_rel" ].
 
-ʕaʔuk := common-noun-noun-lex &
+ʕaʔuk := common-noun-word-and-root-lex &
   [ STEM < "ʕaʔuk" >,
     SYNSEM.LKEYS.KEYREL.PRED "_lake_n_rel" ].
 
-waaʕit := common-noun-noun-lex &
+waaʕit := common-noun-word-and-root-lex &
   [ STEM < "waaʕit" >,
     SYNSEM.LKEYS.KEYREL.PRED "_frog_n_rel" ].
 
-čaastimc := common-noun-noun-lex &
+čaastimc := common-noun-word-and-root-lex &
   [ STEM < "čaastimc" >,
     SYNSEM.LKEYS.KEYREL.PRED "_mink_n_rel" ].
 
-p̓atquk := common-noun-noun-lex &
+p̓atquk := common-noun-word-and-root-lex &
   [ STEM < "p̓atquk" >,
     SYNSEM.LKEYS.KEYREL.PRED "_belongings_n_rel" ].
 
-c̓aʔak := common-noun-noun-lex &
+c̓aʔak := common-noun-word-and-non-root-lex &
   [ STEM < "c̓aʔak" >,
     SYNSEM.LKEYS.KEYREL.PRED "_river_n_rel" ].
 
-č̓aʔak := common-noun-noun-lex &
+č̓aʔak := common-noun-word-and-non-root-lex &
   [ STEM < "č̓aʔak" >,
     SYNSEM.LKEYS.KEYREL.PRED "_water_n_rel" ].
 
-č̓upč̓upšumł := common-noun-noun-lex &
+č̓upč̓upšumł := common-noun-word-and-root-lex &
   [ STEM < "č̓upč̓upšumł" >,
     SYNSEM.LKEYS.KEYREL.PRED "_sweater_n_rel" ].
 
-nučii_2 := common-noun-noun-lex &
-  [ STEM < "nučii" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_mountain_n_rel" ].
-
-ʔaʔiič̓im := common-noun-noun-lex &
+ʔaʔiič̓im := common-noun-word-and-root-lex &
   [ STEM < "ʔaʔiič̓im" >,
     SYNSEM.LKEYS.KEYREL.PRED "_parent_n_rel" ].
 
-y̓ukʷiiqsu := common-noun-noun-lex &
+y̓ukʷiiqsu := common-noun-word-and-non-root-lex &
   [ STEM < "y̓ukʷiiqsu" >,
     SYNSEM.LKEYS.KEYREL.PRED "_younger.sibling_n_rel" ].
 
-suuḥa := common-noun-noun-lex &
+suuḥa := common-noun-word-and-root-lex &
   [ STEM < "suuḥa" >,
     SYNSEM.LKEYS.KEYREL.PRED "_spring.salmon_n_rel" ].
 
-ḥaakʷaaƛ := common-noun-noun-lex &
+ḥaakʷaaƛ := common-noun-word-and-root-lex &
   [ STEM < "ḥaakʷaaƛ" >,
     SYNSEM.LKEYS.KEYREL.PRED "_young.woman_n_rel" ].
 
-kʷaacsac̓um := common-noun-noun-lex &
+kʷaacsac̓um := common-noun-word-and-root-lex &
   [ STEM < "kʷaacsac̓um" >,
     SYNSEM.LKEYS.KEYREL.PRED "_chair_n_rel" ].
 
-haw̓acsac̓um := common-noun-noun-lex &
+haw̓acsac̓um := common-noun-word-and-root-lex &
   [ STEM < "haw̓acsac̓um" >,
     SYNSEM.LKEYS.KEYREL.PRED "_table_n_rel" ].
 
-qicuwił := common-noun-noun-lex &
+qicuwił := common-noun-word-and-root-lex &
   [ STEM < "qicuwił" >,
     SYNSEM.LKEYS.KEYREL.PRED "_school_n_rel" ].
 
-ḥačimsiqsu := common-noun-noun-lex &
+ḥačimsiqsu := common-noun-word-and-non-root-lex &
   [ STEM < "ḥačimsiqsu" >,
     SYNSEM.LKEYS.KEYREL.PRED "_brother_n_rel" ].
 
-makuʔał := common-noun-noun-lex &
+makuʔał := common-noun-word-and-root-lex &
   [ STEM < "makuʔał" >,
     SYNSEM.LKEYS.KEYREL.PRED "_store_n_rel" ].
 
-c̓iiḥati := common-noun-noun-lex &
+c̓iiḥati := common-noun-word-and-root-lex &
   [ STEM < "c̓iiḥati" >,
     SYNSEM.LKEYS.KEYREL.PRED "_arrow_n_rel" ].
 
-xaaʔamin := common-noun-noun-lex &
+xaaʔamin := common-noun-word-and-root-lex &
   [ STEM < "xaaʔamin" >,
     SYNSEM.LKEYS.KEYREL.PRED "_ladder_n_rel" ].
 
-nism̓a := common-noun-noun-lex &
+nism̓a := common-noun-word-and-root-lex &
   [ STEM < "nism̓a" >,
     SYNSEM.LKEYS.KEYREL.PRED "_land_n_rel" ].
 
-łuucma := common-noun-noun-lex &
+łuucma := common-noun-word-and-non-root-lex &
   [ STEM < "łuucma" >,
     SYNSEM.LKEYS.KEYREL.PRED "_woman_n_rel" ].
 
-meʔiƛqac := common-noun-noun-lex &
+meʔiƛqac := common-noun-word-and-root-lex &
   [ STEM < "meʔiƛqac" >,
     SYNSEM.LKEYS.KEYREL.PRED "_boy_n_rel" ].
 
-maʔiƛqac := common-noun-noun-lex &
+maʔiƛqac := common-noun-word-and-root-lex &
   [ STEM < "maʔiƛqac" >,
     SYNSEM.LKEYS.KEYREL.PRED "_boy_n_rel" ].
 
-t̓an̓a := common-noun-noun-lex &
+t̓an̓a := common-noun-word-and-root-lex &
   [ STEM < "t̓an̓a" >,
     SYNSEM.LKEYS.KEYREL.PRED "_child_n_rel" ].
 
-čakup := common-noun-noun-lex &
+čakup := common-noun-word-and-non-root-lex &
   [ STEM < "čakup" >,
     SYNSEM.LKEYS.KEYREL.PRED "_man_n_rel" ].
 
-waap := common-noun-noun-lex &
+waap := common-noun-word-and-root-lex &
   [ STEM < "waap" >,
     SYNSEM.LKEYS.KEYREL.PRED "_wharf_n_rel" ].
 
-puut := common-noun-noun-lex &
+puut := common-noun-word-and-root-lex &
   [ STEM < "puut" >,
     SYNSEM.LKEYS.KEYREL.PRED "_boat_n_rel" ].
 
-ʔeʔiič̓im := common-noun-noun-lex &
+ʔeʔiič̓im := common-noun-word-and-root-lex &
   [ STEM < "ʔeʔiič̓im" >,
     SYNSEM.LKEYS.KEYREL.PRED "_parent_n_rel" ].
 
-piišpiš := common-noun-noun-lex &
+piišpiš := common-noun-word-and-root-lex &
   [ STEM < "piišpiš" >,
     SYNSEM.LKEYS.KEYREL.PRED "_cat_n_rel" ].
 
-ʕiniiƛ := common-noun-noun-lex &
+ʕiniiƛ := common-noun-word-and-non-root-lex &
   [ STEM < "ʕiniiƛ" >,
     SYNSEM.LKEYS.KEYREL.PRED "_dog_n_rel" ].
 
-kaatu := common-noun-noun-lex &
+kaatu := common-noun-word-and-root-lex &
   [ STEM < "kaatu" >,
     SYNSEM.LKEYS.KEYREL.PRED "_cat_n_rel" ].
 
-kuuxmink := common-noun-noun-lex &
+kuuxmink := common-noun-word-and-root-lex &
   [ STEM < "kuuxmink" >,
     SYNSEM.LKEYS.KEYREL.PRED "_rattle_n_rel" ].
 
-kasniin := common-noun-noun-lex &
+kasniin := common-noun-word-and-root-lex &
   [ STEM < "kasniin" >,
     SYNSEM.LKEYS.KEYREL.PRED "_gasoline_n_rel" ].
 
-neʔiiq := common-noun-noun-lex &
+neʔiiq := common-noun-word-and-non-root-lex &
   [ STEM < "neʔiiq" >,
     SYNSEM.LKEYS.KEYREL.PRED "_my.uncle.aunt_n_rel" ].
 
-łakʷity̓ik := common-noun-noun-lex &
+łakʷity̓ik := common-noun-word-and-root-lex &
   [ STEM < "łakʷity̓ik" >,
     SYNSEM.LKEYS.KEYREL.PRED "_trap_n_rel" ].
 
-ƛ̓iƛ̓iḥw̓in := common-noun-noun-lex &
+ƛ̓iƛ̓iḥw̓in := common-noun-word-and-root-lex &
   [ STEM < "ƛ̓iƛ̓iḥw̓in" >,
     SYNSEM.LKEYS.KEYREL.PRED "_robin_n_rel" ].
 
-c̓istuup := common-noun-noun-lex &
+c̓istuup := common-noun-word-and-root-lex &
   [ STEM < "c̓istuup" >,
     SYNSEM.LKEYS.KEYREL.PRED "_rope_n_rel" ].
 
-ḥumiis := common-noun-noun-lex &
+ḥumiis := common-noun-word-and-root-lex &
   [ STEM < "ḥumiis" >,
     SYNSEM.LKEYS.KEYREL.PRED "_red.cedar_n_rel" ].
 
-muut := common-noun-noun-lex &
+muut := common-noun-word-and-root-lex &
   [ STEM < "muut" >,
     SYNSEM.LKEYS.KEYREL.PRED "_boat_n_rel" ].
 
-naani := common-noun-noun-lex &
+naani := common-noun-word-and-root-lex &
   [ STEM < "naani" >,
     SYNSEM.LKEYS.KEYREL.PRED "_grizzly.bear_n_rel" ].
 
-qasii := common-noun-noun-lex &
+qasii := common-noun-word-and-root-lex &
   [ STEM < "qasii" >,
     SYNSEM.LKEYS.KEYREL.PRED "_eye_n_rel" ].
 
-k̓upy̓ak := common-noun-noun-lex &
+k̓upy̓ak := common-noun-word-and-root-lex &
   [ STEM < "k̓upy̓ak" >,
     SYNSEM.LKEYS.KEYREL.PRED "_pointer.finger_n_rel" ].
 
-č̓ip̓atmił := common-noun-noun-lex &
+č̓ip̓atmił := common-noun-word-and-root-lex &
   [ STEM < "č̓ip̓atmił" >,
     SYNSEM.LKEYS.KEYREL.PRED "_sea.serpent.scale_n_rel" ].
 
-ḥaaw̓iłaƛ := common-noun-noun-lex &
+ḥaaw̓iłaƛ := common-noun-word-and-root-lex &
   [ STEM < "ḥaaw̓iłaƛ" >,
     SYNSEM.LKEYS.KEYREL.PRED "_young.man_n_rel" ].
 
-kʷaaʔuuc := common-noun-noun-lex &
+kʷaaʔuuc := common-noun-word-and-root-lex &
   [ STEM < "kʷaaʔuuc" >,
     SYNSEM.LKEYS.KEYREL.PRED "_grandchild_n_rel" ].
 
-p̓aacsac̓um := common-noun-noun-lex &
+p̓aacsac̓um := common-noun-word-and-root-lex &
   [ STEM < "p̓aacsac̓um" >,
     SYNSEM.LKEYS.KEYREL.PRED "_tupaati.ball_n_rel" ].
 
-čičiči := common-noun-noun-lex &
+čičiči := common-noun-word-and-root-lex &
   [ STEM < "čičiči" >,
     SYNSEM.LKEYS.KEYREL.PRED "_tooth_n_rel" ].
 
-mixtuk := common-noun-noun-lex &
+mixtuk := common-noun-word-and-root-lex &
   [ STEM < "mixtuk" >,
     SYNSEM.LKEYS.KEYREL.PRED "_elder_n_rel" ].
 
-tent := common-noun-noun-lex &
+tent := common-noun-word-and-root-lex &
   [ STEM < "tent" >,
     SYNSEM.LKEYS.KEYREL.PRED "_tent_n_rel" ].
 
-qaʔuuc := common-noun-noun-lex &
+qaʔuuc := common-noun-word-and-root-lex &
   [ STEM < "qaʔuuc" >,
     SYNSEM.LKEYS.KEYREL.PRED "_burden.basket_n_rel" ].
 
-naʔiiqsu := common-noun-noun-lex &
+naʔiiqsu := common-noun-word-and-non-root-lex &
   [ STEM < "naʔiiqsu" >,
     SYNSEM.LKEYS.KEYREL.PRED "_uncle.aunt_n_rel" ].
 
-tup̓ał := common-noun-noun-lex &
+tup̓ał := common-noun-word-and-root-lex &
   [ STEM < "tup̓ał" >,
     SYNSEM.LKEYS.KEYREL.PRED "_ocean_n_rel" ].
 
-łuucsma := common-noun-noun-lex &
+łuucsma := common-noun-word-and-non-root-lex &
   [ STEM < "łuucsma" >,
     SYNSEM.LKEYS.KEYREL.PRED "_woman_n_rel" ].
 
-maʔił := common-noun-noun-lex &
+maʔił := common-noun-word-and-root-lex &
   [ STEM < "maʔił" >,
     SYNSEM.LKEYS.KEYREL.PRED "_house_n_rel" ].
 
-ʕimtii := common-noun-noun-lex &
+ʕimtii := common-noun-word-and-non-root-lex &
   [ STEM < "ʕimtii" >,
     SYNSEM.LKEYS.KEYREL.PRED "_name_n_rel" ].
 
-hupał := common-noun-noun-lex &
+hupał := common-noun-word-and-root-lex &
   [ STEM < "hupał" >,
     SYNSEM.LKEYS.KEYREL.PRED "_sun.moon_n_rel" ].
 
-c̓iiḥtaati := common-noun-noun-lex &
+c̓iiḥtaati := common-noun-word-and-root-lex &
   [ STEM < "c̓iiḥtaati" >,
     SYNSEM.LKEYS.KEYREL.PRED "_arrow_n_rel" ].
 
-tuškuuḥ := common-noun-noun-lex &
+tuškuuḥ := common-noun-word-and-root-lex &
   [ STEM < "tuškuuḥ" >,
     SYNSEM.LKEYS.KEYREL.PRED "_cod_n_rel" ].
 
-mamałn̓i := common-noun-noun-lex &
+mamałn̓i := common-noun-word-and-non-root-lex &
   [ STEM < "mamałn̓i" >,
     SYNSEM.LKEYS.KEYREL.PRED "_white.person_n_rel" ].
 
-scoooner := common-noun-noun-lex &
+scoooner := common-noun-word-and-root-lex &
   [ STEM < "scoooner" >,
     SYNSEM.LKEYS.KEYREL.PRED "_scoooner_n_rel" ].
 
-c̓ixʷatin := common-noun-noun-lex &
+c̓ixʷatin := common-noun-word-and-root-lex &
   [ STEM < "c̓ixʷatin" >,
     SYNSEM.LKEYS.KEYREL.PRED "_eagle_n_rel" ].
 
-ʕinm̓i := common-noun-noun-lex &
+ʕinm̓i := common-noun-word-and-root-lex &
   [ STEM < "ʕinm̓i" >,
     SYNSEM.LKEYS.KEYREL.PRED "_snail_n_rel" ].
 
-pisatuwił := common-noun-noun-lex &
+pisatuwił := common-noun-word-and-root-lex &
   [ STEM < "pisatuwił" >,
     SYNSEM.LKEYS.KEYREL.PRED "_gym_n_rel" ].
 
-yuułuʔiłʔatḥ := proper-noun-noun-lex &
+yuułuʔiłʔatḥ := proper-noun-lex &
   [ STEM < "yuułuʔiłʔatḥ" >,
     SYNSEM.LKEYS.KEYREL.PRED "_Ucluelet_n_rel" ].
 
-ʕaaḥuusʔatḥ := proper-noun-noun-lex &
+ʕaaḥuusʔatḥ := proper-noun-lex &
   [ STEM < "ʕaaḥuusʔatḥ" >,
     SYNSEM.LKEYS.KEYREL.PRED "_Ahousaht_n_rel" ].
 
-ʔamawatuʔa := proper-noun-noun-lex &
+ʔamawatuʔa := proper-noun-lex &
   [ STEM < "ʔamawatuʔa" >,
     SYNSEM.LKEYS.KEYREL.PRED "_Bob.Mundy_n_rel" ].
 
-namint := proper-noun-noun-lex &
+namint := proper-noun-lex &
   [ STEM < "namint" >,
     SYNSEM.LKEYS.KEYREL.PRED "_Namint_n_rel" ].
 
-n̓aaskuusaƛ := proper-noun-noun-lex &
+n̓aaskuusaƛ := proper-noun-lex &
   [ STEM < "n̓aaskuusaƛ" >,
     SYNSEM.LKEYS.KEYREL.PRED "_Fidelia.Haiyupis_n_rel" ].
 
-David := proper-noun-noun-lex &
+David := proper-noun-lex &
   [ STEM < "David" >,
     SYNSEM.LKEYS.KEYREL.PRED "_David_n_rel" ].
 
-pankuupa := proper-noun-noun-lex &
+pankuupa := proper-noun-lex &
   [ STEM < "pankuupa" >,
     SYNSEM.LKEYS.KEYREL.PRED "_Vancouver_n_rel" ].
 
-c̓uumaʕas := proper-noun-noun-lex &
+c̓uumaʕas := proper-noun-lex &
   [ STEM < "c̓uumaʕas" >,
     SYNSEM.LKEYS.KEYREL.PRED "_Port.Alberni_n_rel" ].
 
-mituuni := proper-noun-noun-lex &
+mituuni := proper-noun-lex &
   [ STEM < "mituuni" >,
     SYNSEM.LKEYS.KEYREL.PRED "_Victoria_n_rel" ].
 
-Seattle := proper-noun-noun-lex &
+Seattle := proper-noun-lex &
   [ STEM < "Seattle" >,
     SYNSEM.LKEYS.KEYREL.PRED "_Seattle_n_rel" ].
 
-May := proper-noun-noun-lex &
+May := proper-noun-lex &
   [ STEM < "May" >,
     SYNSEM.LKEYS.KEYREL.PRED "_May_n_rel" ].
 
-ʔaqtiis := proper-noun-noun-lex &
+ʔaqtiis := proper-noun-lex &
   [ STEM < "ʔaqtiis" >,
     SYNSEM.LKEYS.KEYREL.PRED "_ʔaqtiis_n_rel" ].
 
-sumakquuʔis := proper-noun-noun-lex &
+sumakquuʔis := proper-noun-lex &
   [ STEM < "sumakquuʔis" >,
     SYNSEM.LKEYS.KEYREL.PRED "_hot.springs.cove_n_rel" ].
 
-n̓ačiqs := proper-noun-noun-lex &
+n̓ačiqs := proper-noun-lex &
   [ STEM < "n̓ačiqs" >,
     SYNSEM.LKEYS.KEYREL.PRED "_Tofino_n_rel" ].
 
-maatmaas := proper-noun-noun-lex &
+maatmaas := proper-noun-lex &
   [ STEM < "maatmaas" >,
     SYNSEM.LKEYS.KEYREL.PRED "_Maht.Maas_n_rel" ].
 
-qaaqaawis := proper-noun-noun-lex &
+qaaqaawis := proper-noun-lex &
   [ STEM < "qaaqaawis" >,
     SYNSEM.LKEYS.KEYREL.PRED "_Kakawis_n_rel" ].
 
-suučp̓iił := proper-noun-noun-lex &
+suučp̓iił := proper-noun-lex &
   [ STEM < "suučp̓iił" >,
     SYNSEM.LKEYS.KEYREL.PRED "_Suuchpiil_n_rel" ].
 
-Monica := proper-noun-noun-lex &
+Monica := proper-noun-lex &
   [ STEM < "Monica" >,
     SYNSEM.LKEYS.KEYREL.PRED "_Monica_n_rel" ].
 
-ʕintʔuukt := proper-noun-noun-lex &
+ʕintʔuukt := proper-noun-lex &
   [ STEM < "ʕintʔuukt" >,
     SYNSEM.LKEYS.KEYREL.PRED "_Snot.Boy_n_rel" ].
 
-m̓aaqumsa := proper-noun-noun-lex &
+m̓aaqumsa := proper-noun-lex &
   [ STEM < "m̓aaqumsa" >,
     SYNSEM.LKEYS.KEYREL.PRED "_Maaquumsa_n_rel" ].
 
-ḥiškʷiiʔatḥ := proper-noun-noun-lex &
+ḥiškʷiiʔatḥ := proper-noun-lex &
   [ STEM < "ḥiškʷiiʔatḥ" >,
     SYNSEM.LKEYS.KEYREL.PRED "_Hesquiaht_n_rel" ].
 
-t̓aatn̓a := plural-noun-noun-lex &
+t̓aatn̓a := plural-noun-lex &
   [ STEM < "t̓aatn̓a" >,
     SYNSEM.LKEYS.KEYREL.PRED "_child.pl_n_rel" ].
 
@@ -1008,6 +1004,8 @@ hitaat := perfective-transitive-verb-lex &
 n̓aacsiičiƛ := perfective-transitive-verb-lex &
   [ STEM < "n̓aacsiičiƛ" >,
     SYNSEM.LKEYS.KEYREL.PRED "_see_v_rel" ].
+
+;;; Enclitics
 
 %3D%28m%29aˑḥ := mood-strong-real-1sg-verb-lex &
   [ STEM < "=(m)aˑḥ" >,

@@ -140,3 +140,23 @@ clitic-future-lex-rule.
 clitic-also-suffix :=
 %suffix (* =ƛaˑ) (=0 =ƛaˑ)
 clitic-also-lex-rule.
+
+naak-suffix :=
+%suffix (* -naˑk)
+naak-lex-rule.
+
+find-suffix :=
+%suffix (* -L.waƛ)
+find-lex-rule.
+
+take-suffix :=
+%suffix (* -L.!iˑƛ)
+take-lex-rule.
+
+talk-about-suffix :=
+%suffix (* -L.mac̓uk)
+talk-about-lex-rule.
+
+go-after-suffix :=
+%suffix (* -R.!iiḥ)
+go-after-lex-rule.

@@ -2309,16 +2309,30 @@ basic-head-mod-phrase-simple := head-mod-phrase & binary-headed-phrase &
 ;  [ HEAD-DTR.SYNSEM.LOCAL.CONT.HOOK.LTOP #htop,
 ;    NON-HEAD-DTR.SYNSEM.LOCAL.CAT.HEAD.MOD < [ LOCAL.CONT.HOOK.LTOP #htop ] >].
 
+;;; 2019-04-04 TODO BIG BIG BAD I have changed this so that the top is LIGHT +.  Original is below
+
 adj-head-phrase := basic-head-mod-phrase-simple & head-final &
   [ SYNSEM [ LOCAL.CAT.POSTHEAD #ph,
 	     MODIFIED lmod & [ PERIPH #periph ],
-             LIGHT #light ],
-    HEAD-DTR.SYNSEM [ LOCAL.CAT.POSTHEAD #ph,
-                      LIGHT #light ],
+             LIGHT - ],
+    HEAD-DTR.SYNSEM [ LOCAL.CAT.POSTHEAD #ph ],
     NON-HEAD-DTR.SYNSEM [ LOCAL.CAT [ VAL [ SPR olist,
     			  	      	    COMPS < > ] ],
 			  NON-LOCAL [ SLASH 0-dlist,
 				      REL 0-dlist ],
+                          MODIFIED.PERIPH #periph ] ].
+
+
+adj-head-phrase-orig := basic-head-mod-phrase-simple & head-final &
+  [ SYNSEM [ LOCAL.CAT.POSTHEAD #ph,
+       MODIFIED lmod & [ PERIPH #periph ],
+             LIGHT #light ],
+    HEAD-DTR.SYNSEM [ LOCAL.CAT.POSTHEAD #ph,
+                      LIGHT #light ],
+    NON-HEAD-DTR.SYNSEM [ LOCAL.CAT [ VAL [ SPR olist,
+                          COMPS < > ] ],
+        NON-LOCAL [ SLASH 0-dlist,
+              REL 0-dlist ],
                           MODIFIED.PERIPH #periph ] ].
 
 ;;; 2012-26-09 removed this constraint from head-adj-phrase
