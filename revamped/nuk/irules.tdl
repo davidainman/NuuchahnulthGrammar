@@ -160,3 +160,7 @@ talk-about-lex-rule.
 go-after-suffix :=
 %suffix (* -R.!iiḥ)
 go-after-lex-rule.
+
+give-suffix :=
+%suffix (* -ayiˑ)
+give-lex-rule.

@@ -27,11 +27,17 @@ type-raise-clausal-clitic-lex := type-raise-clausal-clitic-lex-rule.
 
 type-raise-clausal-article-lex := type-raise-article-lex-rule.
 
-noun-incorporation-lex := noun-incorporation-lex-rule.
+noun-incorporation-transitive-lex := noun-incorporation-transitive-lex-rule.
 
-adj-incorporation-lex := adj-incorporation-lex-rule.
+noun-incorporation-ditransitive-lex := noun-incorporation-ditransitive-lex-rule.
 
-adv-incorporation-lex := adv-incorporation-lex-rule.
+adj-incorporation-transitive-lex := adj-incorporation-transitive-lex-rule.
+
+adj-incorporation-ditransitive-lex := adj-incorporation-ditransitive-lex-rule.
+
+adv-incorporation-transitive-lex := adv-incorporation-transitive-lex-rule.
+
+adv-incorporation-ditransitive-lex := adv-incorporation-ditransitive-lex-rule.
 
 ;auxiliary-type-raise-neutral-3rd := auxiliary-type-raise-neutral-3rd-lex-rule.
 
