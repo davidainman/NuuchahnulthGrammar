@@ -32,12 +32,12 @@ DI,main clause clitics,ḥaaḥuupawaʔiš,ḥaaḥuupa =waˑʔiš
 DI,main clause clitics,ḥaaḥuupawaʔičin,ḥaaḥuupa =waˑʔičin
 DI,main clause clitics,ḥaaḥuupawaʔicuuš,ḥaaḥuupa =waˑʔicuuš
 DI,main clause clitics,ḥaaḥuupawaʔišʔał,ḥaaḥuupa =waˑʔiš=ʔał
-DI,main clause clitics,ḥaaḥuupaḥas,ḥaaḥuupa =ḥas
-DI,main clause clitics,ḥaaḥuupaḥak,ḥaaḥuupa =ḥak
-DI,main clause clitics,ḥaaḥuupaḥa,ḥaaḥuupa =ḥa
+DI,main clause clitics,ḥaaḥuupaḥas,ḥaaḥuupa =ḥaˑs
+DI,main clause clitics,ḥaaḥuupaḥak,ḥaaḥuupa =ḥaˑk
+DI,main clause clitics,ḥaaḥuupaḥa,ḥaaḥuupa =ḥaˑ
 DI,main clause clitics,ḥaaḥuupaḥin,ḥaaḥuupa =ḥin
-DI,main clause clitics,ḥaaḥuupaḥasuu,ḥaaḥuupa =ḥasuu
-DI,main clause clitics,ḥaahuupahaʔał,ḥaaḥuupa =ḥa=ʔał
+DI,main clause clitics,ḥaaḥuupaḥasuu,ḥaaḥuupa =ḥaˑsuu
+DI,main clause clitics,ḥaahuupahaʔał,ḥaaḥuupa =ḥaˑ=ʔał
 DI,main clause clitics,ḥaaḥuupaḥs,ḥaaḥuupa =ḥs
 DI,main clause clitics,ḥaaḥuupak,ḥaaḥuupa =k
 DI,main clause clitics,ḥaaḥuupaḥ,ḥaaḥuupa =ḥ
@@ -45,8 +45,8 @@ DI,main clause clitics,ḥaaḥuupaḥin,ḥaaḥuupa =ḥin
 DI,main clause clitics,ḥaaḥuupaḥsuu,ḥaaḥuupa =ḥsuu
 DI,main clause clitics,ḥaaḥuupaḥʔał,ḥaaḥuupa =ḥ=ʔał
 DI,main clause clitics,naaw̓aḥiʔi,naaw̓aḥi =!iˑ
-DI,main clause clitics,naaw̓aḥiʔis,naaw̓aḥi =!is
-DI,main clause clitics,naaw̓aḥiʔič,naaw̓aḥi =!ič
+DI,main clause clitics,naaw̓aḥiʔis,naaw̓aḥi =!iˑs
+DI,main clause clitics,naaw̓aḥiʔič,naaw̓aḥi =!iˑč
 DI,main clause clitics,naaw̓aḥiʔin,naaw̓aḥi =!in
 DI,main clause clitics,naaw̓aḥiʔičʔał,naaw̓aḥi =!iˑč=ʔał
 DI,main clause clitics,naaw̓aḥiʔiʔaała,naaw̓aḥi =!iˑ=ʔaała
@@ -104,6 +104,7 @@ DI,main clause clitics,*nunuukmamin,*nunuuk =maˑ=(m)in
 DI,main clause clitics,*nunuukʔickweʔincuk,*nunuuk =ʔiˑck =weˑʔincuk
 DI,main clause clitics,*nunuukʔickʔaƛk,*nunuuk =ʔiˑck =!aƛ=k
 DI,main clause clitics,*nunuukʔickʔick,*nunuuk =ʔiˑck =ʔiˑck
+DI,main clause clitics,*ƛuł ʕiniiƛma,*ƛuł ʕiniiƛ =maˑ
 DI,transitive verbs,naʔaataḥʔaƛaḥ t̓an̓eʔi,naʔaataḥ =!aƛ=(m)aˑḥ t̓an̓a =ʔiˑ
 DI,transitive verbs,naʔaataḥʔaƛ łuucsma t̓an̓eʔi,naʔaataḥ =!aƛ łuucsma t̓an̓a =ʔiˑ
 DI,transitive verbs; fronting,t̓an̓a naʔaataḥʔaƛaḥ,t̓an̓a naʔaataḥ =!aƛ=(m)aˑḥ
@@ -125,11 +126,11 @@ DI,adjective clause,ƛułmaa ʔiiḥ ʕiniiƛ,ƛuł =maˑ ʔiiḥ ʕiniiƛ
 DI,adjective clause; article,ƛułmaa ʔiiḥʔii ʕiniiƛ,ƛuł =maˑ ʔiiḥ =ʔiˑ ʕiniiƛ
 DI,adjective clause; article,*ƛułmaa ʔiiḥ ʕiniiƛʔi,*ƛuł =maˑ ʔiiḥ ʕiniiƛ =ʔiˑ
 DI,adjective clause,*ʔiiḥ ƛułmaa ʕiniiƛ,*ʔiiḥ ƛuł =maˑ ʕiniiƛ
-DI,adjective,haaʕinʔaƛḥak ʔiih quuʔas,haaʕin =!aƛ=ḥak ʔiih quuʔas
-DI,adjective,haaʕinʔaƛḥak ʔiihʔii quuʔas,haaʕin =!aƛ=ḥak ʔiih =ʔiˑ quuʔas
-DI,adjective,haaʕinʔaƛḥak ʔiih quuʔas,haaʕin =!aƛ=ḥak ʔiih quuʔas
-DI,adjective,*haaʕinʔaƛḥak ʔiih quuʔasʔi,*haaʕin =!aƛ=ḥak ʔiih quuʔas =ʔiˑ
-DI,adjective; fronting,*ʔiih haaʕinʔaƛḥak quuʔasʔi,*ʔiih haaʕin =!aƛ=ḥak quuʔas =ʔiˑ
+DI,adjective,haaʕinʔaƛḥak ʔiiḥ quuʔas,haaʕin =!aƛ=ḥaˑk ʔiiḥ quuʔas
+DI,adjective,haaʕinʔaƛḥak ʔiiḥʔii quuʔas,haaʕin =!aƛ=ḥaˑk ʔiiḥ =ʔiˑ quuʔas
+DI,adjective,haaʕinʔaƛḥak ʔiiḥ quuʔas,haaʕin =!aƛ=ḥaˑk ʔiiḥ quuʔas
+DI,adjective,*haaʕinʔaƛḥak ʔiiḥ quuʔasʔi,*haaʕin =!aƛ=ḥaˑk ʔiiḥ quuʔas =ʔiˑ
+DI,adjective; fronting,*ʔiiḥ haaʕinʔaƛḥak quuʔasʔi,*ʔiiḥ haaʕin =!aƛ=ḥaˑk quuʔas =ʔiˑ
 DI,adverb clitics,ʔaaniʔiš nunuuk,ʔaani =ʔiˑš nunuuk
 DI,adverb clitics,y̓uuqʷaaʔaƛs ḥaaḥuupa,y̓uuqʷaa =!aƛ=s ḥaaḥuupa
 DI,adverb clitics,ʔaaniweʔin y̓uuqʷaa ḥaaḥuupa,ʔaani =weˑʔin y̓uuqʷaa ḥaaḥuupa
@@ -181,10 +182,10 @@ SL,suffix verbs,nuuknaaks,nuuk-naˑk =s
 SL,suffix verbs,ʔaƛanaaks nuuk,ʔaƛa-naˑk =s nuuk
 SL,suffix verbs,ʔaƛanaaks y̓aaq nuuk,ʔaƛa-naˑk =s y̓aaq nuuk
 DI,suffix verbs,*ʔaƛanaaks nuuk y̓aaq,*ʔaƛa-naˑk =s nuuk y̓aaq
-Di,suffix verbs,*nuuknaaks ʔaƛa,*nuuknaaks ʔaƛa
+Di,suffix verbs,*nuuknaaks ʔaƛa,*nuuk-naˑk =s ʔaƛa
 DI,suffix verbs,ʔaƛanaaks,ʔaƛa-naˑk =s
 DI,suffix verbs,ʔunaakaḥ,ʔu-naˑk =(m)aˑḥ
-DI,suffix verbs,ʔunaaks ʔaƛa nuuknuuk,ʔu-naˑk =s ʔaƛa R2-nuuk
+DI,suffix verbs,ʔunaaks ʔaƛa nuuknuuk,ʔu-naˑk =s ʔaƛa nuuknuuk
 BM,suffix verbs,qiinaakitaḥ ʕiniiƛ,qii-naˑk =(m)it=(m)aˑḥ ʕiniiƛ
 DI,suffix verbs,qiinaakita,qii-naˑk =(m)it=maˑ
 DI,suffix verbs,*ʔaƛa nuuknaaks,*ʔaƛa nuuk-naˑk =s
@@ -194,7 +195,49 @@ DI,suffix verbs,ʔaanaḥimaḥ ʔunaak ʕiniiƛ,ʔaanaḥi =(m)aˑḥ ʔu-naˑk
 DI,suffix verbs,*ʔaanaḥimaḥ ʔaƛa ʔunaak,*ʔaanaḥi =(m)aˑḥ ʔaƛa ʔu-naˑk
 DI,suffix verbs,ʔaanaḥimaḥ ʔaƛanak ʕiniiƛ,ʔaanaḥi =(m)aˑḥ ʔaƛa-naˑk ʕiniiƛ
 DI,suffix verbs,ʔananaks ʕiniiƛ,ʔana-naˑk =s ʕiniiƛ
-DI,second position,*ƛuł ʕiniiƛma,*ƛuł ʕiniiƛ =maˑ
+DI,suffix verbs,*nuuknaaks ƛuł,*nuuk-naˑk =s ƛuł
+DI,suffix verbs,*ʔaƛa ʔunaaks ʕiniiƛ,*ʔaƛa ʔu-naˑk =s ʕiniiƛ
+DI,suffix verbs,*qii ʔunaaks nuuk,*qii ʔu-naˑk =s nuuk
+DI,suffix verbs,*qii nuuknaaks,*qii nuuk-naˑk =s
+DI,suffix verbs,qiiʔaƛs nuuknaak,qii =!aƛ=s nuuk-naˑk
+DI,suffix verbs,ʔuyiis nuuk ʔumʔiiqsu,ʔu-ayiˑ =s nuuk ʔumʔiiqsu
+DI,suffix verbs,nuuk ʔuyiis ʔumʔiiqsu,nuuk ʔu-ayiˑ =s ʔumʔiiqsu
+DI,suffix verbs,nuukayis ʔumʔiiqsu,nuuk-ayiˑ =s ʔumʔiiqsu
+DI,suffix verbs,ʔumʔiiqsu nuukayis,ʔumʔiiqsu nuuk-ayiˑ =s
+DI,suffix verbs,ƛułayis nuuk ʔumʔiiqsu,ƛuł-ayiˑ =s nuuk ʔumʔiiqsu
+DI,suffix verbs,*ƛuł nuukayis ʔumʔiiqsu,*ƛuł nuuk-ayiˑ =s ʔumʔiiqsu
+DI,suffix verbs,ʔaanaḥayis nuuk ʔumʔiiqsu,ʔaanaḥi-ayiˑ =s nuuk ʔumʔiiqsu
+DI,suffix verbs,ʔaanaḥayis ƛuł nuuk ʔumʔiiqsu,ʔaanaḥi-ayiˑ =s ƛuł nuuk ʔumʔiiqsu
+DI,suffix verbs,ʔaanaḥimaḥ ƛułayi nuuk ʔumʔiiqsu,ʔaanaḥi =(m)aˑḥ ƛuł-ayiˑ nuuk ʔumʔiiqsu
+DI,suffix verbs,ʔaanaḥimaḥ nuukayi ʔumʔiiqsu,ʔaanaḥi =(m)aˑḥ nuuk-ayiˑ ʔumʔiiqsu
+DI,suffix verbs,ʔaanaḥimaḥ ʔumʔiiqsu nuukayi,ʔaanaḥi =(m)aˑḥ ʔumʔiiqsu nuuk-ayiˑ
+DI,suffix verbs,*ƛuł nuukayis ʔumʔiiqsu,*ƛuł nuuk-ayiˑ =s ʔumʔiiqsu
+DI,suffix verbs,*ʔaanaḥimaḥ ʔaƛa nuukayi ʔumʔiiqsu,*ʔaanaḥi =(m)aˑḥ ʔaƛa nuuk-ayiˑ ʔumʔiiqsu
+DI,suffix verbs,*kamitqnaks,*kamitq-naˑk =s
+DI,suffix verbs,*kamitqayis,*kamitq-ayiˑ =s
+DI,suffix verbs,ʔaanaḥiw̓it̓ass nunuuk,ʔaanaḥi-w̓it̓as =s nunuuk
+DI,suffix verbs,ʔaanaḥiw̓it̓ass haaʕin ʔumʔiiqsu,ʔaanaḥi-w̓it̓as =s haaʕin ʔumʔiiqsu
+DI,suffix verbs,ʔaanaḥimiḥsas qii nunuuk,ʔaanaḥi-miḥsa =s qii nunuuk
+DI,suffix verbs,*ʔaanaḥimiḥsas qii nunuuk šiiƛuk,*ʔaanaḥi-miḥsa =s qii nunuuk šiiƛuk
+DI,suffix verbs,*ʔaanaḥi haaʕinw̓it̓asaḥ ʔumʔiiqsu,*ʔaanaḥi haaʕin-w̓it̓as =(m)aˑḥ ʔumʔiiqsu
+DI,suffix verbs,ƛułmiḥsamaḥ,ƛuł-miḥsa =(m)aˑḥ
+DI,suffix verbs,ƛułmiḥsamaḥ quuʔas,ƛuł-miḥsa =(m)aˑḥ quuʔas
+DI,suffix verbs,*ƛułmiḥsamaḥ quuʔas piišpiš,*ƛuł-miḥsa =(m)aˑḥ quuʔas piišpiš
+DI,suffix verbs,quuʔasmiḥsamaḥ,quuʔas-miḥsa =(m)aˑḥ
+DI,suffix verbs,*quuʔasmiḥsamaḥ nuuk,*quuʔas-miḥsa =(m)aˑḥ nuuk
+DI,suffix verbs,nunuukw̓it̓ask,nunuuk-w̓it̓as =k
+DI,suffix verbs,nunuukw̓it̓ask nuuknuuk,nunuuk-w̓it̓as =k nuuknuuk
+DI,suffix verbs,*nunuukw̓it̓ask nuuknuuk ʔumʔiiqsu,*nunuuk-w̓it̓as =k nuuknuuk ʔumʔiiqsu
+DI,suffix verbs,haaʕinw̓it̓asaḥ ʔumʔiiqsu,haaʕin-w̓it̓as =(m)aˑḥ ʔumʔiiqsu
+DI,suffix verbs,*haaʕinw̓it̓asaḥ ʔumʔiiqsu nuuk,*haaʕin-w̓it̓as =(m)aˑḥ ʔumʔiiqsu nuuk
+DI,suffix verbs,ʔaanaḥiw̓it̓ass ʔunaak nuuk,ʔaanaḥi-w̓it̓as =s ʔu -naˑk nuuk
+DI,suffix verbs,ʔaanaḥiw̓it̓ass nuuk ʔunaak,ʔaanaḥi-w̓it̓as =s nuuk ʔu-naˑk
+DI,suffix verbs,qiimiḥsamaḥ nuuknaak,qii-miḥsa =(m)aˑḥ nuuk-naˑk
+DI,suffix verbs,*qiimiḥsamaḥ nuuknaaks,*qii-miḥsa =(m)aˑḥ nuuk-naˑk =s
+DI,suffix verbs,*nuuknaaks qiimiḥsa,*nuuk-naˑk =s qii-miḥsa
+DI,suffix verbs,nuuknaakmiḥsamaḥ,nuuk-naˑk-miḥsa =(m)aˑḥ
+DI,suffix verbs,*nuukmiḥsanaks,*nuuk-miḥsa-naˑk =s
+DI,suffix verbs,*nuuknaakayis,*nuuk-naˑk-ayiˑ =s
 DI,subordinate clause,nunuukin t̓an̓aqas,nunuuk =(m)in t̓an̓a =qaˑs
 DI,subordinate clause,naʔaataḥitmaʔał ʔeʔiič̓im t̓an̓aʔitqʔał,naʔaataḥ =(m)it=maˑ=ʔał ʔeʔiič̓im nunuuk =ʔiˑtq
 DI,subordinate clause,naʔaataḥitmaʔał ʔeʔiič̓im nunuukʔitq,naʔaataḥ =(m)it=maˑ=ʔał ʔeʔiič̓im t̓an̓a =ʔiˑtq=ʔał

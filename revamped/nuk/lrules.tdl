@@ -39,6 +39,10 @@ adv-incorporation-transitive-lex := adv-incorporation-transitive-lex-rule.
 
 adv-incorporation-ditransitive-lex := adv-incorporation-ditransitive-lex-rule.
 
+adv-incorporation-pred-lex := adv-incorporation-pred-lex-rule.
+
+pred-incorporation-lex := pred-incorporation-lex-rule.
+
 ;auxiliary-type-raise-neutral-3rd := auxiliary-type-raise-neutral-3rd-lex-rule.
 
 ; gap rules

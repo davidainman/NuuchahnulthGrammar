@@ -25,6 +25,10 @@ nučii := common-noun-word-and-non-root-lex &
   [ STEM < "nučii" >,
     SYNSEM.LKEYS.KEYREL.PRED "_mountain_n_rel" ].
 
+nučii := common-noun-word-and-non-root-lex &
+  [ STEM < "ʔiiḥtuup" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_whale_n_rel" ].
+
 cikcik := common-noun-word-and-root-lex &
   [ STEM < "cikcik" >,
     SYNSEM.LKEYS.KEYREL.PRED "_car_n_rel" ].
@@ -52,6 +56,10 @@ t̓iick̓in := common-noun-word-and-root-lex &
 kuʔał := common-noun-word-and-root-lex &
   [ STEM < "kuʔał" >,
     SYNSEM.LKEYS.KEYREL.PRED "_morning_n_rel" ].
+
+kuḥ := common-noun-word-and-root-lex &
+  [ STEM < "kuḥ" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_hole_n_rel" ].
 
 maʔas := common-noun-word-and-non-root-lex &
   [ STEM < "maʔas" >,
@@ -399,7 +407,11 @@ ḥiškʷiiʔatḥ := proper-noun-lex &
 
 t̓aatn̓a := plural-noun-lex &
   [ STEM < "t̓aatn̓a" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_child.pl_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_child_n_rel" ].
+
+nuuknuuk := plural-noun-lex &
+  [ STEM < "nuuknuuk" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_song_n_rel" ].
 
 nuw̓aaq := pronoun-pred-1pl-noun-lex &
   [ STEM < "nuw̓aaq" >,
@@ -568,6 +580,10 @@ t̓ik := intransitive-verb-verb-lex &
 yac := intransitive-verb-verb-lex &
   [ STEM < "yac" >,
     SYNSEM.LKEYS.KEYREL.PRED "_walk_v_rel" ].
+
+kamatq := intransitive-verb-verb-lex &
+  [ STEM < "kamatq" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_run_v_rel" ].
 
 kamitq := intransitive-verb-verb-lex &
   [ STEM < "kamitq" >,
@@ -1232,7 +1248,7 @@ n̓aacsiičiƛ := perfective-transitive-verb-lex &
     SYNSEM.LKEYS.KEYREL.PRED "_question_v_rel" ].
 
 %3Dḥiˑn := question-mood-1pl-verb-lex &
-  [ STEM < "=ḥiˑn" >,
+  [ STEM < "=ḥin" >,
     SYNSEM.LKEYS.KEYREL.PRED "_question_v_rel" ].
 
 %3Dḥaˑk := question-mood-2sg-verb-lex &

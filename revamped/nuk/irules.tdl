@@ -34,7 +34,7 @@ inceptive-form-suffix2 :=
 inceptive-form-lex-rule.
 
 continuative-form-suffix :=
-%suffix (* -aˑ)
+%suffix (* -(y)aˑ)
 continuative-form-lex-rule.
 
 durative-form-suffix1 :=
@@ -164,3 +164,27 @@ go-after-lex-rule.
 give-suffix :=
 %suffix (* -ayiˑ)
 give-lex-rule.
+
+going-to-suffix :=
+%suffix (* -w̓it̓as)
+going-to-lex-rule.
+
+want-to-do-suffix :=
+%suffix (* -miḥsa)
+going-to-lex-rule.
+
+want-to-do-suffix :=
+%suffix (* -maḥsa)
+going-to-lex-rule.
+
+do-suffix :=
+%suffix (* -siła)
+do-lex-rule.
+
+try-to-do-suffix :=
+%suffix (* -L.sinḥi)
+try-to-do-lex-rule.
+
+need-to-do-suffix :=
+%suffix (* -cum)
+need-to-do-lex-rule.

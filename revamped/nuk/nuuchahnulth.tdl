@@ -19,10 +19,10 @@ non-mod-lex-item := lex-item &
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;; 2019-03-12 removing PRD - already defined in GM (!)
-;;; 2019-03-19 adding AUX-RAISE bool to avoid looping
+;;; 2019-03-19 adding TYPE-RAISE bool to avoid looping
 head :+ [ PRON bool,
     AUX bool,
-    AUX-RAISE bool,
+    TYPE-RAISE bool,
     NMZ bool,
     POSSESSOR poss,
     INIT bool,
@@ -44,7 +44,7 @@ non-root-form := word-or-lexrule & [ SYNSEM.LOCAL.CAT.HEAD.FORM non-root ].
 root-to-non-root-lex-rule := lex-rule &
   [ SYNSEM.LOCAL.CAT.HEAD [ PRON #pron,
                             AUX #aux,
-                            AUX-RAISE #aux-raise,
+                            TYPE-RAISE #TYPE-RAISE,
                             NMZ #nmz,
                             POSSESSOR #poss,
                             INIT #init,
@@ -55,7 +55,7 @@ root-to-non-root-lex-rule := lex-rule &
                             FORM non-root ],
     DTR.SYNSEM.LOCAL.CAT.HEAD [ PRON #pron,
                                 AUX #aux,
-                                AUX-RAISE #aux-raise,
+                                TYPE-RAISE #TYPE-RAISE,
                                 NMZ #nmz,
                                 POSSESSOR #poss,
                                 INIT #init,
@@ -68,7 +68,7 @@ root-to-non-root-lex-rule := lex-rule &
 non-root-to-root-lex-rule := lex-rule &
   [ SYNSEM.LOCAL.CAT.HEAD [ PRON #pron,
                             AUX #aux,
-                            AUX-RAISE #aux-raise,
+                            TYPE-RAISE #TYPE-RAISE,
                             NMZ #nmz,
                             POSSESSOR #poss,
                             INIT #init,
@@ -79,7 +79,7 @@ non-root-to-root-lex-rule := lex-rule &
                             FORM root ],
     DTR.SYNSEM.LOCAL.CAT.HEAD [ PRON #pron,
                                 AUX #aux,
-                                AUX-RAISE #aux-raise,
+                                TYPE-RAISE #TYPE-RAISE,
                                 NMZ #nmz,
                                 POSSESSOR #poss,
                                 INIT #init,
@@ -455,7 +455,7 @@ possessum-noun-lex-2 := basic-one-arg &
 
 ;;; Verbs
 
-verb-lex := non-mod-lex-item &
+verb-lex := non-mod-lex-item & predicate-lex &
   [ SYNSEM.LOCAL.CAT.HEAD verb &
                           [ NMZ - ],
     INFLECTED [ CONTINUATIVE-FORM-FLAG na-or--,
@@ -574,6 +574,7 @@ neutral-3rd-pred-lex-rule := local-change-only-lex-rule & same-agr-lex-rule & sa
   [ SYNSEM [ LOCAL [ CAT [ HEAD verb &
                              [ AUX +,
                                MOD < >,
+                               PRD +,
                                FORM non-root-finite ],
                            VAL [ SUBJ < #subj & [ LOCAL.CONT.HOOK.INDEX.PNG.PER 3rd ] >,
                                  COMPS #comps,
@@ -614,7 +615,7 @@ neutral-3rd-pred-lex-rule := local-change-only-lex-rule & same-agr-lex-rule & sa
 neutral-3rd-pred-adv-lex-rule := local-change-only-lex-rule & same-agr-lex-rule & same-ctxt-lex-rule & predicate-lex & 
   [ SYNSEM.LOCAL [ CAT [ HEAD verb &
                              [ AUX +,
-                               AUX-RAISE +,
+                               TYPE-RAISE +,
                                MOD < >,
                                FORM non-root ],
                            VAL [ SUBJ < #subj & [ LOCAL.CONT.HOOK.INDEX.PNG.PER 3rd ] >,
@@ -622,7 +623,7 @@ neutral-3rd-pred-adv-lex-rule := local-change-only-lex-rule & same-agr-lex-rule 
                                                    LOCAL [ CAT [ VAL [ SUBJ < #subj >,
                                                                        COMPS #vcomps & phlist ],
                                                                  HEAD verb & [ AUX -,
-                                                                               AUX-RAISE - ],
+                                                                               TYPE-RAISE - ],
                                                                  POSTHEAD + ],
                                                            CONT.HOOK.INDEX #index & [ E.MOOD neutral,
                                                                                       SF prop ] ],
@@ -631,7 +632,7 @@ neutral-3rd-pred-adv-lex-rule := local-change-only-lex-rule & same-agr-lex-rule 
                                  SPEC < > ] ],
                    CONT.HOOK.INDEX #index ],
     DTR [ INFLECTED infl-satisfied,
-         SYNSEM.LOCAL [ CAT [ HEAD adv & [ AUX-RAISE -,
+         SYNSEM.LOCAL [ CAT [ HEAD adv & [ TYPE-RAISE -,
                                            AUX -,
                                            MOD < #mod > ],
                               VAL [ SUBJ  < >,
@@ -680,8 +681,8 @@ durative-transitive-verb-lex := transitive-verb-inflected-lex &
 perfective-transitive-verb-lex := transitive-verb-inflected-lex & 
   [ SYNSEM.LOCAL.CONT.HOOK.INDEX.E.ASPECT MO ].
 
-mood-2p-verb-lex := 2p-lex-no-rels-comp-xarg-raise & predicate-lex & 
-  [ SYNSEM.LOCAL.CAT [ HEAD verb,
+mood-2p-verb-lex := 2p-lex-no-rels-comp-xarg-raise & 
+  [ SYNSEM.LOCAL.CAT [ HEAD verb & [ PRD + ],
                        VAL.SUBJ < [ LOCAL.CAT.HEAD noun ] > ] ].
 
 ;mood-strong-real-verb-lex := mood-2p-verb-lex &
@@ -800,7 +801,7 @@ mood-definite-when-verb-lex := 2p-lex & non-predicate-lex &
   [ SYNSEM [ LOCAL [ CAT [ VAL [ COMPS.FIRST.LOCAL.CONT.HOOK.INDEX #arg0 ],
                          MC -,
                          HEAD.MOD < [ LOCAL.CONT.HOOK.INDEX #arg1 ] > ],
-                   CONT [ HOOK [ INDEX #arg0,
+                   CONT [ HOOK [ INDEX #arg0 & [ SF prop ],
                                  XARG #arg1,
                                  LTOP #ltop ],
                           RELS <! [ PRED "when_rel",
@@ -1149,6 +1150,7 @@ aux-type-raising-dtr := word-or-lexrule.
 post-clitic-habitual-lex-rule-dtr := word-or-lexrule.
 2p-suffix-transitive-verb-rule-dtr := word-or-lexrule.
 2p-suffix-ditransitive-verb-rule-dtr := word-or-lexrule.
+2p-suffix-predcomp-verb-rule-dtr := word-or-lexrule.
 
 ;;; Lexical rule types
 
@@ -1185,16 +1187,17 @@ add-incorporation-lex-rule := lex-rule &
 
 ; HACKY: I am keeping SPEC unspecified 'cause I'm using it as scratch for ditransitives :/
 incorporating-lex-rule := cat-change-only-lex-rule & 
-  [ SYNSEM.LOCAL.CAT [ VAL [ SUBJ < [ LOCAL [ CAT.HEAD noun ] ] >,
+  [ SYNSEM.LOCAL.CAT [ VAL [ SUBJ < [ LOCAL.CAT.HEAD.PRD - ] >,
                              SPR < > ],
                        HEAD verb & [ PRD +,
                                      AUX -,
-                                     FORM non-root-nonfinite ] ],
+                                     FORM non-root-nonfinite,
+                                     MOD < > ] ],
     INFLECTED.INCORPORATION-FLAG -,
     DTR.SYNSEM.LOCAL.CAT.HEAD [ NMZ -,
-                                AUX -,
-                                FORM root ] ].
+                                AUX - ] ].
 
+;;; TODO delete this if the new system is working.
 incorporating-lex-rule-old := same-ctxt-lex-rule & same-agr-lex-rule & same-light-lex-rule & same-non-local-lex-rule &
   [ SYNSEM.LOCAL [ CAT [ VAL [ SUBJ < [ LOCAL [ CAT.HEAD verb,
                                                 CONT.HOOK.XARG #arg1 ] ] >,
@@ -1215,10 +1218,10 @@ incorporating-lex-rule-old := same-ctxt-lex-rule & same-agr-lex-rule & same-ligh
                                 FORM root ] ].
 
 noun-incorporation-lex-rule-super := incorporating-lex-rule & 
-  [ SYNSEM.LOCAL.CAT [ HEAD.MOD < > ],
-    C-CONT.HCONS <! !>,
+  [ C-CONT.HCONS <! !>,
     DTR common-noun-word-and-root-lex & [ SYNSEM.LOCAL.CAT.HEAD noun & [ PRD +,
-                                                                         MOD < > ] ] ].
+                                                                         MOD < >,
+                                                                         FORM root ] ] ].
 
 noun-incorporation-transitive-lex-rule := noun-incorporation-lex-rule-super & 2p-suffix-transitive-verb-rule-dtr &
   [ SYNSEM.LOCAL.CAT.VAL.COMPS < > ].
@@ -1229,37 +1232,56 @@ noun-incorporation-ditransitive-lex-rule := noun-incorporation-lex-rule-super & 
                            COMPS < #comp2 & synsem-min > ] ].
 
 ; 2019-04-04 HACKY: I am stuffing the LTOP of the adverb into the GTOP. This may cause problems down the road..
-adv-incorporation-lex-rule := incorporating-lex-rule & 
-  [ SYNSEM.LOCAL [ CAT [ HEAD.MOD < >,
-                         VAL.COMPS.FIRST.LOCAL.CONT.HOOK.INDEX #xarg ],
-                   CONT.HOOK [ GTOP #ltop,
-                               XARG #xarg ] ],
-    DTR adv-lex & [ SYNSEM.LOCAL.CAT.HEAD adv & [ MOD < [ LOCAL.CONT.HOOK.LTOP #ltop ] > ] ] ].
+; 2019-04-06 COMP needs to be AUX -. This is not true of adv (which can modify wherever) but it is true of incorporation
+; 2019-04-06 making COMP TYPE-RAISE -, this keeps out intransitive-verb-to-adj
+adv-incorporation-lex-rule-super := incorporating-lex-rule & 
+  [ SYNSEM.LOCAL [ CAT.VAL.COMPS.FIRST.LOCAL [ CAT.HEAD [ AUX -,
+                                                            TYPE-RAISE - ] ],
+                   CONT.HOOK.GTOP #ltop ],
+    DTR adv-lex & [ SYNSEM.LOCAL.CAT.HEAD adv & [ FORM root,
+                                                  MOD < [ LOCAL.CONT.HOOK.LTOP #ltop ] > ] ] ].
 
-adv-incorporation-transitive-lex-rule := adv-incorporation-lex-rule & 2p-suffix-transitive-verb-rule-dtr &
+adv-incorporation-pred-lex-rule := adv-incorporation-lex-rule-super & 2p-suffix-predcomp-verb-rule-dtr &
+  [ SYNSEM.LOCAL [ CAT.VAL [ SUBJ < [ LOCAL.CONT.HOOK.INDEX #subj-index ] >,
+                               COMPS < [ LOCAL.CONT.HOOK [ INDEX #index,
+                                                           XARG #subj-index ] ] > ],
+                   CONT.HOOK [ INDEX #index ] ] ].
+
+adv-incorporation-ncomp-lex-rule-super := adv-incorporation-lex-rule-super &
+  [ SYNSEM.LOCAL [ CAT.VAL.COMPS.FIRST.LOCAL.CONT.HOOK.INDEX #xarg,
+                   CONT.HOOK.XARG #xarg ] ].
+
+adv-incorporation-transitive-lex-rule := adv-incorporation-ncomp-lex-rule-super & 2p-suffix-transitive-verb-rule-dtr & 
   [ SYNSEM.LOCAL.CAT.VAL.COMPS.REST null ].
 
 ; HACKY: I am using the SPEC value to store the 2nd comps (will need later)
-adv-incorporation-ditransitive-lex-rule := adv-incorporation-lex-rule & 2p-suffix-ditransitive-verb-rule-dtr &
+adv-incorporation-ditransitive-lex-rule := adv-incorporation-ncomp-lex-rule-super & 2p-suffix-ditransitive-verb-rule-dtr &
   [ SYNSEM.LOCAL.CAT.VAL [ SPEC < #comp2 >,
                            COMPS.REST [ FIRST #comp2 & synsem-min,
                                         REST null ] ] ].
 
-adj-incorporation-lex-rule := incorporating-lex-rule & 
-  [ SYNSEM.LOCAL.CAT [ HEAD.MOD < >,
-                       VAL.COMPS.FIRST.LOCAL.CONT.HOOK.INDEX #mod-index ],
+adj-incorporation-lex-rule-super := incorporating-lex-rule & 
+  [ SYNSEM.LOCAL.CAT [ VAL.COMPS.FIRST.LOCAL.CONT.HOOK.INDEX #mod-index ],
     C-CONT.HCONS <! !>,
-    DTR attr-adj-lex & [ SYNSEM.LOCAL.CAT [ HEAD adj,
+    DTR attr-adj-lex & [ SYNSEM.LOCAL.CAT [ HEAD adj & [ FORM root ],
                                             VAL.SUBJ < [ LOCAL.CONT.HOOK.INDEX #mod-index ] > ] ] ].
 
-adj-incorporation-transitive-lex-rule := adj-incorporation-lex-rule & 2p-suffix-transitive-verb-rule-dtr &
+adj-incorporation-transitive-lex-rule := adj-incorporation-lex-rule-super & 2p-suffix-transitive-verb-rule-dtr &
   [ SYNSEM.LOCAL.CAT.VAL.COMPS.REST null ].
 
 ; HACKY: I am using the SPEC value to store the 2nd comps (will need later)
-adj-incorporation-ditransitive-lex-rule := adj-incorporation-lex-rule & 2p-suffix-ditransitive-verb-rule-dtr &
+adj-incorporation-ditransitive-lex-rule := adj-incorporation-lex-rule-super & 2p-suffix-ditransitive-verb-rule-dtr &
   [ SYNSEM.LOCAL.CAT.VAL [ SPEC < #comp2 >,
                            COMPS.REST [ FIRST #comp2 & synsem-min,
                                         REST null ] ] ].
+
+pred-incorporation-lex-rule := incorporating-lex-rule & 2p-suffix-predcomp-verb-rule-dtr & 
+  [ SYNSEM.LOCAL.CAT.VAL [ SUBJ < #subj >,
+                             COMPS #comps ],
+    DTR predicate-lex & [ SYNSEM [ LOCAL.CAT [ HEAD +nvj & [ FORM non-root ],
+                                  VAL [ SUBJ < #subj >,
+                                        COMPS #comps ] ],
+                   LIGHT + ] ] ].
 
 2p-suffix-verb-lex-rule-super := same-head-lex-rule & same-light-lex-rule & same-ctxt-lex-rule & same-head-lex-rule & 
                            same-agr-lex-rule & no-hcons-lex-item & no-icons-lex-item & add-incorporation-lex-rule & infl-lex-rule &
@@ -1272,21 +1294,31 @@ adj-incorporation-ditransitive-lex-rule := adj-incorporation-lex-rule & 2p-suffi
                                LTOP #lbl ] ],
     C-CONT.RELS <! [ ARG0 event & #arg0,
                      ARG1 ref-ind & #arg1,
-                     ARG2 ref-ind & #arg2,
                      LBL #lbl ] !>,
     DTR [ SYNSEM.LOCAL [ CAT.VAL [ SUBJ < #subj >,
                                  COMPS #comps ],
-                       CONT.HOOK [ XARG #arg2,
-                                   GTOP #lbl ] ] ] ].
+                       CONT.HOOK [ GTOP #lbl ] ] ] ].
+
+2p-suffix-verb-ncomps-lex-rule-super := 2p-suffix-verb-lex-rule-super & predicate-lex &
+  [ C-CONT.RELS <! [ ARG2 ref-ind & #arg2 ] !>,
+    DTR.SYNSEM.LOCAL.CONT.HOOK.XARG #arg2 ].
+
+2p-suffix-verb-predcomp-lex-rule-super := 2p-suffix-verb-lex-rule-super &
+  [ C-CONT.RELS <! [ ARG2 event & #arg2 ] !>,
+    DTR.SYNSEM.LOCAL.CONT.HOOK.INDEX #arg2 ].
 
 ; 2019-04-04 HACKY: using daughter's GTOP to associate with LTOP of the current arg. Probably bad.....
-2p-suffix-transitive-verb-lex-rule := 2p-suffix-verb-lex-rule-super &
+2p-suffix-transitive-verb-lex-rule := 2p-suffix-verb-ncomps-lex-rule-super &
   [ DTR 2p-suffix-transitive-verb-rule-dtr ].
 
-2p-suffix-ditransitive-verb-lex-rule := 2p-suffix-verb-lex-rule-super &
+2p-suffix-ditransitive-verb-lex-rule := 2p-suffix-verb-ncomps-lex-rule-super &
   [ C-CONT.RELS <! [ ARG3 ref-ind & #arg3 ] !>,
     DTR 2p-suffix-ditransitive-verb-rule-dtr &
-      [ SYNSEM.LOCAL [ CAT.VAL [ SPEC < [ LOCAL.CONT.HOOK.INDEX #arg3 ] > ] ] ] ].
+      [ SYNSEM.LOCAL [ CAT.VAL [ SPEC < [ LOCAL [ CAT.POSTHEAD +,
+                                                  CONT.HOOK.INDEX #arg3 ] ] > ] ] ] ].
+
+2p-suffix-predcomp-verb-lex-rule := 2p-suffix-verb-predcomp-lex-rule-super &
+  [ DTR 2p-suffix-predcomp-verb-rule-dtr  ].
 
 naak-lex-rule := 2p-suffix-transitive-verb-lex-rule & 
   [ C-CONT.RELS <! [ PRED "_have_v_rel" ] !> ].
@@ -1306,6 +1338,21 @@ go-after-lex-rule := 2p-suffix-transitive-verb-lex-rule &
 give-lex-rule := 2p-suffix-ditransitive-verb-lex-rule &
   [ C-CONT.RELS <! [ PRED "_give_v_rel" ] !> ].
 
+going-to-lex-rule := 2p-suffix-predcomp-verb-lex-rule & 
+  [ C-CONT.RELS <! [ PRED "_going.to_v_rel" ] !> ].
+
+want-to-do-lex-rule := 2p-suffix-predcomp-verb-lex-rule & 
+  [ C-CONT.RELS <! [ PRED "_want.to.do_v_rel" ] !> ].
+
+do-lex-rule := 2p-suffix-predcomp-verb-lex-rule & 
+  [ C-CONT.RELS <! [ PRED "_do_v_rel" ] !> ].
+
+need-to-do-lex-rule := 2p-suffix-predcomp-verb-lex-rule & 
+  [ C-CONT.RELS <! [ PRED "_need.to.do_v_rel" ] !> ].
+
+try-to-do-lex-rule := 2p-suffix-predcomp-verb-lex-rule & 
+  [ C-CONT.RELS <! [ PRED "_try.to.do_v_rel" ] !> ].
+
 ;;; 2019-03-22 allowing intransitive verbs to become adjectives
 intransitive-to-int-adj-lex-rule := cat-change-only-lex-rule & 
   [ SYNSEM.LOCAL.CAT [ HEAD adj &
@@ -1317,7 +1364,8 @@ intransitive-to-int-adj-lex-rule := cat-change-only-lex-rule &
                                POSSESSOR #poss,
                                INIT #init,
                                SPEC-INIT #spec,
-                               FORM #form ],
+                               FORM #form,
+                               TYPE-RAISE + ],
                            VAL [ SPR < >,
                                  SPEC < >,
                                  SUBJ < >,
@@ -1331,7 +1379,8 @@ intransitive-to-int-adj-lex-rule := cat-change-only-lex-rule &
                                 POSSESSOR #poss,
                                 INIT #init,
                                 SPEC-INIT #spec,
-                                FORM #form ],
+                                FORM #form,
+                                TYPE-RAISE - ],
                              VAL [ SUBJ < #subj >,
                                    COMPS < >,
                                    SPR < >,
@@ -1574,7 +1623,8 @@ continuative-lex-rule := aspect-2-lex-rule-super & const-lex-rule &
                 MOMENTANEOUS-COMPLEX-FLAG #momentaneous-complex ],
     DTR.INFLECTED [ CONTINUATIVE-FORM-FLAG +,
                     INCEPTIVE-COMPLEX-FLAG #inceptive-complex,
-                    MOMENTANEOUS-COMPLEX-FLAG #momentaneous-complex ] ].
+                    MOMENTANEOUS-COMPLEX-FLAG #momentaneous-complex ],
+    SYNSEM.LOCAL.CONT.HOOK.INDEX.E.ASPECT CT ].
 
 inceptive-complex-lex-rule := aspect-2-lex-rule-super & infl-lex-rule &
   [ INFLECTED [ INCEPTIVE-COMPLEX-FLAG +,
@@ -1819,7 +1869,7 @@ adj-head-scop-phrase :+ [ HEAD-DTR.SYNSEM.LOCAL.CAT.HEAD.AUX - ].
 ;2019-03-30
 ;2019-03-31 moving this into the lexical rule set
 auxiliary-type-raise-super := local-change-only-lex-rule & same-agr-lex-rule & same-ctxt-lex-rule & 
-  [ SYNSEM.LOCAL [ CAT [ HEAD [ AUX-RAISE +, 
+  [ SYNSEM.LOCAL [ CAT [ HEAD [ TYPE-RAISE +, 
                                 AUX +,
                                 PRON #pron,
                                 NMZ #nmz,
@@ -1859,7 +1909,7 @@ auxiliary-type-raise-super := local-change-only-lex-rule & same-agr-lex-rule & s
                                                REST #rcomp ],
                                         SPEC < >,
                                         SPR < > ],
-                                  HEAD verb & [ AUX-RAISE -,
+                                  HEAD verb & [ TYPE-RAISE -,
                                          AUX +,
                                          PRON #pron,
                                          NMZ #nmz,
