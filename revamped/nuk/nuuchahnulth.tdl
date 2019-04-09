@@ -1287,15 +1287,17 @@ pred-incorporation-lex-rule := incorporating-lex-rule & 2p-suffix-predcomp-verb-
                                         COMPS #comps ] ],
                    LIGHT + ] ] ].
 
-empty-uu-lex := norm-sem-lex-item & basic-icons-lex-item & no-hcons-lex-item & non-mod-lex-item & incorporating-lex-rule &
-  [ SYNSEM.LOCAL.CAT [ VAL [ SUBJ < [ LOCAL.CAT.HEAD.PRD - ] >,
-                             COMPS.FIRST.LOCAL.CAT [ HEAD noun & [ PRD - ],
-                                                   POSTHEAD + ],
-                             SPR < > ],
-                       HEAD verb & [ PRD +,
-                                     AUX -,
-                                     FORM non-root-nonfinite,
-                                     MOD < > ] ],
+empty-uu-lex := no-rels-hcons-icons-lex-item & basic-icons-lex-item & no-icons-lex-item & non-mod-lex-item & 
+  [ SYNSEM.LOCAL [ CAT [ VAL [ SUBJ < [ LOCAL.CAT.HEAD.PRD - ] >,
+                               COMPS.FIRST.LOCAL [ CAT [ HEAD noun & [ PRD - ],
+                                                       POSTHEAD + ],
+                                                   CONT.HOOK.INDEX #comp-index ],
+                               SPR < > ],
+                         HEAD verb & [ PRD +,
+                                       AUX -,
+                                       FORM non-root-nonfinite,
+                                       MOD < > ] ],
+                   CONT.HOOK.XARG #comp-index ],
     INFLECTED.INCORPORATION-FLAG - ].
 
 empty-uu-transitive-lex := empty-uu-lex & 2p-suffix-transitive-verb-rule-dtr &
