@@ -1,10 +1,10 @@
 ;;; -*- Mode: TDL; Coding: utf-8 -*-
 ;;; empty roots
-ʔu := empty-uu-transitive-lex &
+ʔu := empty-uu-lex &
   [ STEM < "ʔu" > ].
 
-ʔu_2 := empty-uu-ditransitive-lex &
-  [ STEM < "ʔu" > ].
+;ʔu_2 := empty-uu-ditransitive-lex &
+;  [ STEM < "ʔu" > ].
 ;;; Nouns
 
 nuuk := common-noun-word-and-root-lex &

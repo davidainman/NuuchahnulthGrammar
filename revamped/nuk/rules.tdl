@@ -46,6 +46,10 @@ head-subj := head-subj-phrase.
 
 comp-head := comp-head-phrase.
 
+;aux-composition := aux-composition-phrase.
+
+;comp-head-subordinate := comp-head-subordinate-phrase.
+
 ;;; TODO: This shouldn't exist should it?
 ;subj-head := subj-head-phrase.
 

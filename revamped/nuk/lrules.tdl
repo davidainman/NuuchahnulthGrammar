@@ -39,7 +39,9 @@ adv-incorporation-transitive-lex := adv-incorporation-transitive-lex-rule.
 
 adv-incorporation-ditransitive-lex := adv-incorporation-ditransitive-lex-rule.
 
-adv-incorporation-pred-lex := adv-incorporation-pred-lex-rule.
+adv-and-uu-incorporation-pred-lex := adv-and-uu-incorporation-pred-lex-rule.
+
+adv-no-uu-incorporation-pred-lex := adv-no-uu-incorporation-pred-lex-rule.
 
 pred-incorporation-lex := pred-incorporation-lex-rule.
 

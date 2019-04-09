@@ -31,6 +31,7 @@ head :+ [ PRON bool,
 
 root := form.
 non-root := form.
+uu-form := root & non-root.
 root-finite := root & finite.
 root-nonfinite := root & nonfinite.
 non-root-finite := non-root & finite.
@@ -329,6 +330,8 @@ predicate-lex := lex-item &
 
 non-predicate-lex := lex-item &
   [ SYNSEM.LOCAL.CAT.HEAD.PRD - ].
+
+uu-lex := lex-item.
 
 main-clause-lex := lex-item &
   [ SYNSEM.LOCAL.CAT.MC + ].
@@ -1151,7 +1154,8 @@ aux-type-raising-dtr := word-or-lexrule.
 post-clitic-habitual-lex-rule-dtr := word-or-lexrule.
 2p-suffix-transitive-verb-rule-dtr := word-or-lexrule.
 2p-suffix-ditransitive-verb-rule-dtr := word-or-lexrule.
-2p-suffix-predcomp-verb-rule-dtr := word-or-lexrule.
+2p-suffix-predcomp-verb-or-uu-rule-dtr := word-or-lexrule.
+2p-suffix-predcomp-verb-no-uu-rule-dtr := word-or-lexrule.
 
 ;;; Lexical rule types
 
@@ -1199,26 +1203,6 @@ incorporating-lex-rule := cat-change-only-lex-rule &
     DTR.SYNSEM.LOCAL.CAT.HEAD [ NMZ -,
                                 AUX - ] ].
 
-;;; TODO delete this if the new system is working.
-incorporating-lex-rule-old := same-ctxt-lex-rule & same-agr-lex-rule & same-light-lex-rule & same-non-local-lex-rule &
-  [ SYNSEM.LOCAL [ CAT [ VAL [ SUBJ < [ LOCAL [ CAT.HEAD verb,
-                                                CONT.HOOK.XARG #arg1 ] ] >,
-                               SPR < >,
-                               SPEC < > ],
-                         HEAD verb & [ PRD +,
-                                       AUX -,
-                                       FORM non-root-nonfinite ] ],
-                   CONT.HOOK [ INDEX #arg0,
-                               XARG #arg1,
-                               LTOP #lbl ] ],
-    C-CONT [ RELS <! [ LBL #lbl,
-                       ARG0 event & #arg0,
-                       ARG1 ref-ind & #arg1 ] !>,
-             ICONS <! !> ],
-    DTR.SYNSEM.LOCAL.CAT.HEAD [ NMZ -,
-                                AUX -,
-                                FORM root ] ].
-
 noun-incorporation-lex-rule-super := incorporating-lex-rule & 
   [ C-CONT.HCONS <! !>,
     DTR common-noun-word-and-root-lex & [ SYNSEM.LOCAL.CAT.HEAD noun & [ PRD +,
@@ -1231,24 +1215,32 @@ noun-incorporation-transitive-lex-rule := noun-incorporation-lex-rule-super & 2p
 ; HACKY: I am using the SPEC value to store the comps (will need later)
 noun-incorporation-ditransitive-lex-rule := noun-incorporation-lex-rule-super & 2p-suffix-ditransitive-verb-rule-dtr &
   [ SYNSEM.LOCAL.CAT.VAL [ SPEC < #comp2 >,
-                           COMPS < #comp2 & synsem-min > ] ].
+                           COMPS < #comp2 & [ LOCAL.CAT.POSTHEAD + ] > ] ].
 
 ; 2019-04-04 HACKY: I am stuffing the LTOP of the adverb into the GTOP. This may cause problems down the road..
 ; 2019-04-06 COMP needs to be AUX -. This is not true of adv (which can modify wherever) but it is true of incorporation
 ; 2019-04-06 making COMP TYPE-RAISE -, this keeps out intransitive-verb-to-adj
 adv-incorporation-lex-rule-super := incorporating-lex-rule & 
-  [ SYNSEM.LOCAL [ CAT.VAL.COMPS.FIRST [ LOCAL.CAT.HEAD [ AUX -,
-                                                          TYPE-RAISE - ] ],
+  [ SYNSEM.LOCAL [ CAT.VAL.COMPS.FIRST [ LOCAL.CAT [ HEAD [ AUX -,
+                                                            TYPE-RAISE - ],
+                                                     POSTHEAD + ] ],
                    CONT.HOOK.GTOP #ltop ],
-    DTR.SYNSEM.LOCAL.CAT.HEAD +jr &[ FORM root,
-                                     MOD < [ LOCAL.CONT.HOOK.LTOP #ltop ] > ] ].
+    DTR [ SYNSEM.LOCAL.CAT.HEAD +jr &[ FORM root,
+                                       MOD < [ LOCAL.CONT.HOOK.LTOP #ltop ] > ] ] ].
 
-adv-incorporation-pred-lex-rule := adv-incorporation-lex-rule-super & 2p-suffix-predcomp-verb-rule-dtr &
+; 2019-04-09 Forcing COMPS COMPS to be null
+adv-incorporation-pred-lex-rule := adv-incorporation-lex-rule-super  &
   [ SYNSEM.LOCAL [ CAT.VAL [ SUBJ < [ LOCAL.CONT.HOOK.INDEX #subj-index ] >,
-                               COMPS < [ LOCAL.CONT.HOOK [ INDEX #index,
-                                                           XARG #subj-index ],
-                                         OPT - ] > ],
+                               COMPS < [ LOCAL [ CONT.HOOK [ INDEX #index,
+                                                                   XARG #subj-index ],
+                                                       CAT.VAL.COMPS < > ],
+                                               OPT - ] > ],
                    CONT.HOOK [ INDEX #index ] ] ].
+
+adv-and-uu-incorporation-pred-lex-rule := adv-incorporation-pred-lex-rule & 2p-suffix-predcomp-verb-or-uu-rule-dtr.
+
+adv-no-uu-incorporation-pred-lex-rule := adv-incorporation-pred-lex-rule & 2p-suffix-predcomp-verb-no-uu-rule-dtr & 
+  [ DTR adv-lex ].
 
 adv-incorporation-ncomp-lex-rule-super := adv-incorporation-lex-rule-super &
   [ SYNSEM.LOCAL [ CAT.VAL.COMPS.FIRST.LOCAL.CONT.HOOK.INDEX #xarg,
@@ -1279,7 +1271,7 @@ adj-incorporation-ditransitive-lex-rule := adj-incorporation-lex-rule-super & 2p
                            COMPS.REST [ FIRST #comp2 & synsem-min,
                                         REST null ] ] ].
 
-pred-incorporation-lex-rule := incorporating-lex-rule & 2p-suffix-predcomp-verb-rule-dtr & 
+pred-incorporation-lex-rule := incorporating-lex-rule & 2p-suffix-predcomp-verb-or-uu-rule-dtr & 2p-suffix-predcomp-verb-no-uu-rule-dtr &
   [ SYNSEM.LOCAL.CAT.VAL [ SUBJ < #subj >,
                              COMPS #comps ],
     DTR predicate-lex & [ SYNSEM [ LOCAL.CAT [ HEAD +nvj & [ FORM non-root ],
@@ -1287,28 +1279,41 @@ pred-incorporation-lex-rule := incorporating-lex-rule & 2p-suffix-predcomp-verb-
                                         COMPS #comps ] ],
                    LIGHT + ] ] ].
 
-empty-uu-lex := no-rels-hcons-icons-lex-item & basic-icons-lex-item & no-icons-lex-item & non-mod-lex-item & 
-  [ SYNSEM.LOCAL [ CAT [ VAL [ SUBJ < [ LOCAL.CAT.HEAD.PRD - ] >,
-                               COMPS.FIRST.LOCAL [ CAT [ HEAD noun & [ PRD - ],
-                                                       POSTHEAD + ],
-                                                   CONT.HOOK.INDEX #comp-index ],
-                               SPR < > ],
-                         HEAD verb & [ PRD +,
-                                       AUX -,
-                                       FORM non-root-nonfinite,
-                                       MOD < > ] ],
-                   CONT.HOOK.XARG #comp-index ],
-    INFLECTED.INCORPORATION-FLAG - ].
+empty-uu-lex := no-rels-hcons-icons-lex-item & basic-icons-lex-item & no-icons-lex-item & 
+ [ SYNSEM.LOCAL [ CAT [ VAL [ SUBJ < [ LOCAL.CAT.HEAD.PRD - ] >,
+                              COMPS < #mod & [ LOCAL [ CONT.HOOK.INDEX #comp-index,
+                                                       CAT [ HEAD.AUX -,
+                                                             POSTHEAD + ] ] ] >,
+                              SPR < > ],
+                        HEAD +jr & [ PRD +,
+                                     AUX -,
+                                     FORM uu-form,
+                                     MOD < #mod > ] ],
+                  CONT.HOOK.XARG #comp-index ],
+   INFLECTED.INCORPORATION-FLAG - ].
 
-empty-uu-transitive-lex := empty-uu-lex & 2p-suffix-transitive-verb-rule-dtr &
-  [ SYNSEM.LOCAL.CAT.VAL [ SPEC < >,
-                           COMPS.REST null ] ].
+;empty-uu-lex := no-rels-hcons-icons-lex-item & basic-icons-lex-item & no-icons-lex-item & non-mod-lex-item & 
+;  [ SYNSEM.LOCAL [ CAT [ VAL [ SUBJ < [ LOCAL.CAT.HEAD.PRD - ] >,
+;                               COMPS.FIRST.LOCAL [ CAT [ HEAD noun & [ PRD - ],
+;                                                       POSTHEAD + ],
+;                                                   CONT.HOOK.INDEX #comp-index ],
+;                               SPR < > ],
+;                         HEAD verb & [ PRD +,
+;                                       AUX -,
+;                                       FORM non-root-nonfinite,
+;                                       MOD < > ] ],
+;                   CONT.HOOK.XARG #comp-index ],
+;    INFLECTED.INCORPORATION-FLAG - ].
 
-empty-uu-ditransitive-lex := empty-uu-lex & 2p-suffix-ditransitive-verb-rule-dtr &
-  [ SYNSEM.LOCAL.CAT.VAL [ SPEC < #comp2 & [ LOCAL.CAT [ HEAD noun,
-                                                POSTHEAD + ] ] >,
-                           COMPS.REST [ FIRST #comp2 & synsem-min,
-                                        REST null ] ] ].
+;empty-uu-transitive-lex := empty-uu-lex & 2p-suffix-transitive-verb-rule-dtr & 
+;  [ SYNSEM.LOCAL.CAT.VAL [ SPEC < >,
+;                           COMPS.REST null ] ].
+
+;empty-uu-ditransitive-lex := empty-uu-lex & 2p-suffix-ditransitive-verb-rule-dtr & 
+;  [ SYNSEM.LOCAL.CAT.VAL [ SPEC < #comp2 & [ LOCAL.CAT [ HEAD noun,
+;                                                POSTHEAD + ] ] >,
+;                           COMPS.REST [ FIRST #comp2 & synsem-min,
+;                                        REST null ] ] ].
 
 2p-suffix-verb-lex-rule-super := same-head-lex-rule & same-light-lex-rule & same-ctxt-lex-rule & same-head-lex-rule & 
                            same-agr-lex-rule & no-hcons-lex-item & no-icons-lex-item & add-incorporation-lex-rule & infl-lex-rule &
@@ -1345,7 +1350,10 @@ empty-uu-ditransitive-lex := empty-uu-lex & 2p-suffix-ditransitive-verb-rule-dtr
                                                   CONT.HOOK.INDEX #arg3 ] ] > ] ] ] ].
 
 2p-suffix-predcomp-verb-lex-rule := 2p-suffix-verb-predcomp-lex-rule-super &
-  [ DTR 2p-suffix-predcomp-verb-rule-dtr  ].
+  [ DTR 2p-suffix-predcomp-verb-no-uu-rule-dtr  ].
+
+2p-suffix-predcomp-verb-and-uu-lex-rule := 2p-suffix-verb-predcomp-lex-rule-super &
+  [ DTR 2p-suffix-predcomp-verb-or-uu-rule-dtr  ].
 
 naak-lex-rule := 2p-suffix-transitive-verb-lex-rule & 
   [ C-CONT.RELS <! [ PRED "_have_v_rel" ] !> ].
@@ -1368,7 +1376,7 @@ give-lex-rule := 2p-suffix-ditransitive-verb-lex-rule &
 going-to-lex-rule := 2p-suffix-predcomp-verb-lex-rule & 
   [ C-CONT.RELS <! [ PRED "_going.to_v_rel" ] !> ].
 
-want-to-do-lex-rule := 2p-suffix-predcomp-verb-lex-rule & 
+want-to-do-lex-rule := 2p-suffix-predcomp-verb-and-uu-lex-rule & 
   [ C-CONT.RELS <! [ PRED "_want.to.do_v_rel" ] !> ].
 
 do-lex-rule := 2p-suffix-predcomp-verb-lex-rule & 
@@ -1855,8 +1863,7 @@ scopal-rel-lex-rule := lex-rule &
 
 ; 2019-03-31 Extraction types
 
-basic-extracted-arg-phrase :+ [ HEAD-DTR.SYNSEM.LOCAL.CAT.HEAD [ AUX +,
-                                                                 PRD + ] ].
+basic-extracted-arg-phrase :+ [ HEAD-DTR.SYNSEM.LOCAL.CAT.HEAD [ PRD + ] ].
 
 basic-extracted-adj-phrase :+ [ HEAD-DTR.SYNSEM.LOCAL.CAT.HEAD [ AUX +,
                                                                  PRD + ] ].
@@ -1867,8 +1874,23 @@ nuk-extracted-comp-phrase := basic-extracted-comp-phrase &
   [ HEAD-DTR.SYNSEM.LOCAL.CAT.VAL [ SUBJ olist,
                                     COMPS < [ LOCAL.CAT.POSTHEAD + ] > ] ].
 
-nuk-extracted-subj-phrase := basic-extracted-subj-phrase & 
-  [ HEAD-DTR.SYNSEM.LOCAL.CAT.VAL [ COMPS < > ] ].
+; 2019-04-09 can't inherit from matrix type because it asserts MC na (need it to be silent on the matter)
+; also need to say that the head-dtr is AUX +
+nuk-extracted-subj-phrase := basic-extracted-arg-phrase & head-compositional &
+  [ SYNSEM.LOCAL.CAT [ VAL [ SUBJ < >,
+                             SPR < >,
+                             COMPS < > ],
+                       MC #mc ],
+    HEAD-DTR.SYNSEM [ LOCAL.CAT [ VAL [ SUBJ < gap &
+                                             [ LOCAL.CONT.HOOK.INDEX ref-ind,
+                                               NON-LOCAL.SLASH #slash ] >,
+                                        COMPS < > ],
+                                  HEAD.AUX +,
+                                  MC #mc ],
+                      NON-LOCAL.SLASH #slash ],
+    C-CONT [ RELS <! !>,
+             HCONS <! !>,
+             ICONS <! !> ] ].
 
 ; TODO: constrain extracted adj to be quantifiers
 nuk-extracted-adj-phrase := extracted-adj-phrase.
@@ -1876,11 +1898,11 @@ nuk-extracted-adj-phrase := extracted-adj-phrase.
 ; despite a HEAD-DTR with SUBJ < > the subj of the mother is not defined? Adding SUBJ < > to mother
 ; 2019-04-01 I think I only want this to extract from clausal auxes (aux + prd +) & filler should be prd -
 ; hacky but am requiring it to apply immediately after extraction :/
+; 2019-04-09 removing requirement that daughter be AUX + and form finite --- this is for things like ʔaanaḥimaḥ nuuk ʔunaak
 nuk-filler-head-phrase := basic-head-filler-phrase & head-final & 
   [ SYNSEM.LOCAL.CAT.VAL #val,
-    HEAD-DTR basic-extracted-arg-phrase & [ SYNSEM.LOCAL.CAT [ HEAD [ AUX +,
-                                       PRD +,
-                                       FORM finite ],
+    HEAD-DTR basic-extracted-arg-phrase & [ SYNSEM.LOCAL.CAT [ HEAD [ 
+                                       PRD + ],
                                 VAL #val & [ COMPS < >,
                                       SPEC < >,
                                       SPR < > ] ] ],
@@ -1975,7 +1997,7 @@ type-raise-article-lex-rule := auxiliary-type-raise-super &
 ;;; to prevent this from firing on POSTHEAD - (i.e., 2P's first COMP)
 ;;; 2019-04-01 think this should also require head-dtr to be aux +
 ;;; 2019-04-04 removing HEAD.AUX + requirement on daughter, may need to add back.
-head-comp-phrase := basic-head-1st-comp-phrase & head-initial-head-nexus &
+head-comp-phrase := nuk-head-1st-comp-phrase & head-initial-head-nexus &
   [ SYNSEM.LIGHT -,
     HEAD-DTR.SYNSEM.LOCAL.CAT [ VAL.COMPS phlist ] ].
 
@@ -2034,18 +2056,19 @@ head-subj-phrase-2 := basic-head-subj-phrase & declarative-clause & head-initial
 ;;; 2019-03-13 Defining comps as posthead or null,
 ;;; to prevent this from firing if there is a POSTHEAD - element (i.e., 2P's first COMP)
 ;;; 2019-03-30 changing from phlist to olist (??)
-head-comp-phrase-2 := basic-head-2nd-comp-phrase & head-initial-head-nexus &
+head-comp-phrase-2 := nuk-head-2nd-comp-phrase & head-initial-head-nexus &
   [ SYNSEM [ LIGHT -,
-             LOCAL.CAT.VAL.COMPS olist ] ].
+             LOCAL.CAT.VAL.COMPS phlist ] ].
 
 ;;; 2019-03-13 Defining daughter's comps as posthead or null,
 ;;; to prevent this from firing if there is a POSTHEAD - element (i.e., 2P's first COMP)
-head-comp-phrase-3 := basic-head-1st-comp-phrase & head-initial &
-  [ HEAD-DTR.SYNSEM [ INFOSTR-FLAG +,
-                      LIGHT -,
-                      LOCAL.CAT.VAL [ SUBJ < >,
-                                      COMPS phlist ] ],
-    NON-HEAD-DTR.SYNSEM.INFOSTR-FLAG - ].
+;;; 2019-04-09 think this is unneeded
+;head-comp-phrase-3 := nuk-head-1st-comp-phrase & head-initial &
+;  [ HEAD-DTR.SYNSEM [ INFOSTR-FLAG +,
+;                      LIGHT -,
+;                      LOCAL.CAT.VAL [ SUBJ < >,
+;                                      COMPS phlist ] ],
+;    NON-HEAD-DTR.SYNSEM.INFOSTR-FLAG - ].
 
 high-nominalized-clause-phrase := unary-phrase &
   [ SYNSEM [ LOCAL [ CAT [ HEAD noun &
@@ -2121,11 +2144,53 @@ head-subj-phrase := decl-head-subj-phrase & head-initial-head-nexus &
 subj-head-phrase := decl-head-subj-phrase & head-final-head-nexus &
   [ NON-HEAD-DTR.SYNSEM.LOCAL.CAT.HEAD.PRD - ].
 
-comp-head-phrase := basic-head-1st-comp-phrase & head-final-head-nexus.
+;;; 2019-04-09 need to make the parent of comp-head-phrases the parent LIGHT - so AUX composition can't apply after
+;;; copying from matrix.tdl & modifying LIGHT.
+nuk-head-comp-phrase := head-valence-phrase & head-compositional &
+              binary-headed-phrase & 
+  [ SYNSEM phr-synsem-min &
+           [ LOCAL.CAT [ VAL [ SUBJ #subj,
+                               SPEC #spec,
+                               SPR #spr ],
+                         POSTHEAD #ph,
+                         HC-LIGHT #light ],
+             LIGHT - ],
+    HEAD-DTR.SYNSEM [ LOCAL.CAT [ VAL [ SUBJ #subj,
+                                        SPEC #spec,
+                                        SPR #spr ],
+                                  HC-LIGHT #light,
+                                  POSTHEAD #ph ]],
+    NON-HEAD-DTR.SYNSEM canonical-synsem,
+    C-CONT [ RELS <! !>, HCONS <! !>, ICONS <! !> ] ].
+
+nuk-head-1st-comp-phrase := nuk-head-comp-phrase &
+  [ SYNSEM.LOCAL.CAT.VAL.COMPS #comps,
+    HEAD-DTR.SYNSEM.LOCAL.CAT.VAL.COMPS < #synsem . #comps >,
+    NON-HEAD-DTR.SYNSEM #synsem ].
+
+nuk-head-2nd-comp-phrase := basic-head-comp-phrase &
+  [ SYNSEM.LOCAL.CAT.VAL.COMPS < #firstcomp . #othercomps >,
+    HEAD-DTR.SYNSEM.LOCAL.CAT.VAL.COMPS [ FIRST #firstcomp,
+                                          REST < #synsem . #othercomps > ],
+    NON-HEAD-DTR.SYNSEM #synsem ].
+
+;;; 2019-09-04 should only be allowed for AUX & MC -.
+;;; Default phrase is not passing up MC information which is odd.
+comp-head-phrase := nuk-head-1st-comp-phrase & head-final-head-nexus &
+  [ SYNSEM.LOCAL.CAT.MC #mc,
+    HEAD-DTR.SYNSEM.LOCAL.CAT.MC #mc ].
+
+aux-composition-phrase := comp-head-phrase &
+  [ HEAD-DTR.SYNSEM [ LOCAL.CAT.HEAD.AUX +,
+                      LIGHT + ] ].
+
+comp-head-subordinate-phrase := comp-head-phrase &
+  [ SYNSEM.LOCAL.CAT.MC -,
+    HEAD-DTR.SYNSEM.LOCAL.CAT.HEAD.AUX - ].
 
 ;;; 2019-03-13 Defining comps as posthead or null,
 ;;; to prevent this from firing if there is a POSTHEAD - element (i.e., 2P's first COMP)
-comp-head-phrase-2 := basic-head-2nd-comp-phrase & head-final-head-nexus &
+comp-head-phrase-2 := nuk-head-2nd-comp-phrase & head-final-head-nexus &
   [ SYNSEM.LOCAL.CAT.VAL.COMPS phlist ].
 
 poss-unary-phrase-1 := poss-unary-phrase &

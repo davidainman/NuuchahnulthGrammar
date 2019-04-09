@@ -97,7 +97,7 @@ past-prefix :=
 %prefix (* =\(m\)it) (=0 =\(m\)it)
 past-lex-rule.
 
-past-prefix :=
+past-prefix-2 :=
 %prefix (* =int) (=0 =int)
 past-lex-rule.
 
@@ -150,7 +150,7 @@ find-suffix :=
 find-lex-rule.
 
 take-suffix :=
-%suffix (* -L.!iˑƛ)
+%suffix (* -L.\!iˑƛ)
 take-lex-rule.
 
 talk-about-suffix :=
@@ -158,7 +158,7 @@ talk-about-suffix :=
 talk-about-lex-rule.
 
 go-after-suffix :=
-%suffix (* -R.!iiḥ)
+%suffix (* -R.\!iiḥ)
 go-after-lex-rule.
 
 give-suffix :=
@@ -171,15 +171,11 @@ going-to-lex-rule.
 
 want-to-do-suffix :=
 %suffix (* -miḥsa)
-going-to-lex-rule.
+want-to-do-lex-rule.
 
-want-to-do-suffix :=
+want-to-do-suffix-2 :=
 %suffix (* -maḥsa)
-going-to-lex-rule.
-
-want-to-do-suffix :=
-%suffix (* -miḥsa)
-going-to-lex-rule.
+want-to-do-lex-rule.
 
 do-suffix :=
 %suffix (* -siła)
