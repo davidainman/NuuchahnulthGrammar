@@ -96,6 +96,6 @@ extracted-comp := nuk-extracted-comp-phrase.
 
 extracted-subj := nuk-extracted-subj-phrase.
 
-extracted-adj := nuk-extracted-adj-phrase.
+;extracted-adj := nuk-extracted-adj-phrase.
 
 filler-head := nuk-filler-head-phrase.

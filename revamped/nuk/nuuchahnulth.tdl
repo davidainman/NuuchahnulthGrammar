@@ -36,9 +36,6 @@ root-nonfinite := root & nonfinite.
 non-root-finite := non-root & finite.
 non-root-nonfinite := non-root & nonfinite.
 
-root-form := word-or-lexrule & [ SYNSEM.LOCAL.CAT.HEAD.FORM root ].
-non-root-form := word-or-lexrule & [ SYNSEM.LOCAL.CAT.HEAD.FORM non-root ].
-
 ;;; 2019-04-04 Root to non-root and non-root to root
 
 root-to-non-root-lex-rule := lex-rule &
@@ -217,8 +214,9 @@ nuk-head-opt-subj-imp-phrase := imp-head-opt-subj-phrase &
                                    AUX + ],
                     NON-LOCAL.SLASH <! !> ] ].
 
+;;; TODO this needs to apply either low or high but not both, for now must be high
 nuk-head-opt-comp-phrase := basic-head-opt-comp-phrase &
-[ HEAD-DTR.SYNSEM.LOCAL.CAT.HEAD.FORM finite ].
+[ HEAD-DTR.SYNSEM.LOCAL.CAT [ HEAD.FORM finite ] ].
 
 ;;;;;;;;;;;;;;
 ;;; Features
@@ -479,9 +477,9 @@ main-verb-lex := verb-lex & basic-verb-lex &
                                        COMPS < > ] ],
                            CONT.HOOK.INDEX #xarg ] ] ].
 
-aux-lex := verb-lex & root-form &
+aux-lex := verb-lex & 
   [ SYNSEM.LOCAL.CAT.HEAD [ AUX +,
-                            FORM nonfinite ] ].
+                            FORM root-nonfinite ] ].
 
 intransitive-verb-lex := main-verb-lex & intransitive-lex-item &
   [ SYNSEM.LOCAL.CAT.VAL.COMPS < >,
@@ -570,7 +568,8 @@ article-lex := 2p-lex-no-rels & non-predicate-lex &
                  CONT.HOOK.INDEX #index ] ].
 
 ;;; 2019-03-09 This is for the neutral mood applying w/ no further clitic-passive-lex-rule
-neutral-3rd-pred-lex-rule := local-change-only-lex-rule & same-agr-lex-rule & same-ctxt-lex-rule & predicate-lex &
+;;; 2019-04-08 making parent LIGHT - b/c this (notionally) is no longer a single morpheme.
+neutral-3rd-pred-lex-rule := same-non-local-lex-rule & same-modified-lex-rule & no-ccont-lex-rule & same-agr-lex-rule & same-ctxt-lex-rule & predicate-lex &
   [ SYNSEM [ LOCAL [ CAT [ HEAD verb &
                              [ AUX +,
                                MOD < >,
@@ -589,9 +588,10 @@ neutral-3rd-pred-lex-rule := local-change-only-lex-rule & same-agr-lex-rule & sa
                                    CLAUSE-KEY #ckey ],
                             RELS #rels,
                             HCONS #hcons,
-                            ICONS #icons ]]],
+                            ICONS #icons ]],
+             LIGHT - ],
     DTR [ INFLECTED infl-satisfied,
-         SYNSEM.LOCAL [ CAT [ HEAD [ PRD +,
+         SYNSEM [ LOCAL [ CAT [ HEAD [ PRD +,
                                      FORM nonfinite,
                                      AUX - ],
                                 VAL [ SUBJ < #subj >,
@@ -606,7 +606,8 @@ neutral-3rd-pred-lex-rule := local-change-only-lex-rule & same-agr-lex-rule & sa
                                      CLAUSE-KEY #ckey ],
                               RELS #rels,
                               HCONS #hcons,
-                              ICONS #icons ]]],
+                              ICONS #icons ]],
+                  LIGHT + ]],
     C-CONT [ RELS <!  !>,
              HCONS <!  !>,
              ICONS <!  !> ] ].
@@ -694,12 +695,12 @@ mood-strong-real-verb-lex := mood-2p-verb-lex & aux-type-raising-dtr &
                        MC + ] ].
 
 ;;; 2019-03-08 for the verbs that already have aspect & don't need more
-main-verb-inflected-lex := main-verb-lex & non-root-form &  
-  [ SYNSEM.LOCAL.CAT.HEAD.FORM nonfinite,
+main-verb-inflected-lex := main-verb-lex & 
+  [ SYNSEM.LOCAL.CAT.HEAD.FORM non-root-nonfinite,
     INFLECTED infl-satisfied ].
 
-main-verb-verb-lex := root-form & verb-lex & aspect-2-rule-dtr & aspect-3-rule-dtr &
-  [ SYNSEM.LOCAL.CAT.HEAD.FORM nonfinite,
+main-verb-verb-lex := verb-lex & aspect-2-rule-dtr & aspect-3-rule-dtr &
+  [ SYNSEM.LOCAL.CAT.HEAD.FORM root-nonfinite,
     INFLECTED [ ASPECT-2-FLAG -,
                 ASPECT-1-FLAG - ] ].
 
@@ -1186,6 +1187,7 @@ add-incorporation-lex-rule := lex-rule &
                     INCORPORATION-FLAG - ] ].
 
 ; HACKY: I am keeping SPEC unspecified 'cause I'm using it as scratch for ditransitives :/
+; 2019-04-08 adding that daughter's inflected.incorporation-flag is na-or-- to avoid cyclic application
 incorporating-lex-rule := cat-change-only-lex-rule & 
   [ SYNSEM.LOCAL.CAT [ VAL [ SUBJ < [ LOCAL.CAT.HEAD.PRD - ] >,
                              SPR < > ],
@@ -1235,21 +1237,23 @@ noun-incorporation-ditransitive-lex-rule := noun-incorporation-lex-rule-super & 
 ; 2019-04-06 COMP needs to be AUX -. This is not true of adv (which can modify wherever) but it is true of incorporation
 ; 2019-04-06 making COMP TYPE-RAISE -, this keeps out intransitive-verb-to-adj
 adv-incorporation-lex-rule-super := incorporating-lex-rule & 
-  [ SYNSEM.LOCAL [ CAT.VAL.COMPS.FIRST.LOCAL [ CAT.HEAD [ AUX -,
-                                                            TYPE-RAISE - ] ],
+  [ SYNSEM.LOCAL [ CAT.VAL.COMPS.FIRST [ LOCAL.CAT.HEAD [ AUX -,
+                                                          TYPE-RAISE - ] ],
                    CONT.HOOK.GTOP #ltop ],
-    DTR adv-lex & [ SYNSEM.LOCAL.CAT.HEAD adv & [ FORM root,
-                                                  MOD < [ LOCAL.CONT.HOOK.LTOP #ltop ] > ] ] ].
+    DTR.SYNSEM.LOCAL.CAT.HEAD +jr &[ FORM root,
+                                     MOD < [ LOCAL.CONT.HOOK.LTOP #ltop ] > ] ].
 
 adv-incorporation-pred-lex-rule := adv-incorporation-lex-rule-super & 2p-suffix-predcomp-verb-rule-dtr &
   [ SYNSEM.LOCAL [ CAT.VAL [ SUBJ < [ LOCAL.CONT.HOOK.INDEX #subj-index ] >,
                                COMPS < [ LOCAL.CONT.HOOK [ INDEX #index,
-                                                           XARG #subj-index ] ] > ],
+                                                           XARG #subj-index ],
+                                         OPT - ] > ],
                    CONT.HOOK [ INDEX #index ] ] ].
 
 adv-incorporation-ncomp-lex-rule-super := adv-incorporation-lex-rule-super &
   [ SYNSEM.LOCAL [ CAT.VAL.COMPS.FIRST.LOCAL.CONT.HOOK.INDEX #xarg,
-                   CONT.HOOK.XARG #xarg ] ].
+                   CONT.HOOK.XARG #xarg ],
+    DTR.SYNSEM.LOCAL.CAT.HEAD adv ].
 
 adv-incorporation-transitive-lex-rule := adv-incorporation-ncomp-lex-rule-super & 2p-suffix-transitive-verb-rule-dtr & 
   [ SYNSEM.LOCAL.CAT.VAL.COMPS.REST null ].
@@ -1282,6 +1286,27 @@ pred-incorporation-lex-rule := incorporating-lex-rule & 2p-suffix-predcomp-verb-
                                   VAL [ SUBJ < #subj >,
                                         COMPS #comps ] ],
                    LIGHT + ] ] ].
+
+empty-uu-lex := norm-sem-lex-item & basic-icons-lex-item & no-hcons-lex-item & non-mod-lex-item & incorporating-lex-rule &
+  [ SYNSEM.LOCAL.CAT [ VAL [ SUBJ < [ LOCAL.CAT.HEAD.PRD - ] >,
+                             COMPS.FIRST.LOCAL.CAT [ HEAD noun & [ PRD - ],
+                                                   POSTHEAD + ],
+                             SPR < > ],
+                       HEAD verb & [ PRD +,
+                                     AUX -,
+                                     FORM non-root-nonfinite,
+                                     MOD < > ] ],
+    INFLECTED.INCORPORATION-FLAG - ].
+
+empty-uu-transitive-lex := empty-uu-lex & 2p-suffix-transitive-verb-rule-dtr &
+  [ SYNSEM.LOCAL.CAT.VAL [ SPEC < >,
+                           COMPS.REST null ] ].
+
+empty-uu-ditransitive-lex := empty-uu-lex & 2p-suffix-ditransitive-verb-rule-dtr &
+  [ SYNSEM.LOCAL.CAT.VAL [ SPEC < #comp2 & [ LOCAL.CAT [ HEAD noun,
+                                                POSTHEAD + ] ] >,
+                           COMPS.REST [ FIRST #comp2 & synsem-min,
+                                        REST null ] ] ].
 
 2p-suffix-verb-lex-rule-super := same-head-lex-rule & same-light-lex-rule & same-ctxt-lex-rule & same-head-lex-rule & 
                            same-agr-lex-rule & no-hcons-lex-item & no-icons-lex-item & add-incorporation-lex-rule & infl-lex-rule &
@@ -1841,7 +1866,7 @@ nuk-extracted-comp-phrase := basic-extracted-comp-phrase &
                                     COMPS < [ LOCAL.CAT.POSTHEAD + ] > ] ].
 
 nuk-extracted-subj-phrase := basic-extracted-subj-phrase & 
-  [ HEAD-DTR.SYNSEM.LOCAL.CAT.VAL [ COMPS <  > ] ].
+  [ HEAD-DTR.SYNSEM.LOCAL.CAT.VAL [ COMPS < > ] ].
 
 ; TODO: constrain extracted adj to be quantifiers
 nuk-extracted-adj-phrase := extracted-adj-phrase.

@@ -177,6 +177,10 @@ want-to-do-suffix :=
 %suffix (* -maḥsa)
 going-to-lex-rule.
 
+want-to-do-suffix :=
+%suffix (* -miḥsa)
+going-to-lex-rule.
+
 do-suffix :=
 %suffix (* -siła)
 do-lex-rule.
