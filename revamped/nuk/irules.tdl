@@ -34,7 +34,7 @@ inceptive-form-suffix2 :=
 inceptive-form-lex-rule.
 
 continuative-form-suffix :=
-%suffix (* -(y)aˑ)
+%suffix (* -aˑ)
 continuative-form-lex-rule.
 
 durative-form-suffix1 :=
@@ -101,13 +101,13 @@ past-prefix-2 :=
 %prefix (* =int) (=0 =int)
 past-lex-rule.
 
-clitic-poss-intrans-prefix1 :=
-%prefix (* =uk) (=0 =uk)
-clitic-poss-intrans-lex-rule.
+;clitic-poss-trans-prefix1 :=
+;%prefix (* =uk) (=0 =uk)
+;clitic-poss-trans-lex-rule.
 
-clitic-poss-intrans-prefix2 :=
-%prefix (* =ʔak) (=0 =ʔak)
-clitic-poss-intrans-lex-rule.
+;clitic-poss-trans-prefix2 :=
+;%prefix (* =ʔak) (=0 =ʔak)
+;clitic-poss-trans-lex-rule.
 
 clitic-passive-prefix :=
 %prefix (* =\!at) (=0 =\!at)
@@ -116,10 +116,6 @@ clitic-passive-lex-rule.
 clitic-now-prefix :=
 %prefix (* =\!aƛ) (=0 =\!aƛ)
 clitic-now-lex-rule.
-
-clitic-causative-intrans-prefix :=
-%prefix (* =\!ap) (=0 =\!ap)
-clitic-causative-intrans-lex-rule.
 
 clitic-causative-trans-prefix :=
 %prefix (* =\!ap) (=0 =\!ap)

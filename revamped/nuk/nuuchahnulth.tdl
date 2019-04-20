@@ -115,7 +115,8 @@ basic-head-2nd-comp-phrase :+ [ SYNSEM.INFOSTR-FLAG -, NON-HEAD-DTR.SYNSEM.INFOS
 basic-head-opt-subj-phrase :+ [ SYNSEM.INFOSTR-FLAG - ].
 
 ; 2019-03-22 restricting daughter to be subj empty so this applies last (spurious ambiguity)
-basic-head-opt-comp-phrase :+ [ SYNSEM.INFOSTR-FLAG - ].
+basic-head-opt-comp-phrase :+ [ SYNSEM.INFOSTR-FLAG -,
+                                HEAD-DTR.SYNSEM.LOCAL.CAT.VAL.SUBJ < [ ] > ].
 ; Removing this as it is making dropping impossible!
 ;                                HEAD-DTR.SYNSEM.LOCAL.CAT.VAL.SUBJ < > ].
 
@@ -1765,16 +1766,17 @@ past-lex-rule := pre-clitic-past-lex-rule-super &
 pre-clitic-poss-lex-rule-super := clitic-inflection-lex-rule-super & pre-clitic-causative-rule-dtr & pre-clitic-future-rule-dtr & pre-clitic-now-rule-dtr & pre-clitic-passive-rule-dtr & val-change-with-ccont-lex-rule & aux-type-raising-dtr & post-clitic-habitual-lex-rule-dtr & post-clitic-plural-rule-dtr & post-clitic-plural-rule-dtr & post-clitic-also-rule-dtr &
   [ DTR pre-clitic-poss-rule-dtr ].
 
-clitic-poss-intrans-lex-rule := causative-to-arg2-itr-op-lex-rule & infl-lex-rule & pre-clitic-poss-lex-rule-super & same-non-local-lex-rule &
-  [ C-CONT.RELS <! [ PRED "POSS" ] !> ].
+; 2019-04-18 removing while fixing causative
+;clitic-poss-intrans-lex-rule := causative-to-arg2-itr-op-lex-rule & infl-lex-rule & pre-clitic-poss-lex-rule-super & same-non-local-lex-rule.
+;  [ C-CONT.RELS <! [ PRED "POSS" ] !> ].
 
-clitic-poss-trans-lex-rule := causative-to-arg2-tr-op-lex-rule & pre-clitic-poss-lex-rule-super & same-non-local-lex-rule &
-  [ C-CONT.RELS <! [ PRED "POSS" ] !> ].
+clitic-poss-trans-lex-rule := poss-rel-lex-rule & pre-clitic-poss-lex-rule-super & same-non-local-lex-rule.
+;  [ C-CONT.RELS <! [ PRED "POSS" ] !> ].
 
 pre-clitic-passive-lex-rule-super := clitic-inflection-lex-rule-super & infl-lex-rule & pre-clitic-causative-rule-dtr & pre-clitic-future-rule-dtr & pre-clitic-now-rule-dtr & val-change-with-ccont-lex-rule & aux-type-raising-dtr & post-clitic-habitual-lex-rule-dtr & post-clitic-plural-rule-dtr & post-clitic-also-rule-dtr &
   [ DTR pre-clitic-passive-rule-dtr ].
 
-clitic-passive-lex-rule := subj-dem-to-arg3of3-op-lex-rule & local-change-only-lex-rule & pre-clitic-passive-lex-rule-super & same-cont-lex-rule.
+clitic-passive-lex-rule := passive-trans-lex-rule & pre-clitic-passive-lex-rule-super.
 
 pre-clitic-now-lex-rule-super := clitic-inflection-lex-rule-super & add-only-no-ccont-rule & infl-lex-rule & pre-clitic-causative-rule-dtr & pre-clitic-future-rule-dtr & aux-type-raising-dtr & post-clitic-habitual-lex-rule-dtr & post-clitic-plural-rule-dtr & post-clitic-also-rule-dtr &
   [ DTR pre-clitic-now-rule-dtr ].
@@ -1784,11 +1786,12 @@ clitic-now-lex-rule := pre-clitic-now-lex-rule-super.
 pre-clitic-causative-lex-rule-super := clitic-inflection-lex-rule-super & infl-lex-rule & pre-clitic-future-rule-dtr & val-change-with-ccont-lex-rule & aux-type-raising-dtr & post-clitic-habitual-lex-rule-dtr & post-clitic-plural-rule-dtr & post-clitic-also-rule-dtr &
   [ DTR pre-clitic-causative-rule-dtr ].
 
-clitic-causative-intrans-lex-rule := causative-to-arg2-itr-op-lex-rule & pre-clitic-causative-lex-rule-super & same-non-local-lex-rule &
-  [ C-CONT.RELS <! [ PRED "CAUS" ] !> ].
+; 2019-04-18 PRED is now higher up
+;clitic-causative-intrans-lex-rule := causative-to-arg2-itr-op-lex-rule & pre-clitic-causative-lex-rule-super & same-non-local-lex-rule &
+;  [ C-CONT.RELS <! [ PRED "CAUS" ] !> ].
 
-clitic-causative-trans-lex-rule := causative-to-arg2-tr-op-lex-rule & pre-clitic-causative-lex-rule-super & same-non-local-lex-rule &
-  [ C-CONT.RELS <! [ PRED "CAUS" ] !> ].
+clitic-causative-trans-lex-rule := causal-rel-lex-rule & pre-clitic-causative-lex-rule-super & same-non-local-lex-rule.
+;  [ C-CONT.RELS <! [ PRED "CAUS" ] !> ].
 
 pre-clitic-future-lex-rule-super := clitic-inflection-lex-rule-super & add-only-no-ccont-rule & infl-lex-rule & aux-type-raising-dtr & post-clitic-plural-rule-dtr & post-clitic-also-rule-dtr & post-clitic-also-rule-dtr &
   [ DTR pre-clitic-future-rule-dtr ].
@@ -1809,36 +1812,67 @@ subj-dem-to-arg3of3-op-lex-rule := subj-and-comps-change-only-lex-rule &
                                COMPS < #oarg,
                                        [ ] > ] ].
 
-causative-to-arg2-tr-op-lex-rule := scopal-rel-lex-rule & same-spr-lex-rule & same-spec-lex-rule &
-  [ SYNSEM.LOCAL.CAT.VAL [ SUBJ < [ LOCAL.CAT.VAL [ SPR < >,
-                                                    COMPS < > ] ] >,
-                           COMPS < [ LOCAL [ CONT.HOOK.INDEX #arg2,
-                                             CAT [ HEAD [ MOD #mod,
-                                                          KEYS #keys ],
-                                                   VAL #val ] ],
-                                     NON-LOCAL #nl ],
-                                   #comp > ],
-    DTR.SYNSEM.LOCAL.CAT.VAL [ SUBJ < [ LOCAL [ CONT.HOOK.INDEX #arg2,
-                                                CAT [ HEAD [ MOD #mod,
-                                                             KEYS #keys ],
-                                                      VAL #val ] ],
-                                        NON-LOCAL #nl ] >,
-                               COMPS < #comp > ] ].
+passive-trans-lex-rule := subj-comps-xarg-only-lex-rule &
+  [ SYNSEM.LOCAL [ CAT.VAL [ SUBJ < #firstcomp & [ LOCAL.CONT.HOOK.INDEX #xarg ] >,
+                             COMPS [ FIRST [ LOCAL [ CAT [ VAL [ SUBJ < #subj >,
+                                                                 COMPS [ FIRST #firstcomp,
+                                                                         REST #vcomps ],
+                                                                 SPR #spr,
+                                                                 SPEC #spec ],
+                                                           HEAD #head,
+                                                           MC #mc,
+                                                           POSTHEAD #posthead ] ],
+                                         OPT #opt,
+                                         LIGHT #light,
+                                         L-PERIPH #l-periph,
+                                         R-PERIPH #r-periph ],
+                                 REST [ FIRST #subj,
+                                        REST #vcomps ] ] ],
+                  CONT.HOOK.XARG #xarg ],
+    DTR.SYNSEM.LOCAL [ CAT.VAL [ COMPS [ FIRST [ LOCAL [ CAT [ VAL [ SPR #spr,
+                                                                   SPEC #spec ],
+                                                             HEAD #head,
+                                                             MC #mc,
+                                                             POSTHEAD #posthead ] ],
+                                              OPT #opt,
+                                              LIGHT #light,
+                                              L-PERIPH #l-periph,
+                                              R-PERIPH #r-periph ] ] ],
+                       CONT.HOOK.XARG #xarg ] ].
 
-causative-to-arg2-itr-op-lex-rule := scopal-rel-lex-rule & same-spr-lex-rule & same-spec-lex-rule &
-  [ SYNSEM.LOCAL.CAT.VAL [ SUBJ < [ LOCAL.CAT.VAL [ SPR < >,
-                                                    COMPS < > ] ] >,
-                           COMPS < [ LOCAL [ CONT.HOOK.INDEX #arg2,
-                                             CAT [ HEAD [ MOD #mod,
-                                                          KEYS #keys ],
-                                                   VAL #val ] ],
-                                     NON-LOCAL #nl ] > ],
-    DTR.SYNSEM.LOCAL.CAT.VAL [ SUBJ < [ LOCAL [ CONT.HOOK.INDEX #arg2,
-                                                CAT [ HEAD [ MOD #mod,
-                                                             KEYS #keys ],
-                                                      VAL #val ] ],
-                                        NON-LOCAL #nl ] >,
-                               COMPS < > ] ].
+;;; 2019-04-18 applying proper restrictions to this:
+; DTR: SUBJ < #subj >, COMPS < pred & [ SUBJ < #subj > ] >;
+; NEW: OLD.COMPS.FIRST = PRED "CAUS",
+;      SUBJ < #subj > , COMPS < pred & [ SUBJ < #new-subj > ], #new-subj >
+; old-causative-to-arg2-tr-op-lex-rule := causal-rel-lex-rule & same-spr-lex-rule & same-spec-lex-rule &
+;   [ SYNSEM.LOCAL.CAT.VAL [ SUBJ < #subj & [ LOCAL.CAT [ HEAD.PRD -,
+;                                                         VAL [ SPR < >,
+;                                                         COMPS < > ] ] ] >,
+;                            COMPS < [ LIGHT +,
+;                                      L-PERIPH +,
+;                                      OPT -,
+;                                      LOCAL [ CAT [ VAL [ SUBJ < #subj >,
+;                                                          COMPS #vcomps ],
+;                                                   HEAD [ PRD +,
+;                                                           FORM nonfinite ],
+;                                                    POSTHEAD - ] ] ] . #vcomps > ],
+;     C-CONT.RELS <! [ ARG0 #arg0 ] !>,
+;     DTR.SYNSEM.LOCAL.CAT.VAL [ COMPS < [ LOCAL.CONT.HOOK.INDEX #arg0 ] > ] ].
+
+;causative-to-arg2-itr-op-lex-rule := causal-rel-lex-rule & same-spr-lex-rule & same-spec-lex-rule &
+;  [ SYNSEM.LOCAL.CAT.VAL [ SUBJ < [ LOCAL.CAT.VAL [ SPR < >,
+;                                                    COMPS < > ] ] >,
+;                           COMPS < [ LOCAL [ CONT.HOOK.INDEX #arg2,
+;                                             CAT [ HEAD [ MOD #mod,
+;                                                          KEYS #keys ],
+;                                                   VAL #val ] ],
+;                                     NON-LOCAL #nl ] > ],
+;    DTR.SYNSEM.LOCAL.CAT.VAL [ SUBJ < [ LOCAL [ CONT.HOOK.INDEX #arg2,
+;                                                CAT [ HEAD [ MOD #mod,
+;                                                             KEYS #keys ],
+;                                                      VAL #val ] ],
+;                                        NON-LOCAL #nl ] >,
+;                               COMPS < > ] ].
 
 scopal-rel-lex-rule := lex-rule &
   [ C-CONT [ RELS <! event-relation &
@@ -1856,6 +1890,86 @@ scopal-rel-lex-rule := lex-rule &
     SYNSEM.LOCAL.CAT.VAL.SUBJ < [ LOCAL.CONT.HOOK.INDEX #arg1 ] >,
     DTR.SYNSEM.LOCAL [ CAT.VAL.SUBJ < [ LOCAL.CONT.HOOK.INDEX #arg2 ] >,
                        CONT.HOOK.LTOP #scoped ] ].
+
+; 2019-04-18
+; DTR: SUBJ < #subj >, COMPS < pred & [ SUBJ < #subj > ] >
+; New: SUBJ < #subj >, COMPS < pred & #pred [ SUBJ < #lower-subj > ], part & #lower-subj >, CAUS(#subj, qeq-#pred)
+causal-rel-lex-rule := lex-rule &
+  [ C-CONT [ RELS <! event-relation &
+                     [ LBL #ltop,
+                       PRED "CAUS",
+                       ARG0 #arg0,
+                       ARG1 #clitic-subj,
+                       ARG2 #harg ] !>,
+             HOOK [ LTOP #ltop,
+                    INDEX #arg0,
+                    XARG #clitic-subj ],
+             HCONS <! qeq &
+                      [ HARG #harg,
+                        LARG #scoped ] !> ],
+    SYNSEM.LOCAL.CAT.VAL [ SUBJ < #subj >,
+                           SPR < >,
+                           SPEC < >,
+                           COMPS < [ LIGHT +,
+                                     L-PERIPH +,
+                                     OPT -,
+                                     LOCAL [ CAT [ VAL [ SUBJ < #subj >,
+                                                         COMPS #vcomps ],
+                                                  HEAD [ PRD +,
+                                                          FORM nonfinite ],
+                                                   POSTHEAD - ],
+                                             CONT.HOOK.LTOP #scoped ] ] . #vcomps > ],
+    DTR.SYNSEM.LOCAL [ CAT.VAL [ SUBJ < [ LOCAL.CONT.HOOK.INDEX #clitic-subj ] >,
+                                 COMPS.FIRST.LOCAL.CONT.HOOK.INDEX #arg0 ] ] ].
+
+poss-rel-lex-rule := lex-rule &
+  [ C-CONT [ RELS <! event-relation &
+                     [ PRED "POSS",
+                       ARG0 #arg0,
+                       ARG1 #possessor,
+                       ARG2 #possessum ] !>,
+             HOOK [ INDEX #arg0,
+                    XARG #possessor ],
+             HCONS <! !> ],
+    SYNSEM.LOCAL.CAT.VAL [ SUBJ < #subj & [ LOCAL.CONT.HOOK.INDEX #possessum ] >,
+                           SPR < >,
+                           SPEC < >,
+                           COMPS [ FIRST [ LIGHT +,
+                                           L-PERIPH +,
+                                           OPT -,
+                                           LOCAL [ CAT [ VAL [ SUBJ < #subj >,
+                                                               COMPS #vcomps ],
+                                                         HEAD [ PRD +,
+                                                                FORM nonfinite ],
+                                                         POSTHEAD - ] ] ],
+                                   REST [ FIRST #possessor-part,
+                                          REST #vcomps ] ] ],
+    DTR.SYNSEM.LOCAL [ CAT.VAL [ SUBJ < #possessor-part & [ LOCAL.CONT.HOOK.INDEX #possessor ] >,
+                                 COMPS.FIRST.LOCAL.CONT.HOOK.INDEX #arg0 ] ] ].
+
+;;;;;;;;;;;;;;;;;;;
+;;; Lexical rules
+;;;;;;;;;;;;;;;;;;;
+
+subj-comps-xarg-only-lex-rule := same-spec-lex-rule & 
+                                 same-spr-lex-rule & 
+                                 same-head-lex-rule &
+                                 same-hc-light-lex-rule &
+                                 same-posthead-lex-rule &
+                                 same-mc-lex-rule &
+                                 local-change-only-lex-rule &
+                                 same-ctxt-lex-rule &
+                                 same-agr-lex-rule &
+  [ C-CONT.HOOK [ INDEX #index,
+                  LTOP #ltop,
+                  GTOP #gtop,
+                  ICONS-KEY #ikey,
+                  CLAUSE-KEY #ckey ],
+    DTR.SYNSEM.LOCAL.CONT.HOOK [ INDEX #index,
+                                 LTOP #ltop,
+                                 GTOP #gtop,
+                                 ICONS-KEY #ikey,
+                                 CLAUSE-KEY #ckey ] ].
 
 ;;;;;;;;;;;;;;;;;;;
 ;;; Phrasal Types
