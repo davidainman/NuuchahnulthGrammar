@@ -101,25 +101,25 @@ past-prefix-2 :=
 %prefix (* =int) (=0 =int)
 past-lex-rule.
 
-;clitic-poss-trans-prefix1 :=
-;%prefix (* =uk) (=0 =uk)
-;clitic-poss-trans-lex-rule.
-
-;clitic-poss-trans-prefix2 :=
-;%prefix (* =ʔak) (=0 =ʔak)
-;clitic-poss-trans-lex-rule.
-
-clitic-passive-prefix :=
-%prefix (* =\!at) (=0 =\!at)
-clitic-passive-lex-rule.
+clitic-causative-trans-prefix :=
+%prefix (* =\!ap) (=0 =\!ap)
+clitic-causative-trans-lex-rule.
 
 clitic-now-prefix :=
 %prefix (* =\!aƛ) (=0 =\!aƛ)
 clitic-now-lex-rule.
 
-clitic-causative-trans-prefix :=
-%prefix (* =\!ap) (=0 =\!ap)
-clitic-causative-trans-lex-rule.
+clitic-passive-prefix :=
+%prefix (* =\!at) (=0 =\!at)
+clitic-passive-lex-rule.
+
+; clitic-poss-trans-prefix1 :=
+; %prefix (* =uk) (=0 =uk)
+; clitic-poss-trans-lex-rule.
+
+; clitic-poss-trans-prefix2 :=
+; %prefix (* =ʔak) (=0 =ʔak)
+; clitic-poss-trans-lex-rule.
 
 clitic-future-prefix1 :=
 %prefix (* =ʔaaqƛ) (=0 =ʔaaqƛ)

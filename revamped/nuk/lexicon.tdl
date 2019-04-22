@@ -31,7 +31,7 @@ nučii := common-noun-word-and-non-root-lex &
   [ STEM < "nučii" >,
     SYNSEM.LKEYS.KEYREL.PRED "_mountain_n_rel" ].
 
-nučii := common-noun-word-and-non-root-lex &
+ʔiiḥtuup := common-noun-word-and-non-root-lex &
   [ STEM < "ʔiiḥtuup" >,
     SYNSEM.LKEYS.KEYREL.PRED "_whale_n_rel" ].
 
@@ -1393,13 +1393,13 @@ n̓aacsiičiƛ := perfective-transitive-verb-lex &
   [ STEM < "=ʔiˑq" >,
     SYNSEM.LKEYS.KEYREL.PRED "_definite_v_rel" ].
 
-%3Dʔiˑtq_when := definite-mood-when-3-verb-lex &
-  [ STEM < "=ʔiˑtq" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_definite_v_rel" ].
+; %3Dʔiˑtq_when := definite-mood-when-3-verb-lex &
+;   [ STEM < "=ʔiˑtq" >,
+;     SYNSEM.LKEYS.KEYREL.PRED "_definite_v_rel" ].
 
-%3Dʔiˑq_when := definite-mood-when-3-verb-lex &
-  [ STEM < "=ʔiˑq" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_definite_v_rel" ].
+; %3Dʔiˑq_when := definite-mood-when-3-verb-lex &
+;   [ STEM < "=ʔiˑq" >,
+;     SYNSEM.LKEYS.KEYREL.PRED "_definite_v_rel" ].
 
 ;;; TODO: This rel is not needed
 %3Dʔiˑ := article-lex &

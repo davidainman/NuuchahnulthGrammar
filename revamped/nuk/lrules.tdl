@@ -11,8 +11,6 @@ repetitive-lex := repetitive-lex-rule.
 
 iterative-lex := iterative-lex-rule.
 
-no-passive-lex := clitic-no-passive-lex-rule.
-
 momentaneous-graduative-lex := momentaneous-graduative-lex-rule.
 
 inceptive-graduative-lex := inceptive-graduative-lex-rule.
