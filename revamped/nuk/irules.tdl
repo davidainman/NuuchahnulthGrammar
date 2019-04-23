@@ -113,13 +113,21 @@ clitic-passive-prefix :=
 %prefix (* =\!at) (=0 =\!at)
 clitic-passive-lex-rule.
 
-; clitic-poss-trans-prefix1 :=
-; %prefix (* =uk) (=0 =uk)
-; clitic-poss-trans-lex-rule.
+clitic-poss-prefix1 :=
+%prefix (* =uk) (=0 =uk)
+clitic-poss-normal-lex-rule.
 
-; clitic-poss-trans-prefix2 :=
-; %prefix (* =ʔak) (=0 =ʔak)
-; clitic-poss-trans-lex-rule.
+clitic-poss-prefix2 :=
+%prefix (* =ʔak) (=0 =ʔak)
+clitic-poss-normal-lex-rule.
+
+clitic-poss-defn-prefix1 :=
+%prefix (* =uk) (=0 =uk)
+clitic-poss-defn-lex-rule.
+
+clitic-poss-defn-prefix2 :=
+%prefix (* =ʔak) (=0 =ʔak)
+clitic-poss-defn-lex-rule.
 
 clitic-future-prefix1 :=
 %prefix (* =ʔaaqƛ) (=0 =ʔaaqƛ)

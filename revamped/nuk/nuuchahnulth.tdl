@@ -312,15 +312,19 @@ IT-PF-HABIT := IT-PF & habitual.
 
 ;;; Mood
 
-strong-real := mood.
-weak := mood.
-neutral := mood.
-unknown := mood.
-possible := mood.
-hearsay := mood.
-inferential := mood.
-purposive := mood.
-dubitative := mood.
+; 2019-04-23 ugly hack to make things non-definite
+strong-real := non-definite.
+weak := non-definite.
+neutral := non-definite.
+unknown := non-definite.
+possible := non-definite.
+hearsay := non-definite.
+inferential := non-definite.
+purposive := non-definite.
+dubitative := non-definite.
+
+non-definite := mood.
+definite := mood.
 
 ;;;;;;;;;;;;;;;;;;;
 ;;; Lexical Types
@@ -785,11 +789,9 @@ mood-definite-verb-lex-super := no-hcons-lex-item & post-clitic-also-rule-dtr & 
                              COMPS #vcomps ],
                        HEAD [ PRD +,
                               FORM nonfinite ],
-                       POSTHEAD - ] ],
+                       POSTHEAD - ],
+                 CONT.HOOK.INDEX.E.MOOD definite ],
          NON-LOCAL #nonlocal ]> ].
-
-mood-definite-verb-lex-super-2 := mood-definite-verb-lex-super & 
-  [ SYNSEM.LOCAL.CAT.HEAD.MOD < > ].
 
 mood-definite-verb-raising-lex-super := 2p-lex-no-rels &
   [ SYNSEM.LOCAL.CAT.HEAD.PRD - ].
@@ -800,13 +802,40 @@ mood-definite-subj-raising-verb-lex := mood-definite-verb-raising-lex-super &
                                                  VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX #index ] ] >,
                    CONT.HOOK.INDEX #index ] ].
 
-mood-definite-obj-raising-verb-lex := mood-definite-verb-raising-lex-super & 
-  [ SYNSEM.LOCAL [ CAT.VAL.COMPS.FIRST.LOCAL.CAT [ HEAD verb,
-                                                   VAL.COMPS.FIRST.LOCAL.CONT.HOOK.INDEX #index ],
-                   CONT.HOOK.INDEX #index ] ].
+mood-definite-obj-raising-verb-lex := no-rels-hcons-icons-lex-item & post-clitic-also-rule-dtr & post-clitic-plural-rule-dtr & pre-clitic-causative-rule-dtr & pre-clitic-future-rule-dtr & pre-clitic-now-rule-dtr & pre-clitic-passive-rule-dtr & pre-clitic-poss-rule-dtr & post-clitic-habitual-lex-rule-dtr & 
+  [ SYNSEM [ LOCAL [ CAT [ HEAD noun & [ FORM finite,
+                                         AUX +,
+                                         PRD -,
+                                         MOD < > ],
+           VAL [ SUBJ < #subj >,
+                 COMPS [ FIRST #comps,
+                         REST [ FIRST #comp1,
+                                REST #comp2 ] ],
+                 SPR < >,
+                 SPEC < > ],
+             MC - ],
+             CONT.HOOK.INDEX #comp-index ],
+             NON-LOCAL #nonlocal ],
+    ARG-ST < #comps &
+       [ LIGHT +,
+         L-PERIPH +,
+         OPT -,
+         LOCAL [ CAT [ VAL [ SUBJ < #subj >,
+                             COMPS < #comp1 & [ LOCAL.CONT.HOOK.INDEX #comp-index ] . #comp2 > ],
+                       HEAD verb & [ PRD +,
+                              FORM nonfinite ],
+                       POSTHEAD - ] ],
+         NON-LOCAL #nonlocal ]> ].
+
+; mood-definite-obj-raising-verb-lex := mood-definite-verb-raising-lex-super & 
+;   [ SYNSEM.LOCAL [ CAT.VAL.COMPS.FIRST.LOCAL.CAT [ HEAD verb,
+;                                                    VAL.COMPS.FIRST.LOCAL.CONT.HOOK.INDEX #index ],
+;                    CONT.HOOK.INDEX #index ] ].
 
 mood-definite-when-verb-lex := 2p-lex & non-predicate-lex &
-  [ SYNSEM [ LOCAL [ CAT [ VAL [ COMPS.FIRST.LOCAL.CONT.HOOK.INDEX #arg0 ],
+  [ SYNSEM [ LOCAL [ CAT [ VAL [ SUBJ < #subj >,
+                                 COMPS.FIRST.LOCAL [ CAT.VAL.SUBJ < #subj >,
+                                                     CONT.HOOK.INDEX #arg0 ] ],
                          MC -,
                          HEAD.MOD < [ LOCAL.CONT.HOOK.INDEX #arg1 ] > ],
                    CONT [ HOOK [ INDEX #arg0 & [ SF prop ],
@@ -1066,8 +1095,10 @@ stative-pred-adj-lex := adj-lex &
 
 ; 2019-03-22 Same trick where I don't want this applying to bare clitics
 ; 2019-04-01 adding subj < > to reduce spurious ambiguity with opt subj
+; 2019-04-22 making sure non-head-dtr is satisfied
 head-adj-scop-phrase :+ [ HEAD-DTR.SYNSEM.LOCAL.CAT.VAL [ SUBJ < >,
-                                                          COMPS phlist ] ].
+                                                          COMPS phlist ],
+                          NON-HEAD-DTR.SYNSEM.LOCAL.CAT.VAL.COMPS < > ].
 
 adv-lex := basic-scopal-adverb-lex &
   [ SYNSEM.LOCAL.CAT [ VAL [ SPR < >,
@@ -1766,15 +1797,19 @@ pre-clitic-past-lex-rule-super := clitic-inflection-lex-rule-super & add-only-no
 past-lex-rule := pre-clitic-past-lex-rule-super & 
   [ SYNSEM.LOCAL.CONT.HOOK.INDEX.E.TENSE past ].
 
-pre-clitic-poss-lex-rule-super := clitic-inflection-lex-rule-super & pre-clitic-causative-rule-dtr & pre-clitic-future-rule-dtr & pre-clitic-now-rule-dtr & pre-clitic-passive-rule-dtr & val-change-with-ccont-lex-rule & aux-type-raising-dtr & post-clitic-habitual-lex-rule-dtr & post-clitic-plural-rule-dtr & post-clitic-plural-rule-dtr & post-clitic-also-rule-dtr &
+pre-clitic-poss-lex-rule-super := clitic-inflection-lex-rule-super & pre-clitic-causative-rule-dtr & pre-clitic-future-rule-dtr & pre-clitic-now-rule-dtr & pre-clitic-passive-rule-dtr  & aux-type-raising-dtr & post-clitic-habitual-lex-rule-dtr & post-clitic-plural-rule-dtr & post-clitic-plural-rule-dtr & post-clitic-also-rule-dtr &
   [ DTR pre-clitic-poss-rule-dtr ].
 
 ; 2019-04-18 removing while fixing causative
 ;clitic-poss-intrans-lex-rule := causative-to-arg2-itr-op-lex-rule & infl-lex-rule & pre-clitic-poss-lex-rule-super & same-non-local-lex-rule.
 ;  [ C-CONT.RELS <! [ PRED "POSS" ] !> ].
 
-clitic-poss-trans-lex-rule := poss-rel-lex-rule & pre-clitic-poss-lex-rule-super & same-non-local-lex-rule.
+clitic-poss-lex-rule-super := pre-clitic-poss-lex-rule-super & same-non-local-lex-rule & infl-lex-rule & val-change-with-ccont-lex-rule.
 ;  [ C-CONT.RELS <! [ PRED "POSS" ] !> ].
+
+clitic-poss-normal-lex-rule := clitic-poss-lex-rule-super & poss-rel-lex-rule-normal.
+
+clitic-poss-defn-lex-rule := clitic-poss-lex-rule-super & poss-rel-lex-rule-defn.
 
 pre-clitic-passive-lex-rule-super := clitic-inflection-lex-rule-super & infl-lex-rule & pre-clitic-causative-rule-dtr & pre-clitic-future-rule-dtr & pre-clitic-now-rule-dtr & val-change-with-ccont-lex-rule & aux-type-raising-dtr & post-clitic-habitual-lex-rule-dtr & post-clitic-plural-rule-dtr & post-clitic-also-rule-dtr &
   [ DTR pre-clitic-passive-rule-dtr ].
@@ -1910,13 +1945,15 @@ causal-rel-lex-rule := lex-rule &
     DTR.SYNSEM.LOCAL [ CAT.VAL [ SUBJ < #subj & [ LOCAL.CONT.HOOK.INDEX #causer ] >,
                                  COMPS.FIRST.LOCAL.CONT.HOOK.INDEX #arg0 ] ] ].
 
-poss-rel-lex-rule := lex-rule &
+
+; 2019-04-22 moving the dtr's index to my index
+poss-rel-lex-rule-super := lex-rule &
   [ C-CONT [ RELS <! event-relation &
                      [ PRED "POSS",
-                       ARG0 #arg0,
+                       ARG0 event,
                        ARG1 #possessor,
                        ARG2 #possessum ] !>,
-             HOOK [ INDEX #arg0,
+             HOOK [ LTOP #ltop,
                     XARG #possessor ],
              HCONS <! !> ],
     SYNSEM.LOCAL.CAT.VAL [ SUBJ < #subj & [ LOCAL.CONT.HOOK.INDEX #possessum ] >,
@@ -1930,10 +1967,21 @@ poss-rel-lex-rule := lex-rule &
                                                          HEAD [ PRD +,
                                                                 FORM nonfinite ],
                                                          POSTHEAD - ] ] ],
-                                   REST [ FIRST #possessor-part,
+                                   REST [ FIRST [ LOCAL [ CONT.HOOK.INDEX #possessor,
+                                                          CAT.POSTHEAD + ] ],
                                           REST #vcomps ] ] ],
-    DTR.SYNSEM.LOCAL [ CAT.VAL [ SUBJ < #possessor-part & [ LOCAL.CONT.HOOK.INDEX #possessor ] >,
-                                 COMPS.FIRST.LOCAL.CONT.HOOK.INDEX #arg0 ] ] ].
+    DTR.SYNSEM.LOCAL [ CAT.VAL [ SUBJ < [ LOCAL.CONT.HOOK.INDEX #possessor ] > ],
+                       CONT.HOOK [ LTOP #ltop ] ] ].
+;                       CONT.HOOK.INDEX #clitic-index ] ].
+
+poss-rel-lex-rule-normal := poss-rel-lex-rule-super &
+  [ C-CONT.HOOK.INDEX #index,
+    DTR.SYNSEM.LOCAL.CONT.HOOK.INDEX #index & [ E.MOOD non-definite ] ].
+
+poss-rel-lex-rule-defn := poss-rel-lex-rule-super &
+  [ C-CONT.HOOK.INDEX #index,
+    SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL.CONT.HOOK.XARG #index,
+    DTR.SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL.CONT.HOOK.INDEX.E.MOOD definite ].
 
 ;;;;;;;;;;;;;;;;;;;
 ;;; Lexical rules
@@ -2158,6 +2206,7 @@ head-subj-phrase-2 := basic-head-subj-phrase & declarative-clause & head-initial
 ;;; 2019-03-13 Defining comps as posthead or null,
 ;;; to prevent this from firing if there is a POSTHEAD - element (i.e., 2P's first COMP)
 ;;; 2019-03-30 changing from phlist to olist (??)
+;;; 2019-04-23 changing back to phlist (??)
 head-comp-phrase-2 := nuk-head-2nd-comp-phrase & head-initial-head-nexus &
   [ SYNSEM [ LIGHT -,
              LOCAL.CAT.VAL.COMPS phlist ] ].
@@ -2292,8 +2341,9 @@ comp-head-subordinate-phrase := comp-head-phrase &
 
 ;;; 2019-03-13 Defining comps as posthead or null,
 ;;; to prevent this from firing if there is a POSTHEAD - element (i.e., 2P's first COMP)
+;;; 2019-04-23 changing this from phlist to olist
 comp-head-phrase-2 := nuk-head-2nd-comp-phrase & head-final-head-nexus &
-  [ SYNSEM.LOCAL.CAT.VAL.COMPS phlist ].
+  [ SYNSEM.LOCAL.CAT.VAL.COMPS olist ].
 
 poss-unary-phrase-1 := poss-unary-phrase &
   [ SYNSEM.LOCAL.CAT [ HEAD.SPEC-INIT -,

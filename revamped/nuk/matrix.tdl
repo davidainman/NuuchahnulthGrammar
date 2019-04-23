@@ -1971,6 +1971,7 @@ basic-head-comp-nmc-phrase := head-valence-phrase & head-compositional &
 ; is, using [ ICONS.LIST.FIRST ... ] is dangerous. Plus, CLAUSE/TARGET
 ; are replaced by IARG1/IARG2.
 
+; 2019-04-23 I am removing the event requirement on the HEAD-DTR.CONT.HOOK.INDEX event b/c I need this to go through on ref-inds.
 basic-head-opt-comp-phrase := head-valence-phrase & head-only &
                               head-compositional &
   [ INFLECTED #infl,
@@ -1993,8 +1994,7 @@ basic-head-opt-comp-phrase := head-valence-phrase & head-only &
 					    SPR #spr,
 					    SPEC #spec ],
 				      MC #mc,
-				      POSTHEAD #ph ],
-				CONT.HOOK.INDEX event ],
+				      POSTHEAD #ph ] ],
 			MODIFIED #mod ] ],
     C-CONT [ RELS <! !>,
 	     HCONS <! !>,

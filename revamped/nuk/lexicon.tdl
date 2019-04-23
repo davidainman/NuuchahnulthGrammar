@@ -3,10 +3,6 @@
 ʔu := empty-uu-lex &
   [ STEM < "ʔu" > ].
 
-;ʔu_2 := empty-uu-ditransitive-lex &
-;  [ STEM < "ʔu" > ].
-;;; Nouns
-
 nuuk := common-noun-word-and-root-lex &
   [ STEM < "nuuk" >,
     SYNSEM.LKEYS.KEYREL.PRED "_song_n_rel" ].
@@ -1281,13 +1277,13 @@ n̓aacsiičiƛ := perfective-transitive-verb-lex &
   [ STEM < "=ḥ" >,
     SYNSEM.LKEYS.KEYREL.PRED "_question_v_rel" ].
 
-%3Dqaˑs_subj := definite-mood-subj-1sg-verb-lex &
-  [ STEM < "=qaˑs" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_definite_v_rel" ].
+; %3Dqaˑs_subj := definite-mood-subj-1sg-verb-lex &
+;   [ STEM < "=qaˑs" >,
+;     SYNSEM.LKEYS.KEYREL.PRED "_definite_v_rel" ].
 
-%3Dqs_subj := definite-mood-subj-1sg-verb-lex &
-  [ STEM < "=qs" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_definite_v_rel" ].
+; %3Dqs_subj := definite-mood-subj-1sg-verb-lex &
+;   [ STEM < "=qs" >,
+;     SYNSEM.LKEYS.KEYREL.PRED "_definite_v_rel" ].
 
 %3Dqaˑs_obj := definite-mood-obj-1sg-verb-lex &
   [ STEM < "=qaˑs" >,
@@ -1305,9 +1301,9 @@ n̓aacsiičiƛ := perfective-transitive-verb-lex &
   [ STEM < "=qs" >,
     SYNSEM.LKEYS.KEYREL.PRED "_definite_v_rel" ].
 
-%3Dqin_subj := definite-mood-subj-1pl-verb-lex &
-  [ STEM < "=qin" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_definite_v_rel" ].
+; %3Dqin_subj := definite-mood-subj-1pl-verb-lex &
+;   [ STEM < "=qin" >,
+;     SYNSEM.LKEYS.KEYREL.PRED "_definite_v_rel" ].
 
 %3Dqin_obj := definite-mood-obj-1pl-verb-lex &
   [ STEM < "=qin" >,
@@ -1317,17 +1313,17 @@ n̓aacsiičiƛ := perfective-transitive-verb-lex &
   [ STEM < "=qin" >,
     SYNSEM.LKEYS.KEYREL.PRED "_definite_v_rel" ].
 
-%3Dʔiˑtqak_subj := definite-mood-subj-2sg-verb-lex &
-  [ STEM < "=ʔiˑtqak" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_definite_v_rel" ].
+; %3Dʔiˑtqak_subj := definite-mood-subj-2sg-verb-lex &
+;   [ STEM < "=ʔiˑtqak" >,
+;     SYNSEM.LKEYS.KEYREL.PRED "_definite_v_rel" ].
 
-%3Dʔiˑtk_subj := definite-mood-subj-2sg-verb-lex &
-  [ STEM < "==ʔiˑtk" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_definite_v_rel" ].
+; %3Dʔiˑtk_subj := definite-mood-subj-2sg-verb-lex &
+;   [ STEM < "==ʔiˑtk" >,
+;     SYNSEM.LKEYS.KEYREL.PRED "_definite_v_rel" ].
 
-%3Dʔiˑk_subj := definite-mood-subj-2sg-verb-lex &
-  [ STEM < "==ʔiˑk" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_definite_v_rel" ].
+; %3Dʔiˑk_subj := definite-mood-subj-2sg-verb-lex &
+;   [ STEM < "==ʔiˑk" >,
+;     SYNSEM.LKEYS.KEYREL.PRED "_definite_v_rel" ].
 
 %3Dʔiˑtqak_obj := definite-mood-obj-2sg-verb-lex &
   [ STEM < "=ʔiˑtqak" >,
@@ -1353,13 +1349,13 @@ n̓aacsiičiƛ := perfective-transitive-verb-lex &
   [ STEM < "==ʔiˑk" >,
     SYNSEM.LKEYS.KEYREL.PRED "_definite_v_rel" ].
 
-%3Dʔiˑtqsuu_subj := definite-mood-subj-2pl-verb-lex &
-  [ STEM < "=ʔiˑtqsuu" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_definite_v_rel" ].
+; %3Dʔiˑtqsuu_subj := definite-mood-subj-2pl-verb-lex &
+;   [ STEM < "=ʔiˑtqsuu" >,
+;     SYNSEM.LKEYS.KEYREL.PRED "_definite_v_rel" ].
 
-%3Dʔiˑqsuu_subj := definite-mood-subj-2pl-verb-lex &
-  [ STEM < "=ʔiˑqsuu" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_definite_v_rel" ].
+; %3Dʔiˑqsuu_subj := definite-mood-subj-2pl-verb-lex &
+;   [ STEM < "=ʔiˑqsuu" >,
+;     SYNSEM.LKEYS.KEYREL.PRED "_definite_v_rel" ].
 
 %3Dʔiˑtqsuu_obj := definite-mood-obj-2pl-verb-lex &
   [ STEM < "=ʔiˑtqsuu" >,
@@ -1377,13 +1373,13 @@ n̓aacsiičiƛ := perfective-transitive-verb-lex &
   [ STEM < "=ʔiˑqsuu" >,
     SYNSEM.LKEYS.KEYREL.PRED "_definite_v_rel" ].
 
-%3Dʔiˑtq_subj := definite-mood-subj-3-verb-lex &
-  [ STEM < "=ʔiˑtq" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_definite_v_rel" ].
+; %3Dʔiˑtq_subj := definite-mood-subj-3-verb-lex &
+;   [ STEM < "=ʔiˑtq" >,
+;     SYNSEM.LKEYS.KEYREL.PRED "_definite_v_rel" ].
 
-%3Dʔiˑq_subj := definite-mood-subj-3-verb-lex &
-  [ STEM < "=ʔiˑq" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_definite_v_rel" ].
+; %3Dʔiˑq_subj := definite-mood-subj-3-verb-lex &
+;   [ STEM < "=ʔiˑq" >,
+;     SYNSEM.LKEYS.KEYREL.PRED "_definite_v_rel" ].
 
 %3Dʔiˑtq_obj := definite-mood-obj-3-verb-lex &
   [ STEM < "=ʔiˑtq" >,
@@ -1393,13 +1389,13 @@ n̓aacsiičiƛ := perfective-transitive-verb-lex &
   [ STEM < "=ʔiˑq" >,
     SYNSEM.LKEYS.KEYREL.PRED "_definite_v_rel" ].
 
-; %3Dʔiˑtq_when := definite-mood-when-3-verb-lex &
-;   [ STEM < "=ʔiˑtq" >,
-;     SYNSEM.LKEYS.KEYREL.PRED "_definite_v_rel" ].
+%3Dʔiˑtq_when := definite-mood-when-3-verb-lex &
+  [ STEM < "=ʔiˑtq" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_definite_v_rel" ].
 
-; %3Dʔiˑq_when := definite-mood-when-3-verb-lex &
-;   [ STEM < "=ʔiˑq" >,
-;     SYNSEM.LKEYS.KEYREL.PRED "_definite_v_rel" ].
+%3Dʔiˑq_when := definite-mood-when-3-verb-lex &
+  [ STEM < "=ʔiˑq" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_definite_v_rel" ].
 
 ;;; TODO: This rel is not needed
 %3Dʔiˑ := article-lex &
