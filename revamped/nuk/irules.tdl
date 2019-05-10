@@ -46,7 +46,7 @@ durative-form-suffix2 :=
 durative-form-lex-rule.
 
 repetitive-form-suffix :=
-%suffix (* -RL2R.a)
+%suffix (* -LR2L.a)
 repetitive-form-lex-rule.
 
 iterative-form-suffix :=
@@ -149,6 +149,34 @@ naak-suffix :=
 %suffix (* -naˑk)
 naak-lex-rule.
 
+carry-suffix :=
+%suffix (* -iic)
+carry-lex-rule.
+
+consume-suffix :=
+%suffix (* -!iis)
+consume-lex-rule.
+
+consume-suffix-2 :=
+%suffix (* -!iic)
+consume-lex-rule.
+
+carry-suffix :=
+%suffix (* -p̓it)
+carry-lex-rule.
+
+go-suffix :=
+%suffix (* -ca)
+go-lex-rule.
+
+go-suffix-2 :=
+%suffix (* -ci)
+go-lex-rule.
+
+look-for-suffix :=
+%suffix (* -n̓aaḥ)
+look-for-lex-rule.
+
 find-suffix :=
 %suffix (* -L.waƛ)
 find-lex-rule.
@@ -164,6 +192,10 @@ talk-about-lex-rule.
 go-after-suffix :=
 %suffix (* -R.\!iiḥ)
 go-after-lex-rule.
+
+want-involuntary-suffix :=
+%suffix (* -maʕiiqƛ)
+want-involuntary-lex-rule.
 
 give-suffix :=
 %suffix (* -ayiˑ)
@@ -192,3 +224,7 @@ try-to-do-lex-rule.
 need-to-do-suffix :=
 %suffix (* -cum)
 need-to-do-lex-rule.
+
+want-to-involuntary-suffix :=
+%suffix (* -maʕiiqƛ)
+want-to-involuntary-lex-rule.

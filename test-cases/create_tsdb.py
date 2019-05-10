@@ -1,4 +1,4 @@
-import os, sys
+import os, sys, io, re
 
 '''item:
   i-id :integer :key
@@ -19,21 +19,20 @@ import os, sys
 
 '''Assuming input file has Speaker comma phenomenon comma plaintext comma IGT (comma translation)'''
 def generate_item_file(input_file_path, output_file_path):
-    input_file = open(input_file_path).readlines()
+    input_file = io.open(input_file_path, encoding='utf-16-le').readlines()
     output = []
     key = 1
     for line in input_file:
-        line_split = line.strip().split(',')
+        line_split = re.sub('["]', '', line.strip()).split('\t')
         if len(line_split) < 3:
             print('Error on following line, improperly formatted:\n' + line)
             continue
         id = str(key)
         origin = line_split[0]
-        phenom = line_split[1]
         register = ''
         format = ''
         difficulty = '1'
-        category = ''
+        category = line_split[1]
         input = line_split[3].strip('*').strip('?')
         tokens = ''
         gloss = ''
@@ -51,7 +50,7 @@ def generate_item_file(input_file_path, output_file_path):
          + '@' + category + '@' + input + '@' + tokens + '@' + gloss + '@' + translation \
          + '@' + wf + '@' + length + '@' + comment + '@' + author + '@' + date + '\n')
         key += 1
-    output_file = open(output_file_path, 'w+')
+    output_file = io.open(output_file_path, 'w+', encoding='utf-8')
     output_file.writelines(output)
 
 if __name__ == '__main__':

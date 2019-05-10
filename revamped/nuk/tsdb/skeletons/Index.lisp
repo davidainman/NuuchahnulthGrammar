@@ -25,4 +25,5 @@
 ; ((:path . "new-test-suite") (:content . "New Test Suite: A description of the new test suite located at the subdirectory new-test-suite."))
 ((:path . "standard") (:content . "standard: A test suite of standard clause features."))
 ((:path . "mpcs") (:content . "mpcs: A test suite of multi-predicate clauses."))
+((:path . "svcs") (:content . "svcs: A test suite of only serial verb constructions."))
 )

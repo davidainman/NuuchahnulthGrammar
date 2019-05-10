@@ -79,21 +79,25 @@ n2-bottom-coord := n2-bottom-coord-rule.
 
 ;;;TODO: VP coord is overgenerating because there are no restrictions on aux, etc. taking out for now
 
-;vp3-top-coord := vp3-top-coord-rule.
+vp3-top-coord := vp3-top-coord-rule.
 
-;vp3-mid-coord := vp3-mid-coord-rule.
+vp3-mid-coord := vp3-mid-coord-rule.
 
-;vp3-bottom-coord := vp3-bottom-coord-rule.
+vp3-bottom-coord := vp3-bottom-coord-rule.
 
-;vp4-top-coord := vp4-top-coord-rule.
+vp4-top-coord := vp4-top-coord-rule.
 
-;vp4-bottom-coord := vp4-bottom-coord-rule.
+vp4-bottom-coord := vp4-bottom-coord-rule.
 
 s5-top-coord := s5-top-coord-rule.
 
 s5-mid-coord := s5-mid-coord-rule.
 
 s5-bottom-coord := s5-bottom-coord-rule.
+
+svc1-top-coord := svc1-top-coord-rule.
+
+svc1-bottom-coord := svc1-bottom-coord-rule.
 
 ; extraction rules
 extracted-comp := nuk-extracted-comp-phrase.

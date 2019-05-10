@@ -11,6 +11,14 @@ čims := common-noun-word-and-root-lex &
   [ STEM < "čims" >,
     SYNSEM.LKEYS.KEYREL.PRED "_bear_n_rel" ].
 
+čums := common-noun-word-and-root-lex &
+  [ STEM < "čums" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_bear_n_rel" ].
+
+čums := common-noun-word-and-root-lex &
+  [ STEM < "quuʔušin" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_raven_n_rel" ].
+
 naḥiima := common-noun-word-and-non-root-lex &
   [ STEM < "naḥiima" >,
     SYNSEM.LKEYS.KEYREL.PRED "_gift_n_rel" ].
@@ -23,6 +31,11 @@ maḥt̓iˑ := common-noun-word-and-non-root-lex &
   [ STEM < "maḥt̓iˑ" >,
     SYNSEM.LKEYS.KEYREL.PRED "_house_n_rel" ].
 
+;;; TODO: hack around flawed IGT
+maḥt̓ii := common-noun-word-and-non-root-lex &
+  [ STEM < "maḥt̓ii" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_house_n_rel" ].
+
 nučii := common-noun-word-and-non-root-lex &
   [ STEM < "nučii" >,
     SYNSEM.LKEYS.KEYREL.PRED "_mountain_n_rel" ].
@@ -33,6 +46,10 @@ nučii := common-noun-word-and-non-root-lex &
 
 cikcik := common-noun-word-and-root-lex &
   [ STEM < "cikcik" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_car_n_rel" ].
+
+huupuk̓ʷas := common-noun-word-and-root-lex &
+  [ STEM < "huupuk̓ʷas" >,
     SYNSEM.LKEYS.KEYREL.PRED "_car_n_rel" ].
 
 č̓apac := common-noun-word-and-non-root-lex &
@@ -98,6 +115,10 @@ c̓aʔak := common-noun-word-and-non-root-lex &
 č̓aʔak := common-noun-word-and-non-root-lex &
   [ STEM < "č̓aʔak" >,
     SYNSEM.LKEYS.KEYREL.PRED "_water_n_rel" ].
+
+ʕuy̓i := common-noun-word-and-non-root-lex &
+  [ STEM < "ʕuy̓i" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_medicine_n_rel" ].
 
 č̓upč̓upšumł := common-noun-word-and-root-lex &
   [ STEM < "č̓upč̓upšumł" >,
@@ -283,6 +304,10 @@ tup̓ał := common-noun-word-and-root-lex &
   [ STEM < "łuucsma" >,
     SYNSEM.LKEYS.KEYREL.PRED "_woman_n_rel" ].
 
+łuučm̓uup := common-noun-word-and-non-root-lex &
+  [ STEM < "łuučm̓uup" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_sister_n_rel" ].
+
 maʔił := common-noun-word-and-root-lex &
   [ STEM < "maʔił" >,
     SYNSEM.LKEYS.KEYREL.PRED "_house_n_rel" ].
@@ -331,6 +356,10 @@ yuułuʔiłʔatḥ := proper-noun-lex &
   [ STEM < "ʕaaḥuusʔatḥ" >,
     SYNSEM.LKEYS.KEYREL.PRED "_Ahousaht_n_rel" ].
 
+hiškʷiiʔatḥ := proper-noun-lex &
+  [ STEM < "hiškʷiiʔatḥ" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_Hesquiaht_n_rel" ].
+
 ʔamawatuʔa := proper-noun-lex &
   [ STEM < "ʔamawatuʔa" >,
     SYNSEM.LKEYS.KEYREL.PRED "_Bob.Mundy_n_rel" ].
@@ -347,6 +376,14 @@ David := proper-noun-lex &
   [ STEM < "David" >,
     SYNSEM.LKEYS.KEYREL.PRED "_David_n_rel" ].
 
+Courtenay := proper-noun-lex &
+  [ STEM < "Courtenay" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_Courtenay_n_rel" ].
+
+Courtney := proper-noun-lex &
+  [ STEM < "Courtney" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_Courtney_n_rel" ].
+
 pankuupa := proper-noun-lex &
   [ STEM < "pankuupa" >,
     SYNSEM.LKEYS.KEYREL.PRED "_Vancouver_n_rel" ].
@@ -355,55 +392,55 @@ c̓uumaʕas := proper-noun-lex &
   [ STEM < "c̓uumaʕas" >,
     SYNSEM.LKEYS.KEYREL.PRED "_Port.Alberni_n_rel" ].
 
-mituuni := proper-noun-lex &
+mituuni := proper-noun-noun-lex &
   [ STEM < "mituuni" >,
     SYNSEM.LKEYS.KEYREL.PRED "_Victoria_n_rel" ].
 
-Seattle := proper-noun-lex &
+Seattle := proper-noun-noun-lex &
   [ STEM < "Seattle" >,
     SYNSEM.LKEYS.KEYREL.PRED "_Seattle_n_rel" ].
 
-May := proper-noun-lex &
+May := proper-noun-noun-lex &
   [ STEM < "May" >,
     SYNSEM.LKEYS.KEYREL.PRED "_May_n_rel" ].
 
-ʔaqtiis := proper-noun-lex &
+ʔaqtiis := proper-noun-noun-lex &
   [ STEM < "ʔaqtiis" >,
     SYNSEM.LKEYS.KEYREL.PRED "_ʔaqtiis_n_rel" ].
 
-sumakquuʔis := proper-noun-lex &
+sumakquuʔis := proper-noun-noun-lex &
   [ STEM < "sumakquuʔis" >,
     SYNSEM.LKEYS.KEYREL.PRED "_hot.springs.cove_n_rel" ].
 
-n̓ačiqs := proper-noun-lex &
+n̓ačiqs := proper-noun-noun-lex &
   [ STEM < "n̓ačiqs" >,
     SYNSEM.LKEYS.KEYREL.PRED "_Tofino_n_rel" ].
 
-maatmaas := proper-noun-lex &
+maatmaas := proper-noun-noun-lex &
   [ STEM < "maatmaas" >,
     SYNSEM.LKEYS.KEYREL.PRED "_Maht.Maas_n_rel" ].
 
-qaaqaawis := proper-noun-lex &
+qaaqaawis := proper-noun-noun-lex &
   [ STEM < "qaaqaawis" >,
     SYNSEM.LKEYS.KEYREL.PRED "_Kakawis_n_rel" ].
 
-suučp̓iił := proper-noun-lex &
+suučp̓iił := proper-noun-noun-lex &
   [ STEM < "suučp̓iił" >,
     SYNSEM.LKEYS.KEYREL.PRED "_Suuchpiil_n_rel" ].
 
-Monica := proper-noun-lex &
+Monica := proper-noun-noun-lex &
   [ STEM < "Monica" >,
     SYNSEM.LKEYS.KEYREL.PRED "_Monica_n_rel" ].
 
-ʕintʔuukt := proper-noun-lex &
+ʕintʔuukt := proper-noun-noun-lex &
   [ STEM < "ʕintʔuukt" >,
     SYNSEM.LKEYS.KEYREL.PRED "_Snot.Boy_n_rel" ].
 
-m̓aaqumsa := proper-noun-lex &
+m̓aaqumsa := proper-noun-noun-lex &
   [ STEM < "m̓aaqumsa" >,
     SYNSEM.LKEYS.KEYREL.PRED "_Maaquumsa_n_rel" ].
 
-ḥiškʷiiʔatḥ := proper-noun-lex &
+ḥiškʷiiʔatḥ := proper-noun-noun-lex &
   [ STEM < "ḥiškʷiiʔatḥ" >,
     SYNSEM.LKEYS.KEYREL.PRED "_Hesquiaht_n_rel" ].
 
@@ -432,6 +469,10 @@ suw̓aaq := pronoun-pred-2sg-noun-lex &
 ƛuł := adjective-adj-lex &
   [ STEM < "ƛuł" >,
     SYNSEM.LKEYS.KEYREL.PRED "_good_a_rel" ].
+
+p̓išaq := adjective-adj-lex &
+  [ STEM < "p̓išaq" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_bad_a_rel" ].
 
 y̓aaq := adjective-adj-lex &
   [ STEM < "y̓aaq" >,
@@ -484,6 +525,14 @@ maƛsum := adjective-adj-lex &
 qʷac̓ał := adjective-adj-lex &
   [ STEM < "qʷac̓ał" >,
     SYNSEM.LKEYS.KEYREL.PRED "_beautiful_a_rel" ].
+
+ʕaskii := adjective-adj-lex &
+  [ STEM < "ʕaskii" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_bald_a_rel" ].
+
+ʔana := adjective-adj-lex &
+  [ STEM < "ʔana" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_only_a_rel" ].
 
 ʔuuš := quantifier-adj-lex &
   [ STEM < "ʔuuš" >,
@@ -577,6 +626,11 @@ t̓ik := intransitive-verb-verb-lex &
 
 ʕiḥ := intransitive-verb-verb-lex &
   [ STEM < "ʕiḥ" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_cry_v_rel" ].
+
+;;; TODO: this is wrong, getting around irregular LS template
+ʕiiḥ := intransitive-verb-verb-lex &
+  [ STEM < "ʕiiḥ" >,
     SYNSEM.LKEYS.KEYREL.PRED "_cry_v_rel" ].
 
 yac := intransitive-verb-verb-lex &
@@ -722,6 +776,10 @@ qaḥ := transitive-verb-verb-lex &
 ƛ̓i := transitive-verb-verb-lex &
   [ STEM < "ƛ̓i" >,
     SYNSEM.LKEYS.KEYREL.PRED "_shoot_v_rel" ].
+
+ƛ̓iptq := transitive-verb-verb-lex &
+  [ STEM < "ƛ̓iptq" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_pack_v_rel" ].
 
 ƛam̓aas := transitive-verb-verb-lex &
   [ STEM < "ƛam̓aas" >,
@@ -939,6 +997,10 @@ histaqšiƛ := transitive-no-inflect-verb-lex &
   [ STEM < "histaqšiƛ" >,
     SYNSEM.LKEYS.KEYREL.PRED "_be.from_v_rel" ].
 
+n̓ačaał := durative-transitive-verb-lex &
+  [ STEM < "n̓ačaał" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_read_v_rel" ].
+
 naʔaataḥ := durative-transitive-verb-lex &
   [ STEM < "naʔaataḥ" >,
     SYNSEM.LKEYS.KEYREL.PRED "_listen_v_rel" ].
@@ -953,6 +1015,10 @@ x̣ax̣aał := durative-transitive-verb-lex &
 
 ʔuucuy̓uk := durative-transitive-verb-lex &
   [ STEM < "ʔuucuy̓uk" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_go_v_rel" ].
+
+ʔuucay̓uk := durative-transitive-verb-lex &
+  [ STEM < "ʔuucay̓uk" >,
     SYNSEM.LKEYS.KEYREL.PRED "_go_v_rel" ].
 
 ʔuuct̓iiḥ := durative-transitive-verb-lex &
@@ -995,6 +1061,30 @@ ḥaac̓ak := durative-transitive-verb-lex &
   [ STEM < "ʔiiqḥuk" >,
     SYNSEM.LKEYS.KEYREL.PRED "_tell_v_rel" ].
 
+yaacuk := durative-transitive-verb-lex &
+  [ STEM < "yaacuk" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_walk_v_rel" ].
+
+hinʔał := durative-transitive-verb-lex &
+  [ STEM < "hinʔał" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_be.aware_v_rel" ].
+
+ʔuʔuuy̓uk := durative-transitive-verb-lex &
+  [ STEM < "ʔuʔuuy̓uk" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_cry.after_v_rel" ].
+
+k̓anis := durative-transitive-verb-lex &
+  [ STEM < "k̓anis" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_camp_v_rel" ].
+
+ʔuun̓ak̓uḥ := durative-transitive-verb-lex &
+  [ STEM < "ʔuun̓ak̓uḥ" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_observe_v_rel" ].
+
+wawaa := durative-transitive-verb-lex &
+  [ STEM < "wawaa" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_say_v_rel" ].
+
 waa := perfective-transitive-verb-lex &
   [ STEM < "waa" >,
     SYNSEM.LKEYS.KEYREL.PRED "_say_v_rel" ].
@@ -1022,6 +1112,22 @@ hitaat := perfective-transitive-verb-lex &
 n̓aacsiičiƛ := perfective-transitive-verb-lex &
   [ STEM < "n̓aacsiičiƛ" >,
     SYNSEM.LKEYS.KEYREL.PRED "_see_v_rel" ].
+
+hiinaƛ := perfective-transitive-verb-lex &
+  [ STEM < "hiinaƛ" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_find_v_rel" ].
+
+yaacšiƛ := perfective-transitive-verb-lex &
+  [ STEM < "yaacšiƛ" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_walk_v_rel" ].
+
+hitaʔap := perfective-transitive-verb-lex &
+  [ STEM < "hitaʔap" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_win.beat_v_rel" ].
+
+hiinasinƛ := perfective-transitive-verb-lex &
+  [ STEM < "hiinasinƛ" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_climb_v_rel" ].
 
 ;;; Enclitics
 
@@ -1414,6 +1520,10 @@ n̓aacsa := continuative-transitive-verb-lex &
   [ STEM < "n̓aacsa" >,
     SYNSEM.LKEYS.KEYREL.PRED "_see_v_rel" ].
 
+yaaʔał := continuative-transitive-verb-lex &
+  [ STEM < "yaaʔał" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_watch_v_rel" ].
+
 ʔiicʔiiqḥa := repetitive-transitive-verb-lex &
   [ STEM < "ʔiicʔiiqḥa" >,
     SYNSEM.LKEYS.KEYREL.PRED "_tell_v_rel" ].
@@ -1477,3 +1587,31 @@ y̓uuqʷaa := adv-lex &
 ʔaanaḥi := adv-lex &
   [ STEM < "ʔaanaḥi" >,
     SYNSEM.LKEYS.KEYREL.PRED "_only_adv_rel" ].
+
+kuw̓iła := adv-lex &
+  [ STEM < "kuw̓iła" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_go.ahead_adv_rel" ].
+
+ʔuʔukʷaqḥ := adv-lex &
+  [ STEM < "ʔuʔukʷaqḥ" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_on.ones.own_adv_rel" ].
+
+huʔaas := adv-lex &
+  [ STEM < "huʔaas" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_again_adv_rel" ].
+
+nay̓iiʔak := adv-lex &
+  [ STEM < "nay̓iiʔak" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_immediately_adv_rel" ].
+
+nay̓iik := adv-lex &
+  [ STEM < "nay̓iik" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_immediately_adv_rel" ].
+
+taakšiƛ := adv-lex &
+  [ STEM < "taakšiƛ" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_always_adv_rel" ].
+
+čaani := adv-lex &
+  [ STEM < "čaani" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_a.little.while_adv_rel" ].
