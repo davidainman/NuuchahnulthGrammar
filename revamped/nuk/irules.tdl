@@ -145,25 +145,29 @@ clitic-also-suffix :=
 %suffix (* =ƛaˑ) (=0 =ƛaˑ)
 clitic-also-lex-rule.
 
-naak-suffix :=
+nominalization-suffix :=
+%suffix (* -mis)
+low-nominalization-lex-rule.
+
+have-suffix :=
 %suffix (* -naˑk)
-naak-lex-rule.
+have-lex-rule.
 
 carry-suffix :=
 %suffix (* -iic)
 carry-lex-rule.
 
 consume-suffix :=
-%suffix (* -!iis)
+%suffix (* -\!iis)
 consume-lex-rule.
 
 consume-suffix-2 :=
-%suffix (* -!iic)
+%suffix (* -\!iic)
 consume-lex-rule.
 
-carry-suffix :=
+times-suffix :=
 %suffix (* -p̓it)
-carry-lex-rule.
+times-lex-rule.
 
 go-suffix :=
 %suffix (* -ca)
@@ -192,6 +196,10 @@ talk-about-lex-rule.
 go-after-suffix :=
 %suffix (* -R.\!iiḥ)
 go-after-lex-rule.
+
+talk-with-suffix :=
+%suffix (* -R.\(č\)ink)
+talk-with-lex-rule.
 
 want-involuntary-suffix :=
 %suffix (* -maʕiiqƛ)

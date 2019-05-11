@@ -15,7 +15,7 @@ čums := common-noun-word-and-root-lex &
   [ STEM < "čums" >,
     SYNSEM.LKEYS.KEYREL.PRED "_bear_n_rel" ].
 
-čums := common-noun-word-and-root-lex &
+quuʔušin := common-noun-word-and-root-lex &
   [ STEM < "quuʔušin" >,
     SYNSEM.LKEYS.KEYREL.PRED "_raven_n_rel" ].
 
@@ -348,19 +348,19 @@ pisatuwił := common-noun-word-and-root-lex &
   [ STEM < "pisatuwił" >,
     SYNSEM.LKEYS.KEYREL.PRED "_gym_n_rel" ].
 
-yuułuʔiłʔatḥ := proper-noun-lex &
+yuułuʔiłʔatḥ := proper-noun-noun-lex &
   [ STEM < "yuułuʔiłʔatḥ" >,
     SYNSEM.LKEYS.KEYREL.PRED "_Ucluelet_n_rel" ].
 
-ʕaaḥuusʔatḥ := proper-noun-lex &
+ʕaaḥuusʔatḥ := proper-noun-noun-lex &
   [ STEM < "ʕaaḥuusʔatḥ" >,
     SYNSEM.LKEYS.KEYREL.PRED "_Ahousaht_n_rel" ].
 
-hiškʷiiʔatḥ := proper-noun-lex &
+hiškʷiiʔatḥ := proper-noun-noun-lex &
   [ STEM < "hiškʷiiʔatḥ" >,
     SYNSEM.LKEYS.KEYREL.PRED "_Hesquiaht_n_rel" ].
 
-ʔamawatuʔa := proper-noun-lex &
+ʔamawatuʔa := proper-noun-noun-lex &
   [ STEM < "ʔamawatuʔa" >,
     SYNSEM.LKEYS.KEYREL.PRED "_Bob.Mundy_n_rel" ].
 
@@ -368,27 +368,27 @@ namint := proper-noun-lex &
   [ STEM < "namint" >,
     SYNSEM.LKEYS.KEYREL.PRED "_Namint_n_rel" ].
 
-n̓aaskuusaƛ := proper-noun-lex &
+n̓aaskuusaƛ := proper-noun-noun-lex &
   [ STEM < "n̓aaskuusaƛ" >,
     SYNSEM.LKEYS.KEYREL.PRED "_Fidelia.Haiyupis_n_rel" ].
 
-David := proper-noun-lex &
+David := proper-noun-noun-lex &
   [ STEM < "David" >,
     SYNSEM.LKEYS.KEYREL.PRED "_David_n_rel" ].
 
-Courtenay := proper-noun-lex &
+Courtenay := proper-noun-noun-lex &
   [ STEM < "Courtenay" >,
     SYNSEM.LKEYS.KEYREL.PRED "_Courtenay_n_rel" ].
 
-Courtney := proper-noun-lex &
+Courtney := proper-noun-noun-lex &
   [ STEM < "Courtney" >,
     SYNSEM.LKEYS.KEYREL.PRED "_Courtney_n_rel" ].
 
-pankuupa := proper-noun-lex &
+pankuupa := proper-noun-noun-lex &
   [ STEM < "pankuupa" >,
     SYNSEM.LKEYS.KEYREL.PRED "_Vancouver_n_rel" ].
 
-c̓uumaʕas := proper-noun-lex &
+c̓uumaʕas := proper-noun-noun-lex &
   [ STEM < "c̓uumaʕas" >,
     SYNSEM.LKEYS.KEYREL.PRED "_Port.Alberni_n_rel" ].
 
@@ -525,10 +525,6 @@ maƛsum := adjective-adj-lex &
 qʷac̓ał := adjective-adj-lex &
   [ STEM < "qʷac̓ał" >,
     SYNSEM.LKEYS.KEYREL.PRED "_beautiful_a_rel" ].
-
-ʕaskii := adjective-adj-lex &
-  [ STEM < "ʕaskii" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_bald_a_rel" ].
 
 ʔana := adjective-adj-lex &
   [ STEM < "ʔana" >,
@@ -729,10 +725,6 @@ hint := intransitive-verb-verb-lex &
   [ STEM < "ʔuyaqḥ" >,
     SYNSEM.LKEYS.KEYREL.PRED "_know.something_v_rel" ].
 
-hitinq := intransitive-verb-verb-lex &
-  [ STEM < "hitinq" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_at.beach_v_rel" ].
-
 wicq := intransitive-verb-verb-lex &
   [ STEM < "wicq" >,
     SYNSEM.LKEYS.KEYREL.PRED "_blind_v_rel" ].
@@ -777,10 +769,6 @@ qaḥ := transitive-verb-verb-lex &
   [ STEM < "ƛ̓i" >,
     SYNSEM.LKEYS.KEYREL.PRED "_shoot_v_rel" ].
 
-ƛ̓iptq := transitive-verb-verb-lex &
-  [ STEM < "ƛ̓iptq" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_pack_v_rel" ].
-
 ƛam̓aas := transitive-verb-verb-lex &
   [ STEM < "ƛam̓aas" >,
     SYNSEM.LKEYS.KEYREL.PRED "_climb_v_rel" ].
@@ -816,22 +804,6 @@ huḥtak := durative-intransitive-verb-lex &
 qʷis := durative-intransitive-verb-lex &
   [ STEM < "qʷis" >,
     SYNSEM.LKEYS.KEYREL.PRED "_do.so_v_rel" ].
-
-hitaaqƛ̓as := durative-intransitive-verb-lex &
-  [ STEM < "hitaaqƛ̓as" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_in.forest_v_rel" ].
-
-hitinqis := durative-intransitive-verb-lex &
-  [ STEM < "hitinqis" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_at.beach_v_rel" ].
-
-ƛ̓aaʔaas := durative-intransitive-verb-lex &
-  [ STEM < "ƛ̓aaʔaas" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_outside_v_rel" ].
-
-hitaas := durative-intransitive-verb-lex &
-  [ STEM < "hitaas" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_outside_v_rel" ].
 
 huuxsʔatu := durative-intransitive-verb-lex &
   [ STEM < "huuxsʔatu" >,
@@ -929,10 +901,6 @@ hinin := perfective-intransitive-verb-lex &
   [ STEM < "hinin" >,
     SYNSEM.LKEYS.KEYREL.PRED "_arrive_v_rel" ].
 
-hitaaqƛ̓iƛ := perfective-intransitive-verb-lex &
-  [ STEM < "hitaaqƛ̓iƛ" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_go.into.forest_v_rel" ].
-
 šiiƛuk := perfective-intransitive-verb-lex &
   [ STEM < "šiiƛuk" >,
     SYNSEM.LKEYS.KEYREL.PRED "_move_v_rel" ].
@@ -984,10 +952,6 @@ k̓awaḥa := continuative-intransitive-verb-lex &
 ʔuusaḥi := transitive-no-inflect-verb-lex &
   [ STEM < "ʔuusaḥi" >,
     SYNSEM.LKEYS.KEYREL.PRED "_because.of_v_rel" ].
-
-hił := transitive-no-inflect-verb-lex &
-  [ STEM < "hił" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_be.at_v_rel" ].
 
 ʔuḥ_1 := transitive-no-inflect-verb-lex &
   [ STEM < "ʔuḥ" >,
@@ -1061,10 +1025,6 @@ ḥaac̓ak := durative-transitive-verb-lex &
   [ STEM < "ʔiiqḥuk" >,
     SYNSEM.LKEYS.KEYREL.PRED "_tell_v_rel" ].
 
-yaacuk := durative-transitive-verb-lex &
-  [ STEM < "yaacuk" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_walk_v_rel" ].
-
 hinʔał := durative-transitive-verb-lex &
   [ STEM < "hinʔał" >,
     SYNSEM.LKEYS.KEYREL.PRED "_be.aware_v_rel" ].
@@ -1128,6 +1088,38 @@ hitaʔap := perfective-transitive-verb-lex &
 hiinasinƛ := perfective-transitive-verb-lex &
   [ STEM < "hiinasinƛ" >,
     SYNSEM.LKEYS.KEYREL.PRED "_climb_v_rel" ].
+
+;;; Location Verbs
+
+hitaaqƛ̓as := durative-intransitive-location-verb-lex &
+  [ STEM < "hitaaqƛ̓as" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_in.forest_v_rel" ].
+
+hitaaqƛ̓iƛ := perfective-intransitive-location-verb-lex &
+  [ STEM < "hitaaqƛ̓iƛ" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_go.into.forest_v_rel" ].
+
+hitinq := intransitive-verb-location-verb-lex &
+  [ STEM < "hitinq" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_at.beach_v_rel" ].
+
+hitinqis := durative-intransitive-location-verb-lex &
+  [ STEM < "hitinqis" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_at.beach_v_rel" ].
+
+ƛ̓aaʔaas := durative-intransitive-location-verb-lex &
+  [ STEM < "ƛ̓aaʔaas" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_outside_v_rel" ].
+
+hitaas := durative-intransitive-location-verb-lex &
+  [ STEM < "hitaas" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_outside_v_rel" ].
+
+hił := transitive-no-inflect-location-verb-lex &
+  [ STEM < "hił" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_be.at_v_rel" ].
+
+;;; Adpositive Verbs
 
 ;;; Enclitics
 

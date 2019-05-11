@@ -95,9 +95,27 @@ s5-mid-coord := s5-mid-coord-rule.
 
 s5-bottom-coord := s5-bottom-coord-rule.
 
+;;; SVCs
+
 svc1-top-coord := svc1-top-coord-rule.
 
 svc1-bottom-coord := svc1-bottom-coord-rule.
+
+svc2-top-coord := svc2-top-coord-rule.
+
+svc2-bottom-coord := svc2-bottom-coord-rule.
+
+svc3-top-coord := svc3-top-coord-rule.
+
+svc3-bottom-coord := svc3-bottom-coord-rule.
+
+svc3-2-top-coord := svc3-2-top-coord-rule.
+
+svc3-2-bottom-coord := svc3-2-bottom-coord-rule.
+
+svc4-top-coord := svc3-top-coord-rule.
+
+svc4-bottom-coord := svc3-bottom-coord-rule.
 
 ; extraction rules
 extracted-comp := nuk-extracted-comp-phrase.
