@@ -5,6 +5,10 @@ momentaneous-form-suffix1 :=
 %suffix (* -šiƛ)
 momentaneous-form-lex-rule.
 
+momentaneous-causative-form-suffix1 :=
+%suffix (* -saˑp)
+momentaneous-causative-form-lex-rule.
+
 momentaneous-form-suffix2 :=
 %suffix (* -čiƛ)
 momentaneous-form-lex-rule.
@@ -145,6 +149,14 @@ clitic-also-suffix :=
 %suffix (* =ƛaˑ) (=0 =ƛaˑ)
 clitic-also-lex-rule.
 
+clitic-causative-svc-suffix :=
+%prefix (=00 =\!ap)
+clitic-causative-svc-lex-rule.
+
+clitic-passive-svc-suffix :=
+%prefix (* =\!at) (=00 =\!at)
+clitic-passive-svc-lex-rule.
+
 nominalization-suffix :=
 %suffix (* -mis)
 low-nominalization-lex-rule.
@@ -200,6 +212,22 @@ go-after-lex-rule.
 talk-with-suffix :=
 %suffix (* -R.\(č\)ink)
 talk-with-lex-rule.
+
+with-suffix :=
+%suffix (* -\(č\)ink)
+with-lex-rule.
+
+do-for-suffix :=
+%suffix (* -L.ʔatup)
+do-for-lex-rule.
+
+do-for-suffix-2 :=
+%suffix (* -cḥin)
+do-for-lex-rule.
+
+use-suffix :=
+%suffix (* -L.ḥw̓ał)
+use-lex-rule.
 
 want-involuntary-suffix :=
 %suffix (* -maʕiiqƛ)

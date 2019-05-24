@@ -236,6 +236,11 @@ neʔiiq := common-noun-word-and-non-root-lex &
   [ STEM < "ƛ̓iƛ̓iḥw̓in" >,
     SYNSEM.LKEYS.KEYREL.PRED "_robin_n_rel" ].
 
+;;; 2019-05-14 this is resultative, this is a hack
+wałyuu := common-noun-word-and-root-lex &
+  [ STEM < "wałyuu" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_home_n_rel" ].
+
 c̓istuup := common-noun-word-and-root-lex &
   [ STEM < "c̓istuup" >,
     SYNSEM.LKEYS.KEYREL.PRED "_rope_n_rel" ].
@@ -383,6 +388,10 @@ Courtenay := proper-noun-noun-lex &
 Courtney := proper-noun-noun-lex &
   [ STEM < "Courtney" >,
     SYNSEM.LKEYS.KEYREL.PRED "_Courtney_n_rel" ].
+
+Trudeau := proper-noun-noun-lex &
+  [ STEM < "Trudeau" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_Trudeau_n_rel" ].
 
 pankuupa := proper-noun-noun-lex &
   [ STEM < "pankuupa" >,
@@ -624,6 +633,10 @@ t̓ik := intransitive-verb-verb-lex &
   [ STEM < "ʕiḥ" >,
     SYNSEM.LKEYS.KEYREL.PRED "_cry_v_rel" ].
 
+ʕaq := intransitive-verb-verb-lex &
+  [ STEM < "ʕaq" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_yell_v_rel" ].
+
 ;;; TODO: this is wrong, getting around irregular LS template
 ʕiiḥ := intransitive-verb-verb-lex &
   [ STEM < "ʕiiḥ" >,
@@ -701,9 +714,9 @@ t̓aq := intransitive-verb-verb-lex &
   [ STEM < "t̓aq" >,
     SYNSEM.LKEYS.KEYREL.PRED "_upright_v_rel" ].
 
-su_1 := intransitive-verb-verb-lex &
-  [ STEM < "su" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_hold_v_rel" ].
+; su_1 := intransitive-verb-verb-lex &
+;   [ STEM < "su" >,
+;     SYNSEM.LKEYS.KEYREL.PRED "_hold_v_rel" ].
 
 puux := intransitive-verb-verb-lex &
   [ STEM < "puux" >,
@@ -893,6 +906,10 @@ naaw̓aḥi := durative-intransitive-verb-lex &
   [ STEM < "naaw̓aḥi" >,
     SYNSEM.LKEYS.KEYREL.PRED "_wait_v_rel" ].
 
+yaacšiƛ := perfective-intransitive-verb-lex &
+ [ STEM < "yaacšiƛ" >,
+   SYNSEM.LKEYS.KEYREL.PRED "_walk_v_rel" ].
+
 wiinapuƛ := perfective-intransitive-verb-lex &
   [ STEM < "wiinapuƛ" >,
     SYNSEM.LKEYS.KEYREL.PRED "_stop_v_rel" ].
@@ -1077,9 +1094,9 @@ hiinaƛ := perfective-transitive-verb-lex &
   [ STEM < "hiinaƛ" >,
     SYNSEM.LKEYS.KEYREL.PRED "_find_v_rel" ].
 
-yaacšiƛ := perfective-transitive-verb-lex &
-  [ STEM < "yaacšiƛ" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_walk_v_rel" ].
+;yaacšiƛ := perfective-transitive-verb-lex &
+;  [ STEM < "yaacšiƛ" >,
+;    SYNSEM.LKEYS.KEYREL.PRED "_walk_v_rel" ].
 
 hitaʔap := perfective-transitive-verb-lex &
   [ STEM < "hitaʔap" >,
@@ -1095,7 +1112,7 @@ hitaaqƛ̓as := durative-intransitive-location-verb-lex &
   [ STEM < "hitaaqƛ̓as" >,
     SYNSEM.LKEYS.KEYREL.PRED "_in.forest_v_rel" ].
 
-hitaaqƛ̓iƛ := perfective-intransitive-location-verb-lex &
+hitaaqƛ̓iƛ := perfective-intransitive-verb-lex &
   [ STEM < "hitaaqƛ̓iƛ" >,
     SYNSEM.LKEYS.KEYREL.PRED "_go.into.forest_v_rel" ].
 
@@ -1339,6 +1356,10 @@ hił := transitive-no-inflect-location-verb-lex &
   [ STEM < "=!in" >,
     SYNSEM.LKEYS.KEYREL.PRED "_commandmood_v_rel" ].
 
+%3D%21čiˑ := command-go-mood-verb-lex &
+  [ STEM < "=čiˑ" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_commandmood_v_rel" ].
+
 %3Dḥaˑs := question-mood-1sg-verb-lex &
   [ STEM < "=ḥaˑs" >,
     SYNSEM.LKEYS.KEYREL.PRED "_question_v_rel" ].
@@ -1499,6 +1520,10 @@ hił := transitive-no-inflect-location-verb-lex &
 %3Dʔiˑ := article-lex &
   [ STEM < "=ʔiˑ" >,
     SYNSEM.LKEYS.KEYREL.PRED "_relativizer_n_rel" ].
+
+%3D00 := svc-2p-verb-lex &
+  [ STEM < "=00" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_svc2p_v_rel" ].
 
 t̓apat := transitive-clausal-verbs-verb-lex &
   [ STEM < "t̓apat" >,
