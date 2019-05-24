@@ -45,6 +45,8 @@ adv-no-uu-incorporation-pred-lex := adv-no-uu-incorporation-pred-lex-rule.
 
 pred-incorporation-lex := pred-incorporation-lex-rule.
 
+neutral-non-head-verb-lex := neutral-non-head-verb-lex-rule.
+
 ;auxiliary-type-raise-neutral-3rd := auxiliary-type-raise-neutral-3rd-lex-rule.
 
 ; gap rules

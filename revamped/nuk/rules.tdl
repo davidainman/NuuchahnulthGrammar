@@ -97,29 +97,29 @@ s5-bottom-coord := s5-bottom-coord-rule.
 
 ;;; SVCs
 
-;svc1-top-coord := svc1-top-coord-rule.
+;svc1-perf-top-coord := svc1-perf-top-coord-rule.
 
-;svc1-bottom-coord := svc1-bottom-coord-rule.
+;svc1-perf-bottom-coord := svc1-perf-bottom-coord-rule.
 
-svc1-perf-top-coord := svc1-perf-top-coord-rule.
+;svc1-impf-top-coord := svc1-impf-top-coord-rule.
 
-svc1-perf-bottom-coord := svc1-perf-bottom-coord-rule.
-
-svc1-impf-top-coord := svc1-impf-top-coord-rule.
-
-svc1-impf-bottom-coord := svc1-impf-bottom-coord-rule.
+;svc1-impf-bottom-coord := svc1-impf-bottom-coord-rule.
 
 svc2-top-coord := svc2-top-coord-rule.
 
 svc2-bottom-coord := svc2-bottom-coord-rule.
 
-svc3-top-coord := svc3-top-coord-rule.
+; svc3-top-coord := svc3-top-coord-rule.
 
-svc3-bottom-coord := svc3-bottom-coord-rule.
+; svc3-bottom-coord := svc3-bottom-coord-rule.
 
-svc3-2-top-coord := svc3-2-top-coord-rule.
+; svc3-2-top-coord := svc3-2-top-coord-rule.
 
-svc3-2-bottom-coord := svc3-2-bottom-coord-rule.
+; svc3-2-bottom-coord := svc3-2-bottom-coord-rule.
+
+svc1+3-bottom-coord := svc1+3-bottom-coord-rule.
+
+svc1+3-top-coord := svc1+3-top-coord-rule.
 
 svc4-top-coord := svc4-top-coord-rule.
 

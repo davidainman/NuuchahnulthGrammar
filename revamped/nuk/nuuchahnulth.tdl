@@ -228,8 +228,11 @@ nuk-head-opt-subj-imp-phrase := imp-head-opt-subj-phrase &
 ;;; 2019-05-06 forcing it to apply low b/c I need to drop comps in SVCs
 ;;; 2019-05-06 needs to apply in both places. removing finite restriction (?) LOCAL.CAT.HEAD.FORM finite,
 ; 2019-05-23 Actually I *do* need to drop comps for things like !ap, !at, etc. So back where I started.
+; 2019-05-24 Solved by requiring aux2p, making SVC coordination require finite elements & 
+;            making an MC - null finite lex rule (neutral-non-head-verb-lex-rule) for SVCs
 nuk-head-opt-comp-phrase := basic-head-opt-comp-phrase &
-[ HEAD-DTR.SYNSEM [ LIGHT + ] ].
+[ HEAD-DTR.SYNSEM [ LIGHT +,
+                    LOCAL.CAT.HEAD [ FORM finite ] ] ].
 
 ;;;;;;;;;;;;;;
 ;;; Features
@@ -287,7 +290,7 @@ location := htype.
 non-location := htype.
 adpositive := non-location.
 normal := non-location.
-nohtype := htype.
+nohtype := non-location.
 
 ;;; Tense
 
@@ -674,6 +677,36 @@ neutral-3rd-pred-lex-rule := same-non-local-lex-rule & same-modified-lex-rule & 
     C-CONT [ RELS <!  !>,
              HCONS <!  !>,
              ICONS <!  !> ] ].
+
+; 2019-05-24 This is for SVCs
+neutral-non-head-verb-lex-rule := head-change-only-lex-rule &
+  [ SYNSEM.LOCAL [ CAT [ HEAD verb & [ PRON #pron,
+                            AUX aux2p,
+                            TYPE-RAISE #TYPE-RAISE,
+                            NMZ #nmz,
+                            POSSESSOR #poss,
+                            INIT #init,
+                            SPEC-INIT #spec-init,
+                            MOD #mod,
+                            PRD +,
+                            KEYS #keys,
+                            HTYPE #htype,
+                            FORM nonfinite ],
+                         MC - ],
+                   COORD - ],
+    DTR [ SYNSEM.LOCAL.CAT.HEAD verb & [ PRON #pron,
+                                AUX non2p,
+                                TYPE-RAISE #TYPE-RAISE,
+                                NMZ #nmz,
+                                POSSESSOR #poss,
+                                INIT #init,
+                                SPEC-INIT #spec-init,
+                                MOD #mod,
+                                PRD +,
+                                KEYS #keys,
+                                HTYPE #htype,
+                                FORM nonfinite ],
+                 INFLECTED infl-satisfied ] ].
 
 ; 2019-04-01 this type raises adverbs as if they had a neutral mood on them
 neutral-3rd-pred-adv-lex-rule := local-change-only-lex-rule & same-agr-lex-rule & same-ctxt-lex-rule & predicate-lex & 
@@ -1073,7 +1106,8 @@ definite-mood-when-2pl-verb-lex := mood-definite-when-verb-lex & 2pl-aux-verb-le
 
 definite-mood-when-3-verb-lex := mood-definite-when-verb-lex & 3-aux-verb-lex.
 
-transitive-clausal-verbs-verb-lex := main-verb-verb-lex & transitive-verb-lex.
+transitive-clausal-verbs-verb-lex := main-verb-verb-lex & transitive-verb-lex &
+  [ SYNSEM.LOCAL.CAT.HEAD.HTYPE normal ].
 
 continuative-transitive-verb-lex := transitive-verb-inflected-lex &
   [ SYNSEM.LOCAL.CONT.HOOK.INDEX.E.ASPECT CT ].
@@ -1114,9 +1148,9 @@ s-comp-aux-with-pred := s-comp-aux & hcons-lex-item &
 
 ; 2019-05-11 making first comp OPT -, only "wik" as in "no" can have a dropped comp.
 neg-aux-lex := s-comp-aux-with-pred &
-  [ SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST [ OPT -,
-                                       LOCAL.CAT.HEAD [ AUX auxplain,
-                                                        FORM nonfinite ] ] ].
+  [ SYNSEM.LOCAL.CAT [ HEAD.AUX auxplain,
+                       VAL.COMPS.FIRST [ OPT -,
+                                       LOCAL.CAT.HEAD [ FORM nonfinite ] ] ] ].
 
 ;;; Copulas
 
@@ -1124,7 +1158,7 @@ neg-aux-lex := s-comp-aux-with-pred &
 ; In fact I think it should be cons & equal to the copula's subj. Adding this.
 ; Also had to remove cat-sat from COMPS < [ LOCAL.CAT ] > 
 cop-lex := basic-verb-lex-super & trans-first-arg-raising-lex-item-2 & non-mod-lex-item &
-  [ SYNSEM.LOCAL [ CAT.VAL [ SUBJ < #subj & [ LOCAL [ CONT.HOOK.INDEX #xarg,
+  [ SYNSEM.LOCAL [ CAT [ VAL [ SUBJ < #subj & [ LOCAL [ CONT.HOOK.INDEX #xarg,
                                               CAT cat-sat &
                                                   [ VAL [ SPR < >,
                                                           COMPS < > ],
@@ -1137,6 +1171,11 @@ cop-lex := basic-verb-lex-super & trans-first-arg-raising-lex-item-2 & non-mod-l
                                                          SPR < > ] ] ] >,
                              SPR < >,
                              SPEC < > ],
+                        HEAD [ PRD +,
+                               MOD < >,
+                               AUX aux-,
+                               FORM nonfinite,
+                               HTYPE normal ] ],
                    CONT.HOOK.XARG #xarg ] ].
 
 ; Copula type taking adjectival complements.
@@ -1486,7 +1525,7 @@ empty-uu-lex := no-rels-hcons-icons-lex-item & basic-icons-lex-item & no-icons-l
                          CONT.HOOK [ GTOP #lbl ] ] ] ].
 
 2p-suffix-verb-ncomps-lex-rule-super := 2p-suffix-verb-lex-rule-super & predicate-lex &
-  [ SYNSEM.LOCAL.CAT.HEAD verb,
+  [ SYNSEM.LOCAL.CAT.HEAD verb & [ AUX non2p ],
     C-CONT.RELS <! [ ARG2 ref-ind & #arg2 ] !>,
     DTR.SYNSEM.LOCAL.CONT.HOOK.XARG #arg2 ].
 
@@ -2176,7 +2215,7 @@ poss-rel-lex-rule-super := lex-rule &
              HOOK [ LTOP #ltop,
                     XARG #possessor ],
              HCONS <! !> ],
-    SYNSEM.LOCAL.CAT.VAL [ SUBJ < #subj & [ LOCAL.CONT.HOOK.INDEX #possessum & [ PNG.PER 3rd ] ] >,
+    SYNSEM.LOCAL.CAT [ VAL [ SUBJ < #subj & [ LOCAL.CONT.HOOK.INDEX #possessum & [ PNG.PER 3rd ] ] >,
                            SPR < >,
                            SPEC < >,
                            COMPS [ FIRST [ LIGHT +,
@@ -2185,11 +2224,14 @@ poss-rel-lex-rule-super := lex-rule &
                                            LOCAL [ CAT [ VAL [ SUBJ < #subj >,
                                                                COMPS #vcomps ],
                                                          HEAD [ PRD +,
-                                                                FORM nonfinite ],
+                                                                FORM nonfinite,
+                                                                AUX non2p,
+                                                                HTYPE #htype ],
                                                          POSTHEAD - ] ] ],
                                    REST [ FIRST [ LOCAL [ CONT.HOOK.INDEX #possessor,
                                                           CAT.POSTHEAD + ] ],
                                           REST #vcomps ] ] ],
+                      HEAD.HTYPE #htype ],
     DTR.SYNSEM.LOCAL [ CAT.VAL [ SUBJ < [ LOCAL.CONT.HOOK.INDEX #possessor ] > ],
                        CONT.HOOK [ LTOP #ltop ] ] ].
 ;                       CONT.HOOK.INDEX #clitic-index ] ].
@@ -2521,6 +2563,7 @@ subj-head-phrase := decl-head-subj-phrase & head-final-head-nexus &
 ;;; 2019-04-09 need to make the parent of comp-head-phrases the parent LIGHT - so AUX composition can't apply after
 ;;; copying from matrix.tdl & modifying LIGHT.
 ;;; 2019-05-13 removing LIGHT - on the mother --- no longer needed (?)
+;;; 2019-05-24 Adding AUX aux2p on mother, now that SVC coordinated verbs are aux2p
 nuk-head-comp-phrase := head-valence-phrase & head-compositional &
               binary-headed-phrase & 
   [ SYNSEM phr-synsem-min &
@@ -2532,6 +2575,7 @@ nuk-head-comp-phrase := head-valence-phrase & head-compositional &
     HEAD-DTR.SYNSEM [ LOCAL.CAT [ VAL [ SUBJ #subj,
                                         SPEC #spec,
                                         SPR #spr ],
+                                  HEAD.AUX aux2p,
                                   HC-LIGHT #light,
                                   POSTHEAD #ph ]],
     NON-HEAD-DTR.SYNSEM canonical-synsem,
@@ -2558,9 +2602,9 @@ aux-composition-phrase := comp-head-phrase &
   [ HEAD-DTR.SYNSEM [ LOCAL.CAT.HEAD.AUX aux2p,
                       LIGHT + ] ].
 
-comp-head-subordinate-phrase := comp-head-phrase &
-  [ SYNSEM.LOCAL.CAT.MC -,
-    HEAD-DTR.SYNSEM.LOCAL.CAT.HEAD.AUX non2p ].
+;comp-head-subordinate-phrase := comp-head-phrase &
+;  [ SYNSEM.LOCAL.CAT.MC -,
+;    HEAD-DTR.SYNSEM.LOCAL.CAT.HEAD.AUX non2p ].
 
 ;;; 2019-03-13 Defining comps as posthead or null,
 ;;; to prevent this from firing if there is a POSTHEAD - element (i.e., 2P's first COMP)
@@ -2703,7 +2747,8 @@ svc-top-coord-rule := svc-coord-phrase &
                                COMPS #comps ] ] ],
              LIGHT - ],
     LCOORD2-DTR.SYNSEM.LOCAL [ COORD -,
-                               CAT [ HEAD #head & verb & [ AUX aux2p ],
+                               CAT [ HEAD #head & verb & [ AUX aux2p,
+                                                           FORM finite ],
                                     VAL [ SUBJ < #subj >,
                                           COMPS #comps & phlist ] ],
                                CONT.HOOK.INDEX #lind & [ SF #sf,
@@ -2723,13 +2768,15 @@ svc-top-coord-rule := svc-coord-phrase &
              RELS <! !>,
              HCONS <! !> ] ].
 
+; 2019-05-24 making DTR FORM finite & AUX non2p (see neutral-non-head-verb-lex-rule)
 svc-bottom-coord-phrase := bottom-coord-phrase &
   [ SYNSEM.LOCAL [ COORD +,
                    CAT [ HEAD verb,
                          VAL.SUBJ < #subj > ],
                    CONT.HOOK [ INDEX.E.MOOD #mood,
                                LTOP #ltop ] ],
-    NONCONJ-DTR.SYNSEM.LOCAL [ CAT [ HEAD verb & [ FORM nonfinite ],
+    NONCONJ-DTR.SYNSEM.LOCAL [ CAT [ HEAD verb & [ FORM nonfinite,
+                                                   AUX aux2p ],
                                      VAL [ SUBJ < #subj >,
                                            COMPS < > ] ],
                                CONT.HOOK [ INDEX.E.MOOD #mood,
