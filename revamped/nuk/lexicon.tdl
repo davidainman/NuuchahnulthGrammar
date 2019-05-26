@@ -1556,11 +1556,11 @@ wik := neg-aux-lex &
 ʔuḥ_2 := copula-cop-lex &
   [ STEM < "ʔuḥ" > ].
 
-possessum-noun-1 := possessum-noun-lex-1 &
-  [ STEM < "=uk" > ].
+; possessum-noun-1 := possessum-noun-lex-1 &
+;   [ STEM < "=uk" > ].
 
-possessum-noun-2 := possessum-noun-lex-2 &
-  [ STEM < "=ʔak" > ].
+; possessum-noun-2 := possessum-noun-lex-2 &
+;   [ STEM < "=ʔak" > ].
 
 ʔuḥʔiš1 := conj-lex &
   [ STEM < "ʔuḥʔiš" >,

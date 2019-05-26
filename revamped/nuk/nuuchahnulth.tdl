@@ -290,7 +290,7 @@ location := htype.
 non-location := htype.
 adpositive := non-location.
 normal := non-location.
-nohtype := non-location.
+nohtype := htype.
 
 ;;; Tense
 
@@ -558,11 +558,11 @@ transitive-verb-lex := main-verb-lex & transitive-lex-item &
 ;2p-arg-comp-aux := lex-item &
 ; 2019-03-22 changing SUBJ to HEAD.PRD - not HEAD noun
 ; 2019-05-11 making first COMPS AUX - to avoid stacking
+; 2019-05-25 pushing subject information lower
 2p-lex-super := no-icons-lex-item & no-hcons-lex-item & post-clitic-also-rule-dtr & post-clitic-plural-rule-dtr & pre-clitic-causative-rule-dtr & pre-clitic-future-rule-dtr & pre-clitic-now-rule-dtr & pre-clitic-passive-rule-dtr & pre-clitic-poss-rule-dtr & post-clitic-habitual-lex-rule-dtr & 
   [ SYNSEM [ LOCAL [ CAT [ HEAD [ HTYPE #htype ],
            VAL [ SUBJ < #subj >,
                  COMPS < #comps . #vcomps >,
-                 SPR < >,
                  SPEC < > ] ] ],
              NON-LOCAL #nonlocal ],
     ARG-ST < #subj &
@@ -581,6 +581,23 @@ transitive-verb-lex := main-verb-lex & transitive-lex-item &
                        POSTHEAD - ] ],
          NON-LOCAL #nonlocal ]> ].
 
+; split this off because article has no subj
+2p-lex-super-article := no-icons-lex-item & no-hcons-lex-item & post-clitic-also-rule-dtr & post-clitic-plural-rule-dtr & pre-clitic-causative-rule-dtr & pre-clitic-future-rule-dtr & pre-clitic-now-rule-dtr & pre-clitic-passive-rule-dtr & pre-clitic-poss-rule-dtr & post-clitic-habitual-lex-rule-dtr & 
+  [ SYNSEM [ LOCAL [ CAT [ HEAD [ HTYPE #htype ],
+           VAL [ COMPS < #comps . #vcomps >,
+                 SPEC < > ] ] ],
+             NON-LOCAL #nonlocal ],
+    ARG-ST < #comps & [ LIGHT +,
+         L-PERIPH +,
+         OPT -,
+         LOCAL [ CAT [ VAL [ COMPS #vcomps ],
+                       HEAD [ PRD +,
+                              AUX non2p,
+                              FORM nonfinite,
+                              HTYPE #htype ],
+                       POSTHEAD - ] ],
+         NON-LOCAL #nonlocal ] > ].
+
 2p-lex := 2p-lex-super &
   [ SYNSEM.LOCAL.CAT.HEAD [ FORM non-root-finite,
                             AUX aux2p ] ].
@@ -589,8 +606,15 @@ transitive-verb-lex := main-verb-lex & transitive-lex-item &
   [ SYNSEM.LOCAL [ CAT.HEAD.MOD < >,
                    CONT.RELS <! !> ] ].
 
+2p-lex-no-rels-article := 2p-lex-super-article & 
+  [ SYNSEM.LOCAL [ CAT.HEAD [ MOD < >,
+                              FORM non-root-finite,
+                              AUX aux2p ],
+                   CONT.RELS <! !> ] ].
+
 2p-lex-no-rels-comp-xarg-raise := 2p-lex-no-rels & raise-sem-lex-item &
- [ ARG-ST < [ LOCAL.CONT.HOOK.INDEX #xarg ], [ LOCAL.CONT.HOOK.XARG #xarg ] > ].
+ [ SYNSEM.LOCAL.CAT.VAL.SPR < >,
+   ARG-ST < [ LOCAL.CONT.HOOK.INDEX #xarg ], [ LOCAL.CONT.HOOK.XARG #xarg ] > ].
 
 2p-svc-no-rels-comp-xarg-raise := 2p-lex-super & raise-sem-lex-item &
   [ SYNSEM.LOCAL [ CAT.HEAD [ MOD < >,
@@ -627,8 +651,12 @@ transitive-verb-lex := main-verb-lex & transitive-lex-item &
 ;         NON-LOCAL #nonlocal ]> ].
 
 ;;; 2019-03-13
-article-lex := 2p-lex-no-rels & non-predicate-lex & 
-[ SYNSEM.LOCAL [ CAT.VAL.COMPS.FIRST.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX #index & [ PNG.PER 3rd ],
+;;; 2019-05-25 adding a SPR
+article-lex := 2p-lex-no-rels-article & non-predicate-lex & aux-type-raising-dtr &
+[ SYNSEM.LOCAL [ CAT.VAL [ COMPS.FIRST.LOCAL.CAT [ HEAD +nv,
+                                                   VAL.SUBJ < [ LOCAL.CONT.HOOK.INDEX #index & [ PNG.PER 3rd ] ] > ],
+                           SPR < [ LOCAL.CAT.HEAD det ] >,
+                           SUBJ < > ],
                  CONT.HOOK.INDEX #index ] ].
 
 ;;; 2019-03-09 This is for the neutral mood applying w/ no further clitic-passive-lex-rule
@@ -913,7 +941,8 @@ mood-definite-verb-lex-super := no-hcons-lex-item & post-clitic-also-rule-dtr & 
          NON-LOCAL #nonlocal ]> ].
 
 mood-definite-verb-raising-lex-super := 2p-lex-no-rels &
-  [ SYNSEM.LOCAL.CAT.HEAD.PRD - ].
+  [ SYNSEM.LOCAL.CAT [ HEAD.PRD -,
+                       VAL.SPR < > ] ].
 
 ; 2019-04-03 constraining this to intransitives
 mood-definite-subj-raising-verb-lex := mood-definite-verb-raising-lex-super & 
@@ -954,7 +983,8 @@ mood-definite-obj-raising-verb-lex := no-rels-hcons-icons-lex-item & post-clitic
 mood-definite-when-verb-lex := 2p-lex & predicate-lex &
   [ SYNSEM [ LOCAL [ CAT [ VAL [ SUBJ < #subj >,
                                  COMPS.FIRST.LOCAL [ CAT.VAL.SUBJ < #subj >,
-                                                     CONT.HOOK.INDEX #arg0 ] ],
+                                                     CONT.HOOK.INDEX #arg0 ],
+                                 SPR < > ],
                          MC -,
                          HEAD verb & [ MOD < [ LOCAL.CONT.HOOK.INDEX #arg1 ] > ] ],
                    CONT [ HOOK [ INDEX #arg0 & [ SF prop ],
@@ -1210,7 +1240,8 @@ quantifier-adj-lex := attr-adj-lex & stative-pred-adj-lex &
 ;            instead head.prd + and that's it.
 ; 2019-03-30 removing PRD + as it doesn't work (as foreseen) with adjective raising. Changing to AUX -.
 attr-adj-lex := adj-lex & intersective-mod-lex &
-  [ SYNSEM.LOCAL.CAT.HEAD.MOD < [ LOCAL.CAT [ HEAD.AUX non2p ] ] > ].
+  [ SYNSEM.LOCAL.CAT.HEAD.MOD < [ LOCAL.CAT [ HEAD.AUX non2p,
+                                              VAL.SPR cons ] ] > ].
 
 ; Stative predicate adjective definition
 
@@ -1367,9 +1398,17 @@ add-incorporation-lex-rule := lex-rule &
                     SOME-INFLECTION #some-flag,
                     INCORPORATION-FLAG - ] ].
 
+; 2019-05-25 worthwhile supertype
+cat-and-cont-change-only-lex-rule := 
+           same-non-local-lex-rule &
+           same-modified-lex-rule &
+           same-light-lex-rule &
+           same-ctxt-lex-rule &
+           same-agr-lex-rule.
+
 ; HACKY: I am keeping SPEC unspecified 'cause I'm using it as scratch for ditransitives :/
 ; 2019-04-08 adding that daughter's inflected.incorporation-flag is na-or-- to avoid cyclic application
-incorporating-lex-rule := cat-change-only-lex-rule & 
+incorporating-lex-rule := cat-and-cont-change-only-lex-rule & 
   [ SYNSEM.LOCAL.CAT [ VAL [ SUBJ < [ LOCAL.CAT.HEAD.PRD - ] >,
                              SPR < > ],
                        HEAD verb & [ PRD +,
@@ -1380,7 +1419,7 @@ incorporating-lex-rule := cat-change-only-lex-rule &
     DTR.SYNSEM.LOCAL.CAT.HEAD [ NMZ -,
                                 AUX non2p ] ].
 
-noun-incorporation-lex-rule-super := incorporating-lex-rule & 
+noun-incorporation-lex-rule-super := incorporating-lex-rule & same-cont-lex-rule & no-ccont-lex-rule &
   [ C-CONT.HCONS <! !>,
     DTR common-noun-word-and-root-lex & [ SYNSEM.LOCAL.CAT.HEAD noun & [ PRD +,
                                                                          MOD < >,
@@ -1392,13 +1431,17 @@ noun-incorporation-transitive-lex-rule := noun-incorporation-lex-rule-super & 2p
 ; HACKY: I am using the SPEC value to store the comps (will need later)
 noun-incorporation-ditransitive-lex-rule := noun-incorporation-lex-rule-super & 2p-suffix-ditransitive-verb-rule-dtr &
   [ SYNSEM.LOCAL.CAT.VAL [ SPEC < #comp2 >,
-                           COMPS < #comp2 & [ LOCAL.CAT.POSTHEAD + ] > ] ].
+                           COMPS < #comp2 & [ LOCAL.CAT [ POSTHEAD +,
+                                                          VAL [ SUBJ < >,
+                                                                SPEC < >,
+                                                                COMPS < >,
+                                                                SPR < > ] ] ] > ] ].
 
 ; 2019-04-04 HACKY: I am stuffing the LTOP of the adverb into the GTOP. This may cause problems down the road..
 ; 2019-04-06 COMP needs to be AUX -. This is not true of adv (which can modify wherever) but it is true of incorporation
 ; 2019-04-06 making COMP TYPE-RAISE -, this keeps out intransitive-verb-to-adj
 ; 2019-05-11 removing AUX non2p b/c that forbids articles!
-adv-incorporation-lex-rule-super := incorporating-lex-rule & 
+adv-incorporation-lex-rule-super := incorporating-lex-rule & same-cont-lex-rule & no-ccont-lex-rule &
   [ SYNSEM.LOCAL [ CAT.VAL.COMPS.FIRST [ LOCAL.CAT [ HEAD [ TYPE-RAISE - ],
                                                      POSTHEAD + ] ],
                    CONT.HOOK.GTOP #ltop ],
@@ -1408,12 +1451,14 @@ adv-incorporation-lex-rule-super := incorporating-lex-rule &
 ; 2019-04-09 Forcing COMPS COMPS to be null
 ; 2019-05-11 first comp needs to be PRD +.
 ;            htype should be comps' htype
+; 2019-05-25 comps should be non-aux
 adv-incorporation-pred-lex-rule := adv-incorporation-lex-rule-super  &
   [ SYNSEM.LOCAL [ CAT [ HEAD.HTYPE #htype,
                          VAL [ SUBJ < [ LOCAL.CONT.HOOK.INDEX #subj-index ] >,
                               COMPS < [ LOCAL [ CONT.HOOK [ INDEX #index,
                                                             XARG #subj-index ],
                                                   CAT [ HEAD [ PRD +,
+                                                               AUX non2p,
                                                                HTYPE #htype ],
                                                         VAL.COMPS < > ] ],
                                                OPT - ] > ] ],
@@ -1426,7 +1471,10 @@ adv-no-uu-incorporation-pred-lex-rule := adv-incorporation-pred-lex-rule & 2p-su
 
 adv-incorporation-ncomp-lex-rule-super := adv-incorporation-lex-rule-super &
   [ SYNSEM.LOCAL [ CAT.VAL.COMPS.FIRST.LOCAL [ CAT [ HEAD.PRD -,
-                                                     VAL [ COMPS < > ] ],
+                                                     VAL [ SPR < >,
+                                                           SUBJ < >,
+                                                           SPEC < >,
+                                                           COMPS < > ] ],
                                                CONT.HOOK.INDEX #xarg ],
                    CONT.HOOK.XARG #xarg ],
     DTR.SYNSEM.LOCAL.CAT.HEAD adv ].
@@ -1439,26 +1487,47 @@ adv-incorporation-ditransitive-lex-rule := adv-incorporation-ncomp-lex-rule-supe
   [ SYNSEM.LOCAL.CAT.VAL [ SPEC < #comp2 >,
                            COMPS.REST [ FIRST #comp2 & [ LOCAL.CAT [ HEAD [ PRD -,
                                                                             TYPE-RAISE - ],
-                                                                     VAL [ COMPS < > ],
+                                                                     VAL [ COMPS < >,
+                                                                           SPR < >,
+                                                                           SUBJ < >,
+                                                                           SPEC < > ],
                                                                      POSTHEAD + ] ],
                                         REST null ] ] ].
 
+; 2019-05-25 I want it to pick up COMPS unmodified by the bare-np rule so SPR cons
+; Also have to add in the qeq relations through C-CONT
 adj-incorporation-lex-rule-super := incorporating-lex-rule & 
-  [ SYNSEM.LOCAL.CAT [ VAL.COMPS.FIRST.LOCAL.CONT.HOOK.INDEX #mod-index ],
-    C-CONT.HCONS <! !>,
-    DTR attr-adj-lex & [ SYNSEM.LOCAL.CAT [ HEAD adj & [ FORM root ],
-                                            VAL.SUBJ < [ LOCAL.CONT.HOOK.INDEX #mod-index ] > ] ] ].
+  [ SYNSEM.LOCAL.CAT [ VAL.COMPS.FIRST.LOCAL [ CONT.HOOK [ INDEX #mod-index,
+                                                           LTOP #larg ],
+                                               CAT.VAL [ SUBJ < >,
+                                                         COMPS < >,
+                                                         SPEC < >,
+                                                         SPR cons ] ] ],
+    C-CONT [ RELS <! quant-relation &
+                     [ PRED "exists_q_rel",
+                       ARG0 #mod-index,
+                       RSTR #harg ] !>,
+             HCONS <! qeq &
+                      [ HARG #harg,
+                        LARG #larg ] !>,
+             ICONS <! !>,
+             HOOK.INDEX #mod-index ],
+    DTR attr-adj-lex & [ SYNSEM.LOCAL.CAT [ HEAD adj & [ FORM root,
+                                                         MOD < [ LOCAL.CONT.HOOK.INDEX #mod-index ] > ] ] ] ].
 
 adj-incorporation-transitive-lex-rule := adj-incorporation-lex-rule-super & 2p-suffix-transitive-verb-rule-dtr &
   [ SYNSEM.LOCAL.CAT.VAL.COMPS.REST null ].
 
 ; HACKY: I am using the SPEC value to store the 2nd comps (will need later)
 adj-incorporation-ditransitive-lex-rule := adj-incorporation-lex-rule-super & 2p-suffix-ditransitive-verb-rule-dtr &
-  [ SYNSEM.LOCAL.CAT.VAL [ SPEC < #comp2 >,
-                           COMPS.REST [ FIRST #comp2 & synsem-min,
+  [ SYNSEM.LOCAL.CAT.VAL [ SPEC < #comp2 & [ LOCAL.CAT.VAL [ COMPS < >,
+                                                             SPR < >,
+                                                             SUBJ < >,
+                                                             SPEC < > ] ] >,
+                           COMPS.REST [ FIRST #comp2,
                                         REST null ] ] ].
 
-pred-incorporation-lex-rule := incorporating-lex-rule & 2p-suffix-predcomp-verb-or-uu-rule-dtr & 2p-suffix-predcomp-verb-no-uu-rule-dtr &
+pred-incorporation-lex-rule := incorporating-lex-rule & same-cont-lex-rule & no-ccont-lex-rule & 2p-suffix-predcomp-verb-or-uu-rule-dtr & 2p-suffix-predcomp-verb-no-uu-rule-dtr &
   [ SYNSEM.LOCAL.CAT [ VAL [ SUBJ < #subj >,
                              COMPS #comps ],
                        HEAD.HTYPE #htype ],
@@ -1507,7 +1576,7 @@ empty-uu-lex := no-rels-hcons-icons-lex-item & basic-icons-lex-item & no-icons-l
 2p-suffix-verb-lex-rule-super := same-light-lex-rule & same-ctxt-lex-rule & same-agr-lex-rule & 
                                  no-hcons-lex-item & no-icons-lex-item & add-incorporation-lex-rule & infl-lex-rule &
   [ SYNSEM.LOCAL [ CAT [ VAL [ SUBJ < #subj & [ LOCAL.CONT.HOOK.INDEX #arg1 ] >,
-                             COMPS #comps,
+                             COMPS #comps ,
                              SPEC < >,
                              SPR < > ],
                          HEAD [ MOD #mod,
@@ -1681,11 +1750,45 @@ intransitive-to-int-adj-lex-rule := cat-change-only-lex-rule &
                          CONT.HOOK.INDEX.E.ASPECT CT ],
           INFLECTED infl-satisfied ] ].
 
+;;; 2019-05-25 changing noun-relativizer-lex-rule to allow bare-np-phrase to fire, adding appropriate quantifier
+noun-relativizer-lex-rule := same-non-local-lex-rule & same-modified-lex-rule & same-light-lex-rule & nocoord &
+  [ SYNSEM [ LOCAL [ CAT [ HEAD noun & 
+                            [ PRD -,
+                              NMZ +,
+                              AUX aux-,
+                              MOD #mod,
+                              KEYS #keys,
+                              POSSESSOR #poss,
+                              INIT #init,
+                              SPEC-INIT #spec,
+                              FORM #form ],
+                         VAL [ SPR < [ LOCAL.CAT.HEAD det ] >,
+                               SUBJ < >,
+                               SPEC < >,
+                               COMPS < > ] ],
+                   CONT.HOOK [ INDEX #xarg & [ PNG.PER 3rd ] ] ] ],
+    C-CONT [ RELS <! !>,
+       HCONS <! !>,
+       HOOK [ INDEX #xarg & ref-ind,
+              LTOP #ltop ] ],
+    DTR [ INFLECTED infl-satisfied,
+          SYNSEM [ LOCAL [ CAT [ HEAD noun &
+                               [ PRD +,
+                                 NMZ -,
+                                 AUX aux-,
+                                 MOD #mod,
+                                 KEYS #keys,
+                                 POSSESSOR #poss,
+                                 INIT #init,
+                                 SPEC-INIT #spec,
+                                 FORM #form ] ],
+                           CONT.HOOK [ XARG #xarg,
+                                       LTOP #ltop ] ] ] ] ].
+
 ;;; 2019-03-12 allowing nouns to go through this rule to become individuals
 ;;; this is the version of the rule that just changes the index
-;;; TODO: This started working when I added the C-CONT. WHY!? Investigate...
 ;;; 2019-04-03 pushing 3rd person info into here!
-noun-relativizer-lex-rule := same-non-local-lex-rule & same-modified-lex-rule & same-light-lex-rule & 
+old-noun-relativizer-lex-rule := same-non-local-lex-rule & same-modified-lex-rule & same-light-lex-rule & 
   [ SYNSEM [ LOCAL [ CAT [ HEAD noun & 
                             [ PRD -,
                               NMZ +,
@@ -2339,7 +2442,7 @@ auxiliary-type-raise-super := local-change-only-lex-rule & same-agr-lex-rule & s
                                 FORM #form,
                                 MOD #mod ],
                          VAL [ SPEC < >,
-                               SPR < >,
+                               SPR #spr,
                                COMPS [ FIRST [ LOCAL.CAT [ HEAD [ MOD cons,
                                                                   AUX non2p ],
                                                      POSTHEAD - ],
@@ -2371,7 +2474,7 @@ auxiliary-type-raise-super := local-change-only-lex-rule & same-agr-lex-rule & s
                                                        NON-LOCAL #nonlocal ],
                                                REST #rcomp ],
                                         SPEC < >,
-                                        SPR < > ],
+                                        SPR #spr ],
                                   HEAD verb & [ TYPE-RAISE -,
                                          AUX aux2p,
                                          PRON #pron,
@@ -2395,16 +2498,19 @@ type-raise-clausal-clitic-lex-rule := auxiliary-type-raise-super &
 
 ; 2019-03-30 comps comps should always be null under this type, don't know how it becomes contentful.
 type-raise-article-lex-rule := auxiliary-type-raise-super &
-  [ SYNSEM.LOCAL [ CAT [ HEAD noun & [ PRD - ],
+  [ SYNSEM.LOCAL [ CAT [ HEAD noun & [ PRD -,
+                                       HTYPE nohtype ],
                          VAL [ SUBJ < >,
-                               COMPS [ FIRST.LOCAL.CAT.HEAD.MOD < #mod & [ LOCAL.CONT.HOOK #hook ] >,
-                                       REST.FIRST.LOCAL.CAT.VAL [ SUBJ < #mod >,
-                                                                  COMPS #vcomps,
-                                                                  SPR < >,
-                                                                  SPEC < > ] ] ] ],
+                               COMPS [ FIRST.LOCAL.CAT.HEAD.MOD < [ LOCAL [ CAT.HEAD #head,
+                                                                            CONT.HOOK #hook ] ] >,
+                                       REST < [ LOCAL.CAT.VAL [ SUBJ < [ LOCAL [ CAT.HEAD #head, 
+                                                                                 CONT.HOOK #hook ] ] >,
+                                                                COMPS #vcomps,
+                                                                SPR < >,
+                                                                SPEC < > ] ] > ] ] ],
                  CONT.HOOK #hook ],
-    ARGS < article-lex & [ SYNSEM.LOCAL.CAT.VAL [ SUBJ < #mod >,
-                                                  COMPS.FIRST.LOCAL.CAT.VAL.COMPS #vcomps ] ] > ].
+    ARGS < article-lex & [ SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL.CAT.VAL [ SUBJ < [ LOCAL.CONT.HOOK #hook ] >,
+                                                                            COMPS #vcomps ] ] > ].
 
 ; 2019-04-01
 
@@ -2564,6 +2670,7 @@ subj-head-phrase := decl-head-subj-phrase & head-final-head-nexus &
 ;;; copying from matrix.tdl & modifying LIGHT.
 ;;; 2019-05-13 removing LIGHT - on the mother --- no longer needed (?)
 ;;; 2019-05-24 Adding AUX aux2p on mother, now that SVC coordinated verbs are aux2p
+;;; 2019-05-25 Removed AUX aux2p on mother: This blocks things like ʔaanaḥimaḥ ʔunaak ʕiniiƛ 
 nuk-head-comp-phrase := head-valence-phrase & head-compositional &
               binary-headed-phrase & 
   [ SYNSEM phr-synsem-min &
@@ -2575,7 +2682,6 @@ nuk-head-comp-phrase := head-valence-phrase & head-compositional &
     HEAD-DTR.SYNSEM [ LOCAL.CAT [ VAL [ SUBJ #subj,
                                         SPEC #spec,
                                         SPR #spr ],
-                                  HEAD.AUX aux2p,
                                   HC-LIGHT #light,
                                   POSTHEAD #ph ]],
     NON-HEAD-DTR.SYNSEM canonical-synsem,
