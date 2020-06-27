@@ -26,4 +26,5 @@
 ((:path . "standard") (:content . "standard: A test suite of standard clause features."))
 ((:path . "mpcs") (:content . "mpcs: A test suite of multi-predicate clauses."))
 ((:path . "svcs") (:content . "svcs: A test suite of only serial verb constructions."))
+((:path . "linker") (:content . "linker: A test suite of only linker constructions."))
 )

@@ -41,6 +41,10 @@ continuative-form-suffix :=
 %suffix (* -aˑ)
 continuative-form-lex-rule.
 
+continuative-form-suffix2 :=
+%suffix (* -\(y\)aˑ)
+continuative-form-lex-rule.
+
 durative-form-suffix1 :=
 %suffix (* -ak)
 durative-form-lex-rule.
@@ -264,3 +268,11 @@ need-to-do-lex-rule.
 want-to-involuntary-suffix :=
 %suffix (* -maʕiiqƛ)
 want-to-involuntary-lex-rule.
+
+linker-first-suffix :=
+%suffix (* -\(q\)ḥ)
+2p-linker-first-lex-rule.
+
+linker-last-suffix :=
+%suffix (* -\(q\)ḥ)
+2p-linker-last-lex-rule.
